@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using ContractManagement.Controller;
 using ContractManagement.Model.Entities;
@@ -974,4 +974,4 @@ namespace ContractManagement.View
             Console.ReadKey();
         }
     }
-}
+}*/
