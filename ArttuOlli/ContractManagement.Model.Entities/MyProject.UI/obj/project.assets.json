@@ -1,11 +1,29 @@
 {
   "version": 3,
   "targets": {
-    "net8.0-windows7.0": {}
+    "net8.0-windows7.0": {
+      "ContractManagement.Model.Entities/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ContractManagement.Model.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ContractManagement.Model.Entities.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ContractManagement.Model.Entities/1.0.0": {
+      "type": "project",
+      "path": "../ContractManagement.Model.Entities/ContractManagement.Model.Entities.csproj",
+      "msbuildProject": "../ContractManagement.Model.Entities/ContractManagement.Model.Entities.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": []
+    "net8.0-windows7.0": [
+      "ContractManagement.Model.Entities >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\leoko\\.nuget\\packages\\": {},
@@ -38,7 +56,11 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj": {
+              "projectPath": "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -4,6 +4,22 @@
     "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\MyProject.UI\\MyProject.UI.csproj": {}
   },
   "projects": {
+    "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj",
+        "projectName": "ContractManagement.Model.Entities",
+        "projectPath": "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj",
+        "UsingMicrosoftNETSdk": false,
+        "frameworks": {
+          "net472": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
     "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\MyProject.UI\\MyProject.UI.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -31,7 +47,11 @@
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj": {
+                "projectPath": "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
