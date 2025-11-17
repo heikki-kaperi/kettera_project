@@ -26,23 +26,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Omistaja\\.nuget\\packages\\": {},
+    "C:\\Users\\leoko\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\MyProject.UI\\MyProject.UI.csproj",
+      "projectUniqueName": "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\MyProject.UI\\MyProject.UI.csproj",
       "projectName": "MyProject.UI",
-      "projectPath": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\MyProject.UI\\MyProject.UI.csproj",
-      "packagesPath": "C:\\Users\\Omistaja\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\MyProject.UI\\obj\\",
+      "projectPath": "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\MyProject.UI\\MyProject.UI.csproj",
+      "packagesPath": "C:\\Users\\leoko\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\leoko\\Documents\\GitHub\\kettera_project\\ArttuOlli\\ContractManagement.Model.Entities\\MyProject.UI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Omistaja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\leoko\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -73,7 +73,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -97,7 +97,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
