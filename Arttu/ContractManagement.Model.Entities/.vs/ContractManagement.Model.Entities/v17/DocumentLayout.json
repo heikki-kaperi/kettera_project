@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\contractmanagement.model.entities\\controllers\\controllers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|solutionrelative:contractmanagement.model.entities\\controllers\\controllers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\contractmanagement.model.entities\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|solutionrelative:contractmanagement.model.entities\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\contractmanagement.model.entities\\dbhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|solutionrelative:contractmanagement.model.entities\\dbhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\contractmanagement.model.entities\\modellayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -13,14 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\contractmanagement.model.entities\\model\\dal\\sqlbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|solutionrelative:contractmanagement.model.entities\\model\\dal\\sqlbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\contractmanagement.model.entities\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|solutionrelative:contractmanagement.model.entities\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\contractmanagement.model.entities\\dbhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FA082243-2BDC-4E13-A3FC-DD313187D151}|ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj|solutionrelative:contractmanagement.model.entities\\dbhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,11 +26,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "DbHelper.cs",
               "DocumentMoniker": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\DbHelper.cs",
               "RelativeDocumentMoniker": "ContractManagement.Model.Entities\\DbHelper.cs",
@@ -47,7 +43,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\Program.cs",
               "RelativeDocumentMoniker": "ContractManagement.Model.Entities\\Program.cs",
@@ -60,7 +56,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "SqlBuilder.cs",
               "DocumentMoniker": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\Model\\Dal\\SqlBuilder.cs",
               "RelativeDocumentMoniker": "ContractManagement.Model.Entities\\Model\\Dal\\SqlBuilder.cs",
@@ -68,12 +64,11 @@
               "RelativeToolTip": "ContractManagement.Model.Entities\\Model\\Dal\\SqlBuilder.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T21:10:18.338Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-10T21:10:18.338Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ModelLayer.cs",
               "DocumentMoniker": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\ModelLayer.cs",
               "RelativeDocumentMoniker": "ContractManagement.Model.Entities\\ModelLayer.cs",
@@ -82,19 +77,6 @@
               "ViewState": "AgIAAI8AAAAAAAAAAAAmwLEEAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T19:29:15.837Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Controllers.cs",
-              "DocumentMoniker": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\Controllers\\Controllers.cs",
-              "RelativeDocumentMoniker": "ContractManagement.Model.Entities\\Controllers\\Controllers.cs",
-              "ToolTip": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\Controllers\\Controllers.cs",
-              "RelativeToolTip": "ContractManagement.Model.Entities\\Controllers\\Controllers.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T19:21:43.04Z",
               "EditorCaption": ""
             }
           ]
