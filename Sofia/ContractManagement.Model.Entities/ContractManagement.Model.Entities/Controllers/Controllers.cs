@@ -184,7 +184,17 @@ namespace ContractManagement.Controller
 
         public List<Contract> GetContractsByCreator(int creatorId) => contractDAL.GetContractsByCreator(creatorId);
 
+        public List<Contract> GetContractsByInternalUser(int userId)
+        {
+            return GetContractsByCreator(userId);
+        }
+
         public List<Contract> GetContractsByStakeholder(int userId) => stakeholderDAL.GetContractsByStakeholder(userId);
+
+        public List<Contract> GetContractsToReviewByInternalUser(int userId)
+        { 
+            return GetContractsByStakeholder(userId);
+        }
 
         public List<Contract> GetContractsByExternalUser(int extUserId) => externalDAL.GetContractsByExternalUser(extUserId);
 
@@ -192,6 +202,11 @@ namespace ContractManagement.Controller
 
         // Block management in contract
         public List<ContractBlock> GetContractBlocks(int contractNr) => blockDAL.GetBlocksByContract(contractNr);
+
+        public List<ContractBlock> GetBlocksByContract(int contractId)
+        {
+            return GetContractBlocks(contractId);
+        }
 
         public bool AddBlockToContract(int contractNr, int originalBlockId)
         {
@@ -230,6 +245,11 @@ namespace ContractManagement.Controller
             block.Contract_text = newText;
             block.Modified_date = DateTime.Now;
             return blockDAL.UpdateContractBlock(block);
+        }
+
+        public bool EditBlockInContract(int contractId, int blockId, string newText)
+        {
+            return EditBlockInContract(blockId, newText);
         }
 
         // Stakeholder management
