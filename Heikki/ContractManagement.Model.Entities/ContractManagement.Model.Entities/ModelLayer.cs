@@ -162,6 +162,20 @@ namespace ContractManagement.Model.DAL
     // ==================== INTERNAL USER DAL ====================
     public class InternalUserDAL
     {
+
+        private InternalUser MapReaderToInternalUser(MySqlDataReader reader)
+        {
+            return new InternalUser
+            {
+                Int_User_ID = reader.GetInt32("Int_User_ID"),
+                First_name = reader.GetString("First_name"),
+                Last_name = reader.GetString("Last_name"),
+                Username = reader.GetString("Username"),
+                Password = reader.GetString("Password"),
+                Email = reader.GetString("Email")
+            };
+        }
+
         private DatabaseConnection dbConn = new DatabaseConnection();
 
         public List<InternalUser> GetAllInternalUsers()
@@ -177,15 +191,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        users.Add(new InternalUser
-                        {
-                            Int_User_ID = reader.GetInt32("Int_User_ID"),
-                            First_name = reader.GetString("First_name"),
-                            Last_name = reader.GetString("Last_name"),
-                            Username = reader.GetString("Username"),
-                            Password = reader.GetString("Password"),
-                            Email = reader.GetString("Email")
-                        });
+                        users.Add(MapReaderToInternalUser(reader));
                     }
                 }
             }
@@ -206,15 +212,7 @@ namespace ContractManagement.Model.DAL
                 {
                     if (reader.Read())
                     {
-                        user = new InternalUser
-                        {
-                            Int_User_ID = reader.GetInt32("Int_User_ID"),
-                            First_name = reader.GetString("First_name"),
-                            Last_name = reader.GetString("Last_name"),
-                            Username = reader.GetString("Username"),
-                            Password = reader.GetString("Password"),
-                            Email = reader.GetString("Email")
-                        };
+                        user = MapReaderToInternalUser(reader);
                     }
                 }
             }
@@ -235,15 +233,7 @@ namespace ContractManagement.Model.DAL
                 {
                     if (reader.Read())
                     {
-                        user = new InternalUser
-                        {
-                            Int_User_ID = reader.GetInt32("Int_User_ID"),
-                            First_name = reader.GetString("First_name"),
-                            Last_name = reader.GetString("Last_name"),
-                            Username = reader.GetString("Username"),
-                            Password = reader.GetString("Password"),
-                            Email = reader.GetString("Email")
-                        };
+                        user = MapReaderToInternalUser(reader);
                     }
                 }
             }
