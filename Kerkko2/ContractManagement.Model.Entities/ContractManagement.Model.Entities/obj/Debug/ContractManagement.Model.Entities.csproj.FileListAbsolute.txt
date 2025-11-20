@@ -1,0 +1,78 @@
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ContractManagement.Model.Entities.exe.config
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ContractManagement.Model.Entities.exe
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ContractManagement.Model.Entities.pdb
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Google.Protobuf.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\MySql.Data.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Buffers.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.IO.Pipelines.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Memory.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ZstdSharp.dll
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Google.Protobuf.pdb
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Google.Protobuf.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\MySql.Data.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Buffers.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.IO.Pipelines.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Memory.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\Contract.C7925708.Up2Date
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.pdb
+C:\Users\User\source\repos\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe.config
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ContractManagement.Model.Entities.exe.config
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ContractManagement.Model.Entities.exe
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ContractManagement.Model.Entities.pdb
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Google.Protobuf.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\MySql.Data.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Buffers.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.IO.Pipelines.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Memory.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ZstdSharp.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Google.Protobuf.pdb
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Google.Protobuf.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\MySql.Data.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Buffers.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.IO.Pipelines.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Memory.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.csproj.AssemblyReference.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe.config
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\Contract.C7925708.Up2Date
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.pdb
