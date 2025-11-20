@@ -162,6 +162,20 @@ namespace ContractManagement.Model.DAL
     // ==================== INTERNAL USER DAL ====================
     public class InternalUserDAL
     {
+
+        private InternalUser MapReaderToInternalUser(MySqlDataReader reader)
+        {
+            return new InternalUser
+            {
+                Int_User_ID = reader.GetInt32("Int_User_ID"),
+                First_name = reader.GetString("First_name"),
+                Last_name = reader.GetString("Last_name"),
+                Username = reader.GetString("Username"),
+                Password = reader.GetString("Password"),
+                Email = reader.GetString("Email")
+            };
+        }
+
         private DatabaseConnection dbConn = new DatabaseConnection();
 
         public List<InternalUser> GetAllInternalUsers()
@@ -177,15 +191,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        users.Add(new InternalUser
-                        {
-                            Int_User_ID = reader.GetInt32("Int_User_ID"),
-                            First_name = reader.GetString("First_name"),
-                            Last_name = reader.GetString("Last_name"),
-                            Username = reader.GetString("Username"),
-                            Password = reader.GetString("Password"),
-                            Email = reader.GetString("Email")
-                        });
+                        users.Add(MapReaderToInternalUser(reader));
                     }
                 }
             }
@@ -206,15 +212,7 @@ namespace ContractManagement.Model.DAL
                 {
                     if (reader.Read())
                     {
-                        user = new InternalUser
-                        {
-                            Int_User_ID = reader.GetInt32("Int_User_ID"),
-                            First_name = reader.GetString("First_name"),
-                            Last_name = reader.GetString("Last_name"),
-                            Username = reader.GetString("Username"),
-                            Password = reader.GetString("Password"),
-                            Email = reader.GetString("Email")
-                        };
+                        user = MapReaderToInternalUser(reader);
                     }
                 }
             }
@@ -235,15 +233,7 @@ namespace ContractManagement.Model.DAL
                 {
                     if (reader.Read())
                     {
-                        user = new InternalUser
-                        {
-                            Int_User_ID = reader.GetInt32("Int_User_ID"),
-                            First_name = reader.GetString("First_name"),
-                            Last_name = reader.GetString("Last_name"),
-                            Username = reader.GetString("Username"),
-                            Password = reader.GetString("Password"),
-                            Email = reader.GetString("Email")
-                        };
+                        user = MapReaderToInternalUser(reader);
                     }
                 }
             }
@@ -279,6 +269,21 @@ namespace ContractManagement.Model.DAL
     // ==================== EXTERNAL USER DAL ====================
     public class ExternalUserDAL
     {
+
+        private ExternalUser MapReaderToExternalUser(MySqlDataReader reader)
+        {
+            return new ExternalUser
+            {
+                Ext_User_ID = reader.GetInt32("Ext_User_ID"),
+                First_name = reader.GetString("First_name"),
+                Last_name = reader.GetString("Last_name"),
+                Username = reader.GetString("Username"),
+                Password = reader.GetString("Password"),
+                Email = reader.GetString("Email"),
+                Company_name = reader.GetString("Company_name")
+            };
+        }
+
         private DatabaseConnection dbConn = new DatabaseConnection();
 
         public List<ExternalUser> GetAllExternalUsers()
@@ -294,16 +299,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        users.Add(new ExternalUser
-                        {
-                            Ext_User_ID = reader.GetInt32("Ext_User_ID"),
-                            First_name = reader.GetString("First_name"),
-                            Last_name = reader.GetString("Last_name"),
-                            Company_name = reader.GetString("Company_name"),
-                            Email = reader.GetString("Email"),
-                            Username = reader.GetString("Username"),
-                            Password = reader.GetString("Password")
-                        });
+                        users.Add(MapReaderToExternalUser(reader));
                     }
                 }
             }
@@ -324,16 +320,7 @@ namespace ContractManagement.Model.DAL
                 {
                     if (reader.Read())
                     {
-                        user = new ExternalUser
-                        {
-                            Ext_User_ID = reader.GetInt32("Ext_User_ID"),
-                            First_name = reader.GetString("First_name"),
-                            Last_name = reader.GetString("Last_name"),
-                            Company_name = reader.GetString("Company_name"),
-                            Email = reader.GetString("Email"),
-                            Username = reader.GetString("Username"),
-                            Password = reader.GetString("Password")
-                        };
+                        user = MapReaderToExternalUser(reader);
                     }
                 }
             }
@@ -354,16 +341,7 @@ namespace ContractManagement.Model.DAL
                 {
                     if (reader.Read())
                     {
-                        user = new ExternalUser
-                        {
-                            Ext_User_ID = reader.GetInt32("Ext_User_ID"),
-                            First_name = reader.GetString("First_name"),
-                            Last_name = reader.GetString("Last_name"),
-                            Company_name = reader.GetString("Company_name"),
-                            Email = reader.GetString("Email"),
-                            Username = reader.GetString("Username"),
-                            Password = reader.GetString("Password")
-                        };
+                        user = MapReaderToExternalUser(reader);
                     }
                 }
             }
@@ -399,6 +377,7 @@ namespace ContractManagement.Model.DAL
     // ==================== CATEGORY DAL ====================
     public class CategoryDAL
     {
+
         private DatabaseConnection dbConn = new DatabaseConnection();
 
         public List<ContractBlockCategory> GetAllCategories()
@@ -479,6 +458,19 @@ namespace ContractManagement.Model.DAL
     // ==================== ORIGINAL CONTRACT BLOCK DAL ====================
     public class OriginalContractBlockDAL
     {
+
+        private OriginalContractBlock MapReaderToOriginalContractBlock(MySqlDataReader reader)
+        {
+            return new OriginalContractBlock
+            {
+                Org_Cont_ID = reader.GetInt32("Org_Cont_ID"),
+                Category_name = reader.GetString("Category_name"),
+                Contract_text = reader.GetString("Contract_text"),
+                Created_by = reader.GetInt32("Created_by"),
+                Created_date = reader.GetDateTime("Created_date")
+            };
+        }
+
         private DatabaseConnection dbConn = new DatabaseConnection();
 
         public List<OriginalContractBlock> GetAllOriginalBlocks()
@@ -494,14 +486,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        blocks.Add(new OriginalContractBlock
-                        {
-                            Org_Cont_ID = reader.GetInt32("Org_Cont_ID"),
-                            Category_name = reader.GetString("Category_name"),
-                            Contract_text = reader.GetString("Contract_text"),
-                            Created_by = reader.GetInt32("Created_by"),
-                            Created_date = reader.GetDateTime("Created_date")
-                        });
+                        blocks.Add(MapReaderToOriginalContractBlock(reader));
                     }
                 }
             }
@@ -522,14 +507,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        blocks.Add(new OriginalContractBlock
-                        {
-                            Org_Cont_ID = reader.GetInt32("Org_Cont_ID"),
-                            Category_name = reader.GetString("Category_name"),
-                            Contract_text = reader.GetString("Contract_text"),
-                            Created_by = reader.GetInt32("Created_by"),
-                            Created_date = reader.GetDateTime("Created_date")
-                        });
+                        blocks.Add(MapReaderToOriginalContractBlock(reader));
                     }
                 }
             }
@@ -550,14 +528,7 @@ namespace ContractManagement.Model.DAL
                 {
                     if (reader.Read())
                     {
-                        block = new OriginalContractBlock
-                        {
-                            Org_Cont_ID = reader.GetInt32("Org_Cont_ID"),
-                            Category_name = reader.GetString("Category_name"),
-                            Contract_text = reader.GetString("Contract_text"),
-                            Created_by = reader.GetInt32("Created_by"),
-                            Created_date = reader.GetDateTime("Created_date")
-                        };
+                        block = MapReaderToOriginalContractBlock(reader);
                     }
                 }
             }
@@ -718,6 +689,19 @@ namespace ContractManagement.Model.DAL
     // ==================== CONTRACT DAL ====================
     public class ContractDAL
     {
+        private Contract MapReaderToContract(MySqlDataReader reader)
+        {
+            return new Contract
+            {
+                Contract_NR = reader.GetInt32("Contract_NR"),
+                Company_name = reader.GetString("Company_name"),
+                The_Creator = reader.GetInt32("The_Creator"),
+                Created_date = reader.GetDateTime("Created_date"),
+                Approved = reader.GetBoolean("Approved"),
+                Sent_to_external = reader.GetBoolean("Sent_to_external")
+            };
+        }
+
         private DatabaseConnection dbConn = new DatabaseConnection();
 
         public List<Contract> GetAllContracts()
@@ -733,15 +717,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        contracts.Add(new Contract
-                        {
-                            Contract_NR = reader.GetInt32("Contract_NR"),
-                            Company_name = reader.GetString("Company_name"),
-                            The_Creator = reader.GetInt32("The_Creator"),
-                            Created_date = reader.GetDateTime("Created_date"),
-                            Approved = reader.GetBoolean("Approved"),
-                            Sent_to_external = reader.GetBoolean("Sent_to_external")
-                        });
+                        contracts.Add(MapReaderToContract(reader));
                     }
                 }
             }
@@ -762,15 +738,7 @@ namespace ContractManagement.Model.DAL
                 {
                     if (reader.Read())
                     {
-                        contract = new Contract
-                        {
-                            Contract_NR = reader.GetInt32("Contract_NR"),
-                            Company_name = reader.GetString("Company_name"),
-                            The_Creator = reader.GetInt32("The_Creator"),
-                            Created_date = reader.GetDateTime("Created_date"),
-                            Approved = reader.GetBoolean("Approved"),
-                            Sent_to_external = reader.GetBoolean("Sent_to_external")
-                        };
+                        contract = MapReaderToContract(reader);
                     }
                 }
             }
@@ -791,15 +759,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        contracts.Add(new Contract
-                        {
-                            Contract_NR = reader.GetInt32("Contract_NR"),
-                            Company_name = reader.GetString("Company_name"),
-                            The_Creator = reader.GetInt32("The_Creator"),
-                            Created_date = reader.GetDateTime("Created_date"),
-                            Approved = reader.GetBoolean("Approved"),
-                            Sent_to_external = reader.GetBoolean("Sent_to_external")
-                        });
+                        contracts.Add(MapReaderToContract(reader));
                     }
                 }
             }
@@ -1041,6 +1001,21 @@ namespace ContractManagement.Model.DAL
     // ==================== COMMENT DAL ====================
     public class CommentDAL
     {
+
+        private Comment MapReaderToComment(MySqlDataReader reader)
+        {
+            return new Comment
+            {
+                Comment_ID = reader.GetInt32("Comment_ID"),
+                Contract_NR = reader.GetInt32("Contract_NR"),
+                Contract_Block_NR = reader.IsDBNull(reader.GetOrdinal("Contract_Block_NR")) ? null : (int?)reader.GetInt32("Contract_Block_NR"),
+                User_ID = reader.GetInt32("User_ID"),
+                User_type = reader.GetString("User_type"),
+                Comment_text = reader.GetString("Comment_text"),
+                Comment_date = reader.GetDateTime("Comment_date")
+            }; 
+        }
+
         private DatabaseConnection dbConn = new DatabaseConnection();
 
         public List<Comment> GetCommentsByContract(int contractNr)
@@ -1057,16 +1032,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        comments.Add(new Comment
-                        {
-                            Comment_ID = reader.GetInt32("Comment_ID"),
-                            Contract_NR = reader.GetInt32("Contract_NR"),
-                            Contract_Block_NR = reader.IsDBNull(reader.GetOrdinal("Contract_Block_NR")) ? null : (int?)reader.GetInt32("Contract_Block_NR"),
-                            User_ID = reader.GetInt32("User_ID"),
-                            User_type = reader.GetString("User_type"),
-                            Comment_text = reader.GetString("Comment_text"),
-                            Comment_date = reader.GetDateTime("Comment_date")
-                        });
+                        comments.Add(MapReaderToComment(reader));
                     }
                 }
             }
@@ -1088,16 +1054,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        comments.Add(new Comment
-                        {
-                            Comment_ID = reader.GetInt32("Comment_ID"),
-                            Contract_NR = reader.GetInt32("Contract_NR"),
-                            Contract_Block_NR = reader.IsDBNull(reader.GetOrdinal("Contract_Block_NR")) ? null : (int?)reader.GetInt32("Contract_Block_NR"),
-                            User_ID = reader.GetInt32("User_ID"),
-                            User_type = reader.GetString("User_type"),
-                            Comment_text = reader.GetString("Comment_text"),
-                            Comment_date = reader.GetDateTime("Comment_date")
-                        });
+                        comments.Add(MapReaderToComment(reader));
                     }
                 }
             }
@@ -1118,16 +1075,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        comments.Add(new Comment
-                        {
-                            Comment_ID = reader.GetInt32("Comment_ID"),
-                            Contract_NR = reader.GetInt32("Contract_NR"),
-                            Contract_Block_NR = reader.IsDBNull(reader.GetOrdinal("Contract_Block_NR")) ? null : (int?)reader.GetInt32("Contract_Block_NR"),
-                            User_ID = reader.GetInt32("User_ID"),
-                            User_type = reader.GetString("User_type"),
-                            Comment_text = reader.GetString("Comment_text"),
-                            Comment_date = reader.GetDateTime("Comment_date")
-                        });
+                        comments.Add(MapReaderToComment(reader));
                     }
                 }
             }
@@ -1149,16 +1097,7 @@ namespace ContractManagement.Model.DAL
                 {
                     while (reader.Read())
                     {
-                        comments.Add(new Comment
-                        {
-                            Comment_ID = reader.GetInt32("Comment_ID"),
-                            Contract_NR = reader.GetInt32("Contract_NR"),
-                            Contract_Block_NR = reader.IsDBNull(reader.GetOrdinal("Contract_Block_NR")) ? null : (int?)reader.GetInt32("Contract_Block_NR"),
-                            User_ID = reader.GetInt32("User_ID"),
-                            User_type = reader.GetString("User_type"),
-                            Comment_text = reader.GetString("Comment_text"),
-                            Comment_date = reader.GetDateTime("Comment_date")
-                        });
+                        comments.Add(MapReaderToComment(reader));
                     }
                 }
             }
