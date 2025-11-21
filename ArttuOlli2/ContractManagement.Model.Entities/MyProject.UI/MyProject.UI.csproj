@@ -66,14 +66,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Administrator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Administrator.Designer.cs">
+      <DependentUpon>Administrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateExternal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateExternal.Designer.cs">
+      <DependentUpon>CreateExternal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="logIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="logIn.Designer.cs">
+      <DependentUpon>logIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Administrator.resx">
+      <DependentUpon>Administrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateExternal.resx">
+      <DependentUpon>CreateExternal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="logIn.resx">
+      <DependentUpon>logIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
