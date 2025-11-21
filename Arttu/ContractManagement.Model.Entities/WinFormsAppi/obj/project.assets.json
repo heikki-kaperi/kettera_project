@@ -1,0 +1,104 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0-windows7.0": {
+      "ContractManagement.Model.Entities/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ContractManagement.Model.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ContractManagement.Model.Entities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ContractManagement.Model.Entities/1.0.0": {
+      "type": "project",
+      "path": "../ContractManagement.Model.Entities/ContractManagement.Model.Entities.csproj",
+      "msbuildProject": "../ContractManagement.Model.Entities/ContractManagement.Model.Entities.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0-windows7.0": [
+      "ContractManagement.Model.Entities >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Omistaja\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\WinFormsAppi\\WinFormsAppi.csproj",
+      "projectName": "WinFormsAppi",
+      "projectPath": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\WinFormsAppi\\WinFormsAppi.csproj",
+      "packagesPath": "C:\\Users\\Omistaja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\WinFormsAppi\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\Omistaja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0-windows"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "projectReferences": {
+            "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj": {
+              "projectPath": "C:\\Users\\Omistaja\\Documents\\GitHub\\kettera_project\\Arttu\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities\\ContractManagement.Model.Entities.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
+    },
+    "frameworks": {
+      "net8.0-windows7.0": {
+        "targetAlias": "net8.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
