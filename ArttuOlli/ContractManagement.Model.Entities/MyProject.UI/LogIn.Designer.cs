@@ -1,6 +1,6 @@
 ﻿namespace MyProject.UI
 {
-    partial class Form1
+    partial class LogIn
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
@@ -37,23 +35,9 @@
             label2 = new Label();
             txtPassword = new TextBox();
             txtUsername = new TextBox();
+            label3 = new Label();
+            button4 = new Button();
             SuspendLayout();
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(258, 100);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(255, 27);
-            textBox1.TabIndex = 0;
-            textBox1.Text = "CONTRACT MANAGEMENT SYSTEM";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(341, 148);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(52, 27);
-            textBox2.TabIndex = 1;
-            textBox2.Text = "LOGIN";
             // 
             // button1
             // 
@@ -118,11 +102,32 @@
             txtUsername.Size = new Size(125, 27);
             txtUsername.TabIndex = 6;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(256, 96);
+            label3.Name = "label3";
+            label3.Size = new Size(247, 20);
+            label3.TabIndex = 9;
+            label3.Text = "CONTRACT MANAGEMENT SYSTEM";
+            label3.Click += label3_Click;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(326, 141);
+            button4.Name = "button4";
+            button4.Size = new Size(94, 29);
+            button4.TabIndex = 10;
+            button4.Text = "LOGIN";
+            button4.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button4);
+            Controls.Add(label3);
             Controls.Add(txtPassword);
             Controls.Add(label2);
             Controls.Add(txtUsername);
@@ -130,8 +135,6 @@
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -139,9 +142,6 @@
         }
 
         #endregion
-
-        private TextBox textBox1;
-        private TextBox textBox2;
         private Button button1;
         private Button button2;
         private Button button3;
@@ -149,5 +149,7 @@
         private Label label2;
         private TextBox txtPassword;
         private TextBox txtUsername;
+        private Label label3;
+        private Button button4;
     }
 }

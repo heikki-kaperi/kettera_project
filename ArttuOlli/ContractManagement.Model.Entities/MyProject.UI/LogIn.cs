@@ -4,12 +4,12 @@ using System.Windows.Forms;
 
 namespace MyProject.UI
 {
-    public partial class Form1 : Form
+    public partial class LogIn : Form
     {
         private UserController _userController;
         private string selectedUserType;
 
-        public Form1()
+        public LogIn()
         {
             InitializeComponent();  // Tämä kutsuu Designerin InitializeComponent
             _userController = new UserController();
@@ -85,5 +85,10 @@ namespace MyProject.UI
 
         private void txtUsername_Click(object sender, EventArgs e) => txtUsername.Text = "";
         private void txtPassword_Click(object sender, EventArgs e) => txtPassword.Text = "";
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

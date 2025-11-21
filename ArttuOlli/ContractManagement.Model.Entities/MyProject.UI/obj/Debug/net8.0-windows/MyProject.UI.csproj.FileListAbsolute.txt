@@ -23,7 +23,6 @@ C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Mod
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\net8.0-windows\System.IO.Pipelines.xml
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\net8.0-windows\K4os.Hash.xxHash.xml
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\net8.0-windows\MyProject.UI.csproj.AssemblyReference.cache
-C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\net8.0-windows\MyProject.UI.Form1.resources
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\net8.0-windows\MyProject.UI.csproj.GenerateResource.cache
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\net8.0-windows\MyProject.UI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\net8.0-windows\MyProject.UI.AssemblyInfoInputs.cache
@@ -36,3 +35,5 @@ C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Mod
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\net8.0-windows\MyProject.UI.pdb
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\net8.0-windows\MyProject.UI.genruntimeconfig.cache
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\net8.0-windows\ref\MyProject.UI.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\net8.0-windows\MyProject.UI.Administrator.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\net8.0-windows\MyProject.UI.LogIn.resources
