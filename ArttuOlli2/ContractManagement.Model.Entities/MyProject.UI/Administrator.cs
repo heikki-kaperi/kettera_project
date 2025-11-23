@@ -49,5 +49,26 @@ namespace MyProject.UI
             DeleteExternalUsers deleteForm = new DeleteExternalUsers(_userController);
             deleteForm.ShowDialog();
         }
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Are you sure you want to logout?",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide(); // Piilota Administrator-ikkuna
+
+                // Avaa kirjautumislomake uudelleen (vaihda Login nimeen omaksesi)
+                logIn loginForm = new logIn();
+                loginForm.ShowDialog();
+
+                this.Close(); // Sulje Administrator-lomake lopullisesti
+            }
+        }
+
+
     }
 }
