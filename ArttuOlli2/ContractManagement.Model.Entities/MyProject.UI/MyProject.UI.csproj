@@ -78,6 +78,12 @@
     <Compile Include="CreateExternal.Designer.cs">
       <DependentUpon>CreateExternal.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateInternal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateInternal.Designer.cs">
+      <DependentUpon>CreateInternal.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeleteExternalUsers.cs">
       <SubType>Form</SubType>
     </Compile>
