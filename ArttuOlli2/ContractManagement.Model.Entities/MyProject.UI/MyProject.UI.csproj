@@ -78,6 +78,18 @@
     <Compile Include="CreateExternal.Designer.cs">
       <DependentUpon>CreateExternal.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeleteExternalUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteExternalUsers.Designer.cs">
+      <DependentUpon>DeleteExternalUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteInternalUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteInternalUsers.Designer.cs">
+      <DependentUpon>DeleteInternalUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="logIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +115,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateExternal.resx">
       <DependentUpon>CreateExternal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteExternalUsers.resx">
+      <DependentUpon>DeleteExternalUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteInternalUsers.resx">
+      <DependentUpon>DeleteInternalUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="logIn.resx">
       <DependentUpon>logIn.cs</DependentUpon>

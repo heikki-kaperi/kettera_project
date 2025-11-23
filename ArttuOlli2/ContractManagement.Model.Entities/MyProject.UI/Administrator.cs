@@ -35,6 +35,16 @@ namespace MyProject.UI
         {
 
         }
-
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DeleteInternalUsers deleteForm = new DeleteInternalUsers(_userController);
+            deleteForm.ShowDialog();
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            DeleteExternalUsers deleteForm = new DeleteExternalUsers(_userController);
+            deleteForm.ShowDialog();
+        }
     }
+
 }

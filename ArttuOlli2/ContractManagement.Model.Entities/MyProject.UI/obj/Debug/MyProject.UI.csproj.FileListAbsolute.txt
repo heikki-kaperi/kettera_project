@@ -85,3 +85,5 @@ C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewExternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteInternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteExternalUsers.resources
