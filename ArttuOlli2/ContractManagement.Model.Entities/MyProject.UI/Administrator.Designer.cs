@@ -84,6 +84,7 @@
             this.button4.TabIndex = 4;
             this.button4.Text = "View All External Users";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -127,7 +128,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Administrator";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Administrator_Load);
+            //this.Load += new System.EventHandler(this.Administrator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

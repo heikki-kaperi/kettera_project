@@ -26,10 +26,15 @@ namespace MyProject.UI
             ViewInternalUsers viewForm = new ViewInternalUsers(_userController);
             viewForm.ShowDialog();
         }
-
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ViewExternalUsers viewForm = new ViewExternalUsers(_userController);
+            viewForm.ShowDialog();
+        }
         private void Administrator_Load(object sender, EventArgs e)
         {
 
         }
+
     }
 }
