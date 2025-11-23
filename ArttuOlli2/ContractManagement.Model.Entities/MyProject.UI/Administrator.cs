@@ -20,5 +20,16 @@ namespace MyProject.UI
             CreateExternal createForm = new CreateExternal(_userController);
             createForm.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ViewInternalUsers viewForm = new ViewInternalUsers(_userController);
+            viewForm.ShowDialog();
+        }
+
+        private void Administrator_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
