@@ -4,11 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using ZstdSharp.Unsafe;
 
 // ==================== ENTITY CLASSES ====================
 
 namespace ContractManagement.Model.Entities
 {
+
+    public enum BlockType
+    {
+        Text,
+        Image,
+        Other
+    }
+
     public class Administrator
     {
         public int Administrator_ID { get; set; }
@@ -61,6 +70,19 @@ namespace ContractManagement.Model.Entities
         public string Contract_text { get; set; }
         public bool New { get; set; }
         public DateTime Modified_date { get; set; }
+        public BlockType Type { get; set; }
+        public byte[] MediaContent { get; set; }
+
+        public int? Parent_Block_NR { get; set; }
+        public List<ContractBlock> ChildBlocks { get; set; } = new List<ContractBlock>();
+    }
+
+    public class ContractBlockReference
+    {
+        public int Reference_ID { get; set; }
+        public int Contract_Block_NR { get; set; }
+        public int Referenced_Block_NR { get; set; }
+        public int Reference_Order { get; set; }
     }
 
     public class Contract
@@ -153,10 +175,65 @@ namespace ContractManagement.Model.DAL
 
         public bool CreateAdministrator(Administrator admin) =>
             DbHelper.ExecuteNonQuery(
-            SqlBuilder.Insert("administator", "First_name", "Last_name", "Username", "Password", "Email"),
+            SqlBuilder.Insert("administrator", "First_name", "Last_name", "Username", "Password", "Email"),
             admin
          );
 
+        public bool VoteToDeleteAdmin(int targetAdminId, int votingAdminId)
+        {
+            using (var conn = dbConn.GetConnection())
+            {
+                conn.Open();
+                string query = @"INSERT IGNORE INTO admin_deletion_votes 
+                             (Target_Admin_ID, Voting_Admin_ID) 
+                             VALUES (@target, @voter)";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@target", targetAdminId);
+                cmd.Parameters.AddWithValue("@voter", votingAdminId);
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public bool CanDeleteAdmin(int targetAdminId)
+        {
+            using (var conn = dbConn.GetConnection())
+            {
+                conn.Open();
+                string query = @"SELECT COUNT(*) FROM admin_deletion_votes 
+                             WHERE Target_Admin_ID = @target";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@target", targetAdminId);
+
+                int votes = Convert.ToInt32(cmd.ExecuteScalar());
+                return votes >= 3; // tarvitaan kolme hyväksyntää
+            }
+        }
+
+        public bool DeleteAdminIfApproved(int targetAdminId)
+        {
+            if (!CanDeleteAdmin(targetAdminId)) return false;
+
+            using (var conn = dbConn.GetConnection())
+            {
+                conn.Open();
+                string query = "DELETE FROM administrator WHERE Administrator_ID = @id";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@id", targetAdminId);
+                int deleted = cmd.ExecuteNonQuery();
+
+                if (deleted > 0)
+                {
+                    // Tyhjennä äänestykset
+                    query = "DELETE FROM admin_deletion_votes WHERE Target_Admin_ID = @id";
+                    cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", targetAdminId);
+                    cmd.ExecuteNonQuery();
+                }
+
+                return deleted > 0;
+            }
+        }
     }
 
     // ==================== INTERNAL USER DAL ====================
@@ -618,7 +695,9 @@ namespace ContractManagement.Model.DAL
                             Org_Cont_ID = reader.GetInt32("Org_Cont_ID"),
                             Contract_text = reader.GetString("Contract_text"),
                             New = reader.GetBoolean("New"),
-                            Modified_date = reader.GetDateTime("Modified_date")
+                            Modified_date = reader.GetDateTime("Modified_date"),
+                            Type = (BlockType)reader.GetInt32("Type"),
+                            MediaContent = reader.IsDBNull(reader.GetOrdinal("MediaContent")) ? null : (byte[])reader["MediaContent"]
                         };
                     }
                 }
@@ -649,7 +728,9 @@ namespace ContractManagement.Model.DAL
                             Org_Cont_ID = reader.GetInt32("Org_Cont_ID"),
                             Contract_text = reader.GetString("Contract_text"),
                             New = reader.GetBoolean("New"),
-                            Modified_date = reader.GetDateTime("Modified_date")
+                            Modified_date = reader.GetDateTime("Modified_date"),
+                            Type = (BlockType)reader.GetInt32("Type"),
+                            MediaContent = reader.IsDBNull(reader.GetOrdinal("MediaContent")) ? null : (byte[])reader["MediaContent"]
                         });
                     }
                 }
@@ -660,7 +741,7 @@ namespace ContractManagement.Model.DAL
         public int CreateContractBlock(ContractBlock block)
         {
             object result = DbHelper.ExecuteScalar(
-                SqlBuilder.InsertWithId("contract_block", "Org_Cont_ID", "Contract_text", "New", "Modified_date"),
+                SqlBuilder.InsertWithId("contract_block", "Org_Cont_ID", "Contract_text", "New", "Modified_date", "Type", "MediaContent"),
                 block
             );
             return Convert.ToInt32(result);
@@ -668,7 +749,7 @@ namespace ContractManagement.Model.DAL
 
         public bool UpdateContractBlock(ContractBlock block) =>
             DbHelper.ExecuteNonQuery(
-                SqlBuilder.Update("contract_block", "Org_Cont_ID", "Contract_text", "New", "Modified_date"),
+                SqlBuilder.Update("contract_block", "Org_Cont_ID", "Contract_text", "New", "Modified_date", "Type", "MediaContent"),
                 block
             );
 
@@ -713,7 +794,106 @@ namespace ContractManagement.Model.DAL
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+
+        public List<ContractBlock> GetChildBlocks(int parentBlockNr)
+        {
+            List<ContractBlock> children = new List<ContractBlock>();
+            using (var conn = dbConn.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT * FROM contract_block WHERE Parent_Block_NR = @parent";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@parent", parentBlockNr);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        children.Add(MapReaderToContractBlock(reader));
+                    }
+                }
+            }
+            return children;
+        }
+
+        public ContractBlock GetBlockTree(int blockNr)
+        {
+            var block = GetContractBlockById(blockNr);
+            if (block != null)
+            {
+                block.ChildBlocks = GetChildBlocks(block.Contract_Block_NR)
+                                    .Select(b => GetBlockTree(b.Contract_Block_NR))
+                                    .ToList();
+            }
+            return block;
+        }
+
+        private ContractBlock MapReaderToContractBlock(MySqlDataReader reader)
+        {
+            return new ContractBlock
+            {
+                Contract_Block_NR = reader.GetInt32("Contract_Block_NR"),
+                Org_Cont_ID = reader.GetInt32("Org_Cont_ID"),
+                Contract_text = reader.GetString("Contract_text"),
+                New = reader.GetBoolean("New"),
+                Modified_date = reader.GetDateTime("Modified_date"),
+                Type = (BlockType)Enum.Parse(typeof(BlockType), reader.GetString("Type")),
+                MediaContent = reader.IsDBNull(reader.GetOrdinal("MediaContent")) ? null : (byte[])reader["MediaContent"],
+                Parent_Block_NR = reader.IsDBNull(reader.GetOrdinal("Parent_Block_NR")) ? null : (int?)reader.GetInt32("Parent_Block_NR"),
+                ChildBlocks = new List<ContractBlock>()
+            };
+        }
     }
+
+    // =========== CONTRACT BLOCK REFERENCE DAL =============
+
+    public class ContractBlockReferenceDAL
+    {
+        private DatabaseConnection dbConn = new DatabaseConnection();
+
+        public bool AddReference(int contractBlockNr, int referencedBlockNr, int order)
+        {
+            using (MySqlConnection conn = dbConn.GetConnection())
+            {
+                conn.Open();
+                string query = "INSERT INTO contract_block_references (Contract_Block_NR, Referenced_Block_NR, Reference_Order) VALUES (@block, @ref, @order)";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@block", contractBlockNr);
+                cmd.Parameters.AddWithValue("@ref", referencedBlockNr);
+                cmd.Parameters.AddWithValue("@order", order);
+
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+
+        public List<ContractBlockReference> GetReferencesByBlock(int contractBlockNr)
+        {
+            List<ContractBlockReference> references = new List<ContractBlockReference>();
+            using (MySqlConnection conn = dbConn.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT * FROM contract_block_references WHERE Contract_Block_NR = @block ORDER BY Reference_Order";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@block", contractBlockNr);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        references.Add(new ContractBlockReference
+                        {
+                            Reference_ID = reader.GetInt32("Reference_ID"),
+                            Contract_Block_NR = reader.GetInt32("Contract_Block_NR"),
+                            Referenced_Block_NR = reader.GetInt32("Referenced_Block_NR"),
+                            Reference_Order = reader.GetInt32("Reference_Order")
+                        });
+                    }
+                }
+            }
+            return references;
+        }
+    }
+
 
     // ==================== CONTRACT DAL ====================
     public class ContractDAL
