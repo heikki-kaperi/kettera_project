@@ -1,0 +1,13 @@
+CREATE TABLE `block_cooccurrence` (
+  `Block_A_ID` int(10) UNSIGNED NOT NULL,
+  `Block_B_ID` int(10) UNSIGNED NOT NULL,
+  `Times_Used_Together` int(11) DEFAULT 1,
+  PRIMARY KEY (`Block_A_ID`, `Block_B_ID`),
+  KEY `idx_block_b` (`Block_B_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+
+ALTER TABLE `contract_block`
+ADD COLUMN `Type` INT DEFAULT 0 AFTER `Modified_date`,
+ADD COLUMN `MediaContent` LONGBLOB DEFAULT NULL AFTER `Type`;
