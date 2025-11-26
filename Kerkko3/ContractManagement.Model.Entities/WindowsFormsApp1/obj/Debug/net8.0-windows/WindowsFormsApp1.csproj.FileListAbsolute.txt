@@ -1,0 +1,9 @@
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\WindowsFormsApp1\obj\Debug\net8.0-windows\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\WindowsFormsApp1\obj\Debug\net8.0-windows\MyProject.UI.Form1.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\WindowsFormsApp1\obj\Debug\net8.0-windows\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\WindowsFormsApp1\obj\Debug\net8.0-windows\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\WindowsFormsApp1\obj\Debug\net8.0-windows\WindowsFormsApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\WindowsFormsApp1\obj\Debug\net8.0-windows\WindowsFormsApp1.AssemblyInfoInputs.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\WindowsFormsApp1\obj\Debug\net8.0-windows\WindowsFormsApp1.AssemblyInfo.cs
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\WindowsFormsApp1\obj\Debug\net8.0-windows\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_19\Main 2\ContractManagement.Model.Entities\WindowsFormsApp1\obj\Debug\net8.0-windows\WindowsFormsApp1.sourcelink.json
