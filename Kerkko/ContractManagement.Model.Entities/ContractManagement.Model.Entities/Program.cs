@@ -656,14 +656,61 @@ namespace ContractManagement.View
             Console.Write("Enter Contract ID: ");
             if (!int.TryParse(Console.ReadLine(), out int contractId)) return;
 
-            ViewAllOriginalBlocks();
+            bool continueAdding = true;
 
-            Console.Write("\nEnter Original Block ID to add: ");
-            if (!int.TryParse(Console.ReadLine(), out int blockId)) return;
+            while (continueAdding)
+            {
+                ViewAllOriginalBlocks();
 
-            bool success = contractController.AddBlockToContract(contractId, blockId);
-            Console.WriteLine(success ? "\n✓ Block added to contract!" : "\n✗ Failed to add block.");
+                Console.Write("\nEnter Original Block ID to add (or 0 to finish): ");
+                if (!int.TryParse(Console.ReadLine(), out int blockId) || blockId == 0)
+                    break;
+
+                bool success = contractController.AddBlockToContract(contractId, blockId);
+
+                if (success)
+                {
+                    Console.WriteLine("\n✓ Block added to contract!");
+                    ShowRecommendations(contractId);
+
+                    Console.Write("\nAdd another block? (y/n): ");
+                    continueAdding = Console.ReadLine()?.ToLower() == "y";
+                }
+                else
+                {
+                    Console.WriteLine("\n✗ Failed to add block.");
+                    continueAdding = false;
+                }
+            }
+
             Pause();
+        }
+
+        private void ShowRecommendations(int contractId)
+        {
+            var recommendations = contractController.GetContractRecommendations(contractId, 5);
+
+            if (recommendations.Count > 0)
+            {
+                Console.WriteLine("\n📋 Recommended blocks based on your current selection:");
+                Console.WriteLine("".PadRight(70, '='));
+
+                foreach (var rec in recommendations)
+                {
+                    Console.WriteLine($"\nBlock ID: {rec.BlockId} | Category: {rec.Category} | Score: {rec.Score}");
+
+                    string preview = rec.BlockText.Length > 80
+                        ? rec.BlockText.Substring(0, 80) + "..."
+                        : rec.BlockText;
+                    Console.WriteLine($"  Text: {preview}");
+                }
+
+                Console.WriteLine("".PadRight(70, '='));
+            }
+            else
+            {
+                Console.WriteLine("\n(No recommendations available yet - add more contracts to build the recommendation system)");
+            }
         }
 
         private void RemoveBlockFromContract()

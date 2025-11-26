@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ContractManagement.Model.Entities;
 using ContractManagement.Model.DAL;
+using static ContractManagement.Model.DAL.ContractBlockDAL;
 
 namespace ContractManagement.Controller
 {
@@ -217,6 +218,11 @@ namespace ContractManagement.Controller
 
             // Add to contract
             return blockDAL.AddBlockToContract(contractNr, newBlockId, maxOrder + 1);
+        }
+
+        public List<BlockRecommendation> GetContractRecommendations(int contractNr, int take = 5)
+        {
+            return blockDAL.GetRecommendationsForContract(contractNr, take);
         }
 
         public bool RemoveBlockFromContract(int contractNr, int blockId)
