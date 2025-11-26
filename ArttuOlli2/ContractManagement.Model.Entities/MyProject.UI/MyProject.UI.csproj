@@ -96,6 +96,84 @@
     <Compile Include="DeleteInternalUsers.Designer.cs">
       <DependentUpon>DeleteInternalUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="BlockCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BlockCategory.Designer.cs">
+      <DependentUpon>BlockCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContractManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContractManagement.Designer.cs">
+      <DependentUpon>ContractManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContractDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContractDetails.Designer.cs">
+      <DependentUpon>ContractDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommentContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommentContract.Designer.cs">
+      <DependentUpon>CommentContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ApproveContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ApproveContract.Designer.cs">
+      <DependentUpon>ApproveContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCategory.Designer.cs">
+      <DependentUpon>CreateCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CopyBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CopyBlock.Designer.cs">
+      <DependentUpon>CopyBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewBlocksByCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewBlocksByCategory.Designer.cs">
+      <DependentUpon>ViewBlocksByCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewOriginalBlocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewOriginalBlocks.Designer.cs">
+      <DependentUpon>ViewOriginalBlocks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateOriginalBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateOriginalBlock.Designer.cs">
+      <DependentUpon>CreateOriginalBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewCategories.Designer.cs">
+      <DependentUpon>ViewCategories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyContracts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyContracts.Designer.cs">
+      <DependentUpon>MyContracts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Internal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Internal.Designer.cs">
+      <DependentUpon>Internal.cs</DependentUpon>
+    </Compile>
     <Compile Include="logIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +197,12 @@
     <EmbeddedResource Include="Administrator.resx">
       <DependentUpon>Administrator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BlockCategory.resx">
+      <DependentUpon>BlockCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCategory.resx">
+      <DependentUpon>CreateCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateExternal.resx">
       <DependentUpon>CreateExternal.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteInternalUsers.resx">
       <DependentUpon>DeleteInternalUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Internal.resx">
+      <DependentUpon>Internal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="logIn.resx">
       <DependentUpon>logIn.cs</DependentUpon>

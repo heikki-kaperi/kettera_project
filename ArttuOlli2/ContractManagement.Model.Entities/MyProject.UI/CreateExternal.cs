@@ -53,5 +53,10 @@ namespace MyProject.UI
                 MessageBox.Show("Error: " + ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void CreateExternal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

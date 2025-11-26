@@ -85,9 +85,16 @@ namespace MyProject.UI
             else if (selectedUserType == "Internal")
             {
                 var user = _userController.LoginInternalUser(username, password);
+
                 if (user != null)
                 {
                     MessageBox.Show("Internal user login successful!");
+
+                    // Avaa Internal.cs -lomake
+                    Internal internalForm = new Internal();
+                    internalForm.Show();
+
+                    this.Hide(); // Piilottaa login-ikkunan
                 }
                 else
                 {

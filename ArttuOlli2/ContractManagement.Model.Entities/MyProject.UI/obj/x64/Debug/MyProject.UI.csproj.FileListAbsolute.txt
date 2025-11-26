@@ -83,3 +83,10 @@ C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Mo
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\x64\Debug\MyProject.UI.logIn.resources
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\x64\Debug\MyProject.UI.Administrator.resources
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\x64\Debug\MyProject.UI.CreateExternal.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\x64\Debug\MyProject.UI.DeleteExternalUsers.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\x64\Debug\MyProject.UI.DeleteInternalUsers.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\x64\Debug\MyProject.UI.ViewExternalUsers.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\x64\Debug\MyProject.UI.ViewInternalUsers.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\x64\Debug\MyProject.UI.Internal.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\x64\Debug\MyProject.UI.BlockCategory.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli2\ContractManagement.Model.Entities\MyProject.UI\obj\x64\Debug\MyProject.UI.CreateCategory.resources
