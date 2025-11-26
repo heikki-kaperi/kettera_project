@@ -70,7 +70,7 @@
             // 
             this.contractManagementBtn.Location = new System.Drawing.Point(312, 161);
             this.contractManagementBtn.Name = "contractManagementBtn";
-            this.contractManagementBtn.Size = new System.Drawing.Size(152, 23);
+            this.contractManagementBtn.Size = new System.Drawing.Size(223, 23);
             this.contractManagementBtn.TabIndex = 3;
             this.contractManagementBtn.Text = "Contract Management";
             this.contractManagementBtn.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@
             // 
             this.myContractsBtn.Location = new System.Drawing.Point(312, 191);
             this.myContractsBtn.Name = "myContractsBtn";
-            this.myContractsBtn.Size = new System.Drawing.Size(181, 23);
+            this.myContractsBtn.Size = new System.Drawing.Size(223, 23);
             this.myContractsBtn.TabIndex = 4;
             this.myContractsBtn.Text = "My Contracts (as Reviewer)";
             this.myContractsBtn.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             // 
             this.viewContractDetailsBtn.Location = new System.Drawing.Point(315, 221);
             this.viewContractDetailsBtn.Name = "viewContractDetailsBtn";
-            this.viewContractDetailsBtn.Size = new System.Drawing.Size(149, 23);
+            this.viewContractDetailsBtn.Size = new System.Drawing.Size(220, 23);
             this.viewContractDetailsBtn.TabIndex = 5;
             this.viewContractDetailsBtn.Text = "View Contract Details";
             this.viewContractDetailsBtn.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             // 
             this.commentContractBtn.Location = new System.Drawing.Point(315, 251);
             this.commentContractBtn.Name = "commentContractBtn";
-            this.commentContractBtn.Size = new System.Drawing.Size(149, 23);
+            this.commentContractBtn.Size = new System.Drawing.Size(220, 23);
             this.commentContractBtn.TabIndex = 6;
             this.commentContractBtn.Text = "Comment on Contract";
             this.commentContractBtn.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             // 
             this.approveContractBtn.Location = new System.Drawing.Point(315, 281);
             this.approveContractBtn.Name = "approveContractBtn";
-            this.approveContractBtn.Size = new System.Drawing.Size(122, 23);
+            this.approveContractBtn.Size = new System.Drawing.Size(220, 23);
             this.approveContractBtn.TabIndex = 7;
             this.approveContractBtn.Text = "Approve Contract";
             this.approveContractBtn.UseVisualStyleBackColor = true;
@@ -118,9 +118,9 @@
             // 
             // logoutBtn
             // 
-            this.logoutBtn.Location = new System.Drawing.Point(315, 311);
+            this.logoutBtn.Location = new System.Drawing.Point(389, 320);
             this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Size = new System.Drawing.Size(60, 23);
+            this.logoutBtn.Size = new System.Drawing.Size(67, 25);
             this.logoutBtn.TabIndex = 8;
             this.logoutBtn.Text = "Logout";
             this.logoutBtn.UseVisualStyleBackColor = true;
