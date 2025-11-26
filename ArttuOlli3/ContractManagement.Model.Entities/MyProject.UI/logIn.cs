@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ContractManagement.Controller;
+using ContractManagement.Model.Entities;
 
 namespace MyProject.UI
 {
@@ -13,13 +14,11 @@ namespace MyProject.UI
         {
             InitializeComponent();
             _userController = new UserController();
-
             // Piilotetaan login-kentät aluksi
             txtUsername.Visible = false;
             txtPassword.Visible = false;
             label1.Visible = false;
             label2.Visible = false;
-
             // Login-nappi pois käytöstä
             button4.Enabled = false;
         }
@@ -42,16 +41,13 @@ namespace MyProject.UI
         private void ShowLoginFields(string userType)
         {
             selectedUserType = userType;
-
             // Näytetään kentät
             txtUsername.Visible = true;
             txtPassword.Visible = true;
             label1.Visible = true;
             label2.Visible = true;
-
             // Login-nappi aktiiviseksi
             button4.Enabled = true;
-
             // Piilotetaan roolinapit
             button1.Visible = false;
             button2.Visible = false;
@@ -69,11 +65,9 @@ namespace MyProject.UI
                 if (admin != null)
                 {
                     MessageBox.Show("Administrator login successful!");
-
                     // Avaa Administrator-ikkuna
                     Administrator adminForm = new Administrator();
                     adminForm.Show();
-
                     // Piilota login-ikkuna
                     this.Hide();
                 }
@@ -85,16 +79,13 @@ namespace MyProject.UI
             else if (selectedUserType == "Internal")
             {
                 var user = _userController.LoginInternalUser(username, password);
-
                 if (user != null)
                 {
                     MessageBox.Show("Internal user login successful!");
-
                     // Avaa Internal.cs -lomake
                     Internal internalForm = new Internal();
                     internalForm.Show();
-
-                    this.Hide(); // Piilottaa login-ikkunan
+                    this.Hide();
                 }
                 else
                 {
@@ -107,6 +98,10 @@ namespace MyProject.UI
                 if (user != null)
                 {
                     MessageBox.Show("External user login successful!");
+                    // LISÄTTY: Avaa External-lomake
+                    External externalForm = new External(user);
+                    externalForm.Show();
+                    this.Hide();
                 }
                 else
                 {
@@ -127,7 +122,6 @@ namespace MyProject.UI
 
         private void label3_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

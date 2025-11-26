@@ -179,6 +179,7 @@ C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli3\ContractManagement
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli3\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateExternal.resources
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli3\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteExternalUsers.resources
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli3\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteInternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli3\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.External.resources
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli3\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Internal.resources
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli3\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.logIn.resources
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli3\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Properties.Resources.resources
