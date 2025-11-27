@@ -1,15 +1,9 @@
-XAMPP mySQL database
-
-kettera.sql
-
-//////////////////////////////////////////////////////////
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2025 at 07:34 PM
+-- Generation Time: Nov 27, 2025 at 08:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,15 +32,28 @@ CREATE TABLE `administrator` (
   `First_name` varchar(255) DEFAULT NULL,
   `Last_name` varchar(255) DEFAULT NULL,
   `Username` varchar(50) DEFAULT NULL,
-  `Password` varchar(255) DEFAULT NULL
+  `Password` varchar(255) DEFAULT NULL,
+  `Email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `administrator`
 --
 
-INSERT INTO `administrator` (`Administrator_ID`, `First_name`, `Last_name`, `Username`, `Password`) VALUES
-(1, 'Pekka', 'Honkanen', 'Ferrari', '12021982!Ph');
+INSERT INTO `administrator` (`Administrator_ID`, `First_name`, `Last_name`, `Username`, `Password`, `Email`) VALUES
+(1, 'Pekka', 'Honkanen', 'Ferrari1', '1234', 'pekka.honkanen@sopimus.fi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `block_cooccurrence`
+--
+
+CREATE TABLE `block_cooccurrence` (
+  `Block_A_ID` int(10) UNSIGNED NOT NULL,
+  `Block_B_ID` int(10) UNSIGNED NOT NULL,
+  `Times_Used_Together` int(11) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -69,7 +76,10 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`Comment_ID`, `Contract_NR`, `Contract_Block_NR`, `User_ID`, `User_type`, `Comment_text`, `Comment_date`) VALUES
-(1, 1, 1, 1, 'internal', 'Please review the general terms section.', '2025-11-10 20:28:43');
+(1, 1, 1, 1, 'internal', 'Please review the general terms section.', '2025-11-10 20:28:43'),
+(9, 10, NULL, 1, 'internal', 'Testing comment layer.', '2025-11-10 23:52:42'),
+(10, 11, NULL, 1, 'internal', 'Test comment from internal user.', '2025-11-11 00:06:30'),
+(11, 1, NULL, 1, '', 'External', '2025-11-20 10:59:37');
 
 -- --------------------------------------------------------
 
@@ -91,7 +101,10 @@ CREATE TABLE `contract` (
 --
 
 INSERT INTO `contract` (`Contract_NR`, `Company_name`, `The_Creator`, `Created_date`, `Approved`, `Sent_to_external`) VALUES
-(1, 'Northern Solutions Oy', 1, '2025-11-10 20:26:39', 0, 0);
+(1, 'Northern Solutions Oy', 1, '2025-11-10 20:26:39', 1, 0),
+(10, 'Demo Company Oy', 1, '2025-11-10 23:52:41', 0, 0),
+(11, 'Test Company Oy', 1, '2025-11-11 00:06:30', 0, 0),
+(12, 'Joo', 1, '2025-11-26 16:03:54', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -104,15 +117,24 @@ CREATE TABLE `contract_block` (
   `Org_Cont_ID` int(10) UNSIGNED DEFAULT NULL,
   `Contract_text` text DEFAULT NULL,
   `New` tinyint(1) DEFAULT NULL,
-  `Modified_date` datetime DEFAULT NULL
+  `Modified_date` datetime DEFAULT NULL,
+  `Type` int(11) DEFAULT 0,
+  `MediaContent` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `contract_block`
 --
 
-INSERT INTO `contract_block` (`Contract_Block_NR`, `Org_Cont_ID`, `Contract_text`, `New`, `Modified_date`) VALUES
-(1, 1, 'This is the current contract block version of the general terms.', 1, '2025-11-10 20:26:27');
+INSERT INTO `contract_block` (`Contract_Block_NR`, `Org_Cont_ID`, `Contract_text`, `New`, `Modified_date`, `Type`, `MediaContent`) VALUES
+(1, 1, 'This is the current contract block version of the general terms.', 1, '2025-11-10 20:26:27', 0, NULL),
+(2, 1, 'This block defines the general terms of cooperation between the parties.', 0, '2025-11-11 11:13:09', 0, NULL),
+(3, 2, 'Payment shall be made within 30 days of invoice receipt.', 0, '2025-11-11 11:13:09', 0, NULL),
+(4, 3, 'Both parties agree to keep all shared information strictly confidential.', 0, '2025-11-11 11:13:09', 0, NULL),
+(5, 4, 'Either party may terminate this agreement with 30 days’ notice.', 0, '2025-11-11 11:13:09', 0, NULL),
+(6, 5, 'Neither party shall be liable for indirect or consequential damages.', 0, '2025-11-11 11:13:09', 0, NULL),
+(7, 6, 'Any disputes shall be resolved through arbitration in Helsinki, Finland.', 0, '2025-11-11 11:13:09', 0, NULL),
+(8, 5, 'Aenean mattis suscipit ligula, sed tempor mi aliquam id. Etiam sed ligula a justo bibendum tempus.', 1, '2025-11-26 16:32:57', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -131,7 +153,8 @@ CREATE TABLE `contract_blocks` (
 --
 
 INSERT INTO `contract_blocks` (`Contract_NR`, `Contract_Block_NR`, `Block_order`) VALUES
-(1, 1, 1);
+(1, 1, 1),
+(12, 8, 1);
 
 -- --------------------------------------------------------
 
@@ -149,7 +172,12 @@ CREATE TABLE `contract_block_category` (
 --
 
 INSERT INTO `contract_block_category` (`Category_name`, `Description`) VALUES
-('General Terms', 'Contains general terms and conditions applicable to all contracts');
+('Confidentiality', 'Specifies how both parties handle sensitive information.'),
+('Dispute Resolution', 'Explains how conflicts are resolved, e.g., arbitration or mediation.'),
+('General Terms', 'Contains general terms and conditions applicable to all contracts'),
+('Liability', 'Outlines responsibilities and limitations of liability.'),
+('Payment Terms', 'Defines payment conditions, invoicing schedule, and penalties.'),
+('Termination', 'Details conditions for terminating the contract.');
 
 -- --------------------------------------------------------
 
@@ -189,7 +217,7 @@ CREATE TABLE `contract_stakeholders` (
 --
 
 INSERT INTO `contract_stakeholders` (`Contract_NR`, `Int_User_ID`, `Has_approval_rights`, `Approved`, `Approved_date`) VALUES
-(1, 1, 1, 0, NULL);
+(1, 1, 1, 1, '2025-11-11 00:06:30');
 
 -- --------------------------------------------------------
 
@@ -212,7 +240,7 @@ CREATE TABLE `external_user` (
 --
 
 INSERT INTO `external_user` (`Ext_User_ID`, `First_name`, `Last_name`, `Company_name`, `Email`, `Username`, `Password`) VALUES
-(1, 'Mikko', 'Aho', 'Vuokra-apu Oy', 'mikko.aho@vuokrapu.fi', 'Vuokrapu_Mikko', '1234AhonMikke');
+(1, 'Mikko', 'Aho', 'Vuokra-apu Oy', 'mikko.aho@vuokrapu.fi', 'Ferrari3', '1234');
 
 -- --------------------------------------------------------
 
@@ -234,7 +262,7 @@ CREATE TABLE `internal_user` (
 --
 
 INSERT INTO `internal_user` (`Int_User_ID`, `First_name`, `Last_name`, `Username`, `Password`, `Email`) VALUES
-(1, 'Milla', 'Tiihonen', 'Bulldog', 'Mittens1saCat', 'milla.tiihonen@gmail.com');
+(1, 'Milla', 'Tiihonen', 'Ferrari2', '1234', 'milla.tiihonen@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -247,15 +275,24 @@ CREATE TABLE `original_contract_block` (
   `Category_name` varchar(100) DEFAULT NULL,
   `Contract_text` text DEFAULT NULL,
   `Created_by` int(6) UNSIGNED DEFAULT NULL,
-  `Created_date` datetime DEFAULT NULL
+  `Created_date` datetime DEFAULT NULL,
+  `Type` int(11) DEFAULT 0,
+  `MediaContent` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `original_contract_block`
 --
 
-INSERT INTO `original_contract_block` (`Org_Cont_ID`, `Category_name`, `Contract_text`, `Created_by`, `Created_date`) VALUES
-(1, 'General Terms', 'This is the original text for the general terms section.', 1, '2025-11-10 20:26:15');
+INSERT INTO `original_contract_block` (`Org_Cont_ID`, `Category_name`, `Contract_text`, `Created_by`, `Created_date`, `Type`, `MediaContent`) VALUES
+(1, 'General Terms', 'This is the original text for the general terms section.', 1, '2025-11-10 20:26:15', 0, NULL),
+(2, 'General Terms', 'Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.', 1, '2025-11-11 11:12:30', 0, NULL),
+(3, 'Payment Terms', 'Curabitur sit amet sem ut sapien varius volutpat. Maecenas egestas sapien sed lacus dignissim, vitae bibendum sapien egestas.', 1, '2025-11-11 11:12:30', 0, NULL),
+(4, 'Confidentiality', 'Donec at nisi nec neque luctus ultrices. Curabitur consequat quam sed orci cursus, non tincidunt ex sagittis.', 1, '2025-11-11 11:12:30', 0, NULL),
+(5, 'Termination', 'Aenean mattis suscipit ligula, sed tempor mi aliquam id. Etiam sed ligula a justo bibendum tempus.', 1, '2025-11-11 11:12:30', 0, NULL),
+(6, 'Liability', 'In dictum ante at justo tempor, nec tincidunt ligula posuere. Mauris varius purus et est efficitur dapibus.', 1, '2025-11-11 11:12:30', 0, NULL),
+(7, 'Dispute Resolution', 'Vivamus vehicula ex in magna sagittis, nec dignissim eros facilisis. Sed ac eros eget nulla sagittis sodales.', 1, '2025-11-11 11:12:30', 0, NULL),
+(8, 'Liability', '', 1, '2025-11-26 16:05:18', 0, NULL);
 
 --
 -- Indexes for dumped tables
@@ -267,6 +304,13 @@ INSERT INTO `original_contract_block` (`Org_Cont_ID`, `Category_name`, `Contract
 ALTER TABLE `administrator`
   ADD PRIMARY KEY (`Administrator_ID`),
   ADD UNIQUE KEY `Username` (`Username`);
+
+--
+-- Indexes for table `block_cooccurrence`
+--
+ALTER TABLE `block_cooccurrence`
+  ADD PRIMARY KEY (`Block_A_ID`,`Block_B_ID`),
+  ADD KEY `idx_block_b` (`Block_B_ID`);
 
 --
 -- Indexes for table `comments`
@@ -353,19 +397,19 @@ ALTER TABLE `administrator`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `Comment_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Comment_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `contract`
 --
 ALTER TABLE `contract`
-  MODIFY `Contract_NR` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Contract_NR` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `contract_block`
 --
 ALTER TABLE `contract_block`
-  MODIFY `Contract_Block_NR` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Contract_Block_NR` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `external_user`
@@ -383,7 +427,7 @@ ALTER TABLE `internal_user`
 -- AUTO_INCREMENT for table `original_contract_block`
 --
 ALTER TABLE `original_contract_block`
-  MODIFY `Org_Cont_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Org_Cont_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
@@ -440,6 +484,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
 
 
