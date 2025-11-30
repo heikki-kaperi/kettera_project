@@ -63,16 +63,9 @@ namespace MyProject.UI
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            var result = MessageBox.Show(
-                "Are you sure you want to logout?",
-                "Confirm Logout",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            this.Hide(); // piilota Internal-näkymä
+            logIn loginForm = new logIn();
+            loginForm.Show();
         }
 
         // Oma InputBox-metodi (ei tarvitse Microsoft.VisualBasic referenssiä)

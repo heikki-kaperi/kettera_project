@@ -72,6 +72,12 @@
     <Compile Include="Administrator.Designer.cs">
       <DependentUpon>Administrator.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommentOnContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommentOnContract.Designer.cs">
+      <DependentUpon>CommentOnContract.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateExternal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,11 +144,29 @@
     <Compile Include="CopyBlock.Designer.cs">
       <DependentUpon>CopyBlock.cs</DependentUpon>
     </Compile>
+    <Compile Include="External.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="External.Designer.cs">
+      <DependentUpon>External.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewBlocksByCategory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ViewBlocksByCategory.Designer.cs">
       <DependentUpon>ViewBlocksByCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewContractDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewContractDetails.Designer.cs">
+      <DependentUpon>ViewContractDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMyContracts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewMyContracts.Designer.cs">
+      <DependentUpon>ViewMyContracts.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewOriginalBlocks.cs">
       <SubType>Form</SubType>
@@ -211,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteInternalUsers.resx">
       <DependentUpon>DeleteInternalUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="External.resx">
+      <DependentUpon>External.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Internal.resx">
       <DependentUpon>Internal.cs</DependentUpon>

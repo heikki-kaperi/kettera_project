@@ -208,3 +208,19 @@ C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_26\Main
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_26\Main5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_26\Main5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_26\Main5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.AssemblyReference.cache
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.SuggestedBindingRedirects.cache
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe.config
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Administrator.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.BlockCategory.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateCategory.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateExternal.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteExternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteInternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Internal.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.logIn.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Properties.Resources.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewExternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewInternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.GenerateResource.cache
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.CoreCompileInputs.cache
