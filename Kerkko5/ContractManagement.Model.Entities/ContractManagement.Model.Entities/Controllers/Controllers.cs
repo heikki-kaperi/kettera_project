@@ -193,7 +193,7 @@ namespace ContractManagement.Controller
         public List<Contract> GetContractsByStakeholder(int userId) => stakeholderDAL.GetContractsByStakeholder(userId);
 
         public List<Contract> GetContractsToReviewByInternalUser(int userId)
-        { 
+        {
             return GetContractsByStakeholder(userId);
         }
 
@@ -211,47 +211,102 @@ namespace ContractManagement.Controller
 
         public bool AddBlockToContract(int contractNr, int originalBlockId)
         {
-            // Get original block
-            OriginalContractBlock original = originalDAL.GetOriginalBlockById(originalBlockId);
-            if (original == null) return false;
-
-            // Create contract block from original
-            ContractBlock contractBlock = new ContractBlock
+            try
             {
-                Org_Cont_ID = originalBlockId,
-                Contract_text = original.Contract_text,
-                New = true,
-                Modified_date = DateTime.Now
-            };
+                // Step 1: Verify contract exists
+                Contract contract = contractDAL.GetContractById(contractNr);
+                if (contract == null)
+                {
+                    Console.WriteLine("DEBUG: Contract {0} not found", contractNr);
+                    return false;
+                }
 
-            int newBlockId = blockDAL.CreateContractBlock(contractBlock);
-            if (newBlockId == 0) return false;
+                // Step 2: Get original block
+                OriginalContractBlock original = originalDAL.GetOriginalBlockById(originalBlockId);
+                if (original == null)
+                {
+                    Console.WriteLine("DEBUG: Original block {0} not found", originalBlockId);
+                    return false;
+                }
 
-            // Get current max order
-            var existingBlocks = blockDAL.GetBlocksByContract(contractNr);
-            int maxOrder = existingBlocks.Count > 0 ? existingBlocks.Count : 0;
+                // Step 3: Create contract block from original
+                ContractBlock contractBlock = new ContractBlock
+                {
+                    Org_Cont_ID = originalBlockId,
+                    Contract_text = original.Contract_text,
+                    New = true,
+                    Modified_date = DateTime.Now,
+                    Type = BlockType.Text,
+                    MediaContent = null
+                };
 
-            // Add to contract
-            return blockDAL.AddBlockToContract(contractNr, newBlockId, maxOrder + 1);
+                int newBlockId = blockDAL.CreateContractBlock(contractBlock);
+                if (newBlockId == 0)
+                {
+                    Console.WriteLine("DEBUG: Failed to create contract block");
+                    return false;
+                }
+
+                Console.WriteLine("DEBUG: Created contract block with ID: {0}", newBlockId);
+
+                // Step 4: Get current max order
+                var existingBlocks = blockDAL.GetBlocksByContract(contractNr);
+                int maxOrder = existingBlocks.Count > 0 ? existingBlocks.Count : 0;
+
+                // Step 5: Add to contract_blocks junction table
+                bool addResult = blockDAL.AddBlockToContract(contractNr, newBlockId, maxOrder + 1);
+
+                Console.WriteLine("DEBUG: AddBlockToContract result: {0}", addResult);
+
+                return addResult;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DEBUG: Exception in AddBlockToContract: {0}", ex.Message);
+                Console.WriteLine("DEBUG: Stack trace: {0}", ex.StackTrace);
+                return false;
+            }
         }
 
         public List<BlockRecommendation> GetContractRecommendations(int contractNr, int take = 5)
         {
-            return blockDAL.GetRecommendationsForContract(contractNr, take);
+            try
+            {
+                return blockDAL.GetRecommendationsForContract(contractNr, take);
+            }
+            catch (Exception)
+            {
+                return new List<BlockRecommendation>();
+            }
         }
 
-
         public bool RemoveBlockFromContract(int contractNr, int blockId)
-            => blockDAL.RemoveBlockFromContract(contractNr, blockId);
+        {
+            try
+            {
+                return blockDAL.RemoveBlockFromContract(contractNr, blockId);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         public bool EditBlockInContract(int blockId, string newText)
         {
-            ContractBlock block = blockDAL.GetContractBlockById(blockId);
-            if (block == null) return false;
+            try
+            {
+                ContractBlock block = blockDAL.GetContractBlockById(blockId);
+                if (block == null) return false;
 
-            block.Contract_text = newText;
-            block.Modified_date = DateTime.Now;
-            return blockDAL.UpdateContractBlock(block);
+                block.Contract_text = newText;
+                block.Modified_date = DateTime.Now;
+                return blockDAL.UpdateContractBlock(block);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public bool EditBlockInContract(int contractId, int blockId, string newText)
@@ -280,8 +335,11 @@ namespace ContractManagement.Controller
             {
                 // Mark contract as sent to external
                 Contract contract = contractDAL.GetContractById(contractNr);
-                contract.Sent_to_external = true;
-                contractDAL.UpdateContract(contract);
+                if (contract != null)
+                {
+                    contract.Sent_to_external = true;
+                    contractDAL.UpdateContract(contract);
+                }
             }
             return success;
         }
@@ -342,8 +400,11 @@ namespace ContractManagement.Controller
             if (stakeholderDAL.IsContractFullyApproved(contractNr))
             {
                 Contract contract = contractDAL.GetContractById(contractNr);
-                contract.Approved = true;
-                return contractDAL.UpdateContract(contract);
+                if (contract != null)
+                {
+                    contract.Approved = true;
+                    return contractDAL.UpdateContract(contract);
+                }
             }
 
             return true;

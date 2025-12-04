@@ -644,11 +644,32 @@ namespace ContractManagement.Model.DAL
 
         public int CreateOriginalBlock(OriginalContractBlock block)
         {
-            object result = DbHelper.ExecuteScalar(
-                SqlBuilder.InsertWithId("original_contract_block", "Category_name", "Contract_text", "Created_by", "Created_date"),
-                block
-            );
-            return Convert.ToInt32(result);
+            try
+            {
+                using (MySqlConnection conn = dbConn.GetConnection())
+                {
+                    conn.Open();
+                    string query = @"INSERT INTO original_contract_block 
+                (Category_name, Contract_text, Created_by, Created_date, Type, MediaContent) 
+                VALUES (@category, @text, @creator, @created, @type, @media);
+                SELECT LAST_INSERT_ID();";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@category", block.Category_name);
+                    cmd.Parameters.AddWithValue("@text", block.Contract_text);
+                    cmd.Parameters.AddWithValue("@creator", block.Created_by);
+                    cmd.Parameters.AddWithValue("@created", block.Created_date);
+                    cmd.Parameters.AddWithValue("@type", 0); // Default to Text type
+                    cmd.Parameters.AddWithValue("@media", DBNull.Value);
+
+                    object result = cmd.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
         public bool UpdateOriginalBlock(OriginalContractBlock block) =>
@@ -745,18 +766,73 @@ namespace ContractManagement.Model.DAL
 
         public int CreateContractBlock(ContractBlock block)
         {
-            object result = DbHelper.ExecuteScalar(
-                SqlBuilder.InsertWithId("contract_block", "Org_Cont_ID", "Contract_text", "New", "Modified_date", "Type", "MediaContent"),
-                block
-            );
-            return Convert.ToInt32(result);
+            try
+            {
+                using (MySqlConnection conn = dbConn.GetConnection())
+                {
+                    conn.Open();
+
+                    string query = @"INSERT INTO contract_block 
+                (Org_Cont_ID, Contract_text, New, Modified_date, Type, MediaContent) 
+                VALUES (@orgId, @text, @new, @modified, @type, @media);
+                SELECT LAST_INSERT_ID();";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@orgId", block.Org_Cont_ID);
+                    cmd.Parameters.AddWithValue("@text", block.Contract_text ?? "");
+                    cmd.Parameters.AddWithValue("@new", block.New);
+                    cmd.Parameters.AddWithValue("@modified", block.Modified_date);
+                    cmd.Parameters.AddWithValue("@type", (int)block.Type);
+                    cmd.Parameters.AddWithValue("@media", block.MediaContent ?? (object)DBNull.Value);
+
+                    object result = cmd.ExecuteScalar();
+                    int newId = result != null ? Convert.ToInt32(result) : 0;
+
+                    Console.WriteLine("DEBUG: CreateContractBlock returned ID: {0}", newId);
+
+                    return newId;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DEBUG: Exception in CreateContractBlock: {0}", ex.Message);
+                return 0;
+            }
         }
 
-        public bool UpdateContractBlock(ContractBlock block) =>
-            DbHelper.ExecuteNonQuery(
-                SqlBuilder.Update("contract_block", "Org_Cont_ID", "Contract_text", "New", "Modified_date", "Type", "MediaContent"),
-                block
-            );
+
+
+        public bool UpdateContractBlock(ContractBlock block)
+        {
+            try
+            {
+                using (MySqlConnection conn = dbConn.GetConnection())
+                {
+                    conn.Open();
+                    string query = @"UPDATE contract_block SET 
+                Contract_text = @text,
+                New = @new,
+                Modified_date = @modified,
+                Type = @type,
+                MediaContent = @media
+                WHERE Contract_Block_NR = @id";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", block.Contract_Block_NR);
+                    cmd.Parameters.AddWithValue("@text", block.Contract_text);
+                    cmd.Parameters.AddWithValue("@new", block.New);
+                    cmd.Parameters.AddWithValue("@modified", block.Modified_date);
+                    cmd.Parameters.AddWithValue("@type", (int)block.Type);
+                    cmd.Parameters.AddWithValue("@media", block.MediaContent ?? (object)DBNull.Value);
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         public bool DeleteContractBlock(int blockId)
         {
@@ -836,166 +912,192 @@ namespace ContractManagement.Model.DAL
 
         public bool AddBlockToContract(int contractNr, int blockNr, int blockOrder)
         {
-            using (MySqlConnection conn = dbConn.GetConnection())
+            try
             {
-                conn.Open();
-                using (var tx = conn.BeginTransaction())
+                using (MySqlConnection conn = dbConn.GetConnection())
                 {
-                    try
+                    conn.Open();
+                    using (var tx = conn.BeginTransaction())
                     {
-                        // 1) Optional: ensure block isn't already present
-                        using (var checkCmd = new MySqlCommand(
-                            "SELECT COUNT(*) FROM contract_blocks WHERE Contract_NR=@contractNr AND Contract_Block_NR=@blockNr",
-                            conn, tx))
+                        try
                         {
-                            checkCmd.Parameters.AddWithValue("@contractNr", contractNr);
-                            checkCmd.Parameters.AddWithValue("@blockNr", blockNr);
-                            var exists = Convert.ToInt64(checkCmd.ExecuteScalar());
-                            if (exists > 0)
+                            // 1) Check if block already exists in this contract
+                            using (var checkCmd = new MySqlCommand(
+                                "SELECT COUNT(*) FROM contract_blocks WHERE Contract_NR=@contractNr AND Contract_Block_NR=@blockNr",
+                                conn, tx))
                             {
-                                tx.Rollback();
-                                return false; // already present: change behavior if desired
+                                checkCmd.Parameters.AddWithValue("@contractNr", contractNr);
+                                checkCmd.Parameters.AddWithValue("@blockNr", blockNr);
+                                var exists = Convert.ToInt64(checkCmd.ExecuteScalar());
+                                if (exists > 0)
+                                {
+                                    Console.WriteLine("DEBUG: Block {0} already in contract {1}", blockNr, contractNr);
+                                    tx.Rollback();
+                                    return false;
+                                }
                             }
-                        }
 
-                        // 2) Insert the block into contract_blocks
-                        using (var insertCmd = new MySqlCommand(
-                            "INSERT INTO contract_blocks (Contract_NR, Contract_Block_NR, Block_order) VALUES (@contractNr, @blockNr, @order)",
-                            conn, tx))
-                        {
-                            insertCmd.Parameters.AddWithValue("@contractNr", contractNr);
-                            insertCmd.Parameters.AddWithValue("@blockNr", blockNr);
-                            insertCmd.Parameters.AddWithValue("@order", blockOrder);
-                            insertCmd.ExecuteNonQuery();
-                        }
-
-                        // 3) Read other blocks currently in this contract (excluding the new one)
-                        var otherBlocks = new List<int>();
-                        using (var selectCmd = new MySqlCommand(
-                            "SELECT Contract_Block_NR FROM contract_blocks WHERE Contract_NR=@contractNr AND Contract_Block_NR <> @blockNr",
-                            conn, tx))
-                        {
-                            selectCmd.Parameters.AddWithValue("@contractNr", contractNr);
-                            selectCmd.Parameters.AddWithValue("@blockNr", blockNr);
-                            using (var reader = selectCmd.ExecuteReader())
+                            // 2) Insert the block into contract_blocks
+                            using (var insertCmd = new MySqlCommand(
+                                "INSERT INTO contract_blocks (Contract_NR, Contract_Block_NR, Block_order) VALUES (@contractNr, @blockNr, @order)",
+                                conn, tx))
                             {
-                                while (reader.Read())
-                                    otherBlocks.Add(reader.GetInt32(0));
+                                insertCmd.Parameters.AddWithValue("@contractNr", contractNr);
+                                insertCmd.Parameters.AddWithValue("@blockNr", blockNr);
+                                insertCmd.Parameters.AddWithValue("@order", blockOrder);
+                                int inserted = insertCmd.ExecuteNonQuery();
+
+                                Console.WriteLine("DEBUG: Inserted {0} rows into contract_blocks", inserted);
+
+                                if (inserted == 0)
+                                {
+                                    tx.Rollback();
+                                    return false;
+                                }
                             }
-                        }
 
-                        // 4) For each other block, increment the canonical pair (min,max)
-                        using (var upsertCmd = new MySqlCommand(
-                            "INSERT INTO block_cooccurrence (Block_A_ID, Block_B_ID, Times_Used_Together) " +
-                            "VALUES (@a, @b, 1) " +
-                            "ON DUPLICATE KEY UPDATE Times_Used_Together = Times_Used_Together + 1",
-                            conn, tx))
-                        {
-                            var pa = upsertCmd.Parameters.Add("@a", MySqlDbType.Int32);
-                            var pb = upsertCmd.Parameters.Add("@b", MySqlDbType.Int32);
-
-                            foreach (var other in otherBlocks)
+                            // 3) Read other blocks currently in this contract
+                            var otherBlocks = new List<int>();
+                            using (var selectCmd = new MySqlCommand(
+                                "SELECT Contract_Block_NR FROM contract_blocks WHERE Contract_NR=@contractNr AND Contract_Block_NR <> @blockNr",
+                                conn, tx))
                             {
-                                if (other == blockNr) continue;
-                                int a = Math.Min(blockNr, other);
-                                int b = Math.Max(blockNr, other);
-
-                                pa.Value = a;
-                                pb.Value = b;
-                                upsertCmd.ExecuteNonQuery();
+                                selectCmd.Parameters.AddWithValue("@contractNr", contractNr);
+                                selectCmd.Parameters.AddWithValue("@blockNr", blockNr);
+                                using (var reader = selectCmd.ExecuteReader())
+                                {
+                                    while (reader.Read())
+                                        otherBlocks.Add(reader.GetInt32(0));
+                                }
                             }
-                        }
 
-                        tx.Commit();
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        try { tx.Rollback(); } catch { /* ignore rollback errors */ }
-                        // TODO: log ex
-                        return false;
+                            // 4) Update co-occurrence for each pair
+                            if (otherBlocks.Count > 0)
+                            {
+                                using (var upsertCmd = new MySqlCommand(
+                                    "INSERT INTO block_cooccurrence (Block_A_ID, Block_B_ID, Times_Used_Together) " +
+                                    "VALUES (@a, @b, 1) " +
+                                    "ON DUPLICATE KEY UPDATE Times_Used_Together = Times_Used_Together + 1",
+                                    conn, tx))
+                                {
+                                    var pa = upsertCmd.Parameters.Add("@a", MySqlDbType.Int32);
+                                    var pb = upsertCmd.Parameters.Add("@b", MySqlDbType.Int32);
+
+                                    foreach (var other in otherBlocks)
+                                    {
+                                        if (other == blockNr) continue;
+                                        int a = Math.Min(blockNr, other);
+                                        int b = Math.Max(blockNr, other);
+
+                                        pa.Value = a;
+                                        pb.Value = b;
+                                        upsertCmd.ExecuteNonQuery();
+                                    }
+                                }
+                            }
+
+                            tx.Commit();
+                            Console.WriteLine("DEBUG: Successfully added block {0} to contract {1}", blockNr, contractNr);
+                            return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("DEBUG: Transaction exception: {0}", ex.Message);
+                            try { tx.Rollback(); } catch { }
+                            return false;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("DEBUG: Exception in AddBlockToContract DAL: {0}", ex.Message);
+                return false;
             }
         }
 
 
         public List<BlockRecommendation> GetRecommendationsForContract(int contractNr, int take = 5)
         {
-            using (MySqlConnection conn = dbConn.GetConnection())
+            try
             {
-                conn.Open();
-
-                // Get all blocks currently in the contract
-                var currentBlocks = new List<int>();
-                using (var cmd = new MySqlCommand(
-                    "SELECT Contract_Block_NR FROM contract_blocks WHERE Contract_NR = @contractNr",
-                    conn))
+                using (MySqlConnection conn = dbConn.GetConnection())
                 {
-                    cmd.Parameters.AddWithValue("@contractNr", contractNr);
-                    using (var reader = cmd.ExecuteReader())
+                    conn.Open();
+
+                    // Get all blocks currently in the contract
+                    var currentBlocks = new List<int>();
+                    using (var cmd = new MySqlCommand(
+                        "SELECT Contract_Block_NR FROM contract_blocks WHERE Contract_NR = @contractNr",
+                        conn))
                     {
-                        while (reader.Read())
-                            currentBlocks.Add(reader.GetInt32(0));
-                    }
-                }
-
-                if (currentBlocks.Count == 0)
-                    return new List<BlockRecommendation>();
-
-                // Build the SQL query with parameterized IN clause
-                string blockList = string.Join(",", currentBlocks);
-
-                // Find blocks that co-occur with current blocks
-                // Join with original_contract_block to get text
-                string sql = $@"
-            SELECT 
-                CASE 
-                    WHEN bc.Block_A_ID IN ({blockList}) THEN bc.Block_B_ID 
-                    ELSE bc.Block_A_ID 
-                END AS RecommendedBlockId,
-                SUM(bc.Times_Used_Together) AS Score,
-                ocb.Contract_text,
-                ocb.Category_name
-            FROM block_cooccurrence bc
-            INNER JOIN contract_block cb ON 
-                (CASE 
-                    WHEN bc.Block_A_ID IN ({blockList}) THEN bc.Block_B_ID 
-                    ELSE bc.Block_A_ID 
-                END) = cb.Contract_Block_NR
-            INNER JOIN original_contract_block ocb ON cb.Org_Cont_ID = ocb.Org_Cont_ID
-            WHERE (bc.Block_A_ID IN ({blockList}) OR bc.Block_B_ID IN ({blockList}))
-            GROUP BY RecommendedBlockId, ocb.Contract_text, ocb.Category_name
-            HAVING RecommendedBlockId NOT IN ({blockList})
-            ORDER BY Score DESC
-            LIMIT @take";
-
-                var recommendations = new List<BlockRecommendation>();
-                using (var cmd = new MySqlCommand(sql, conn))
-                {
-                    cmd.Parameters.AddWithValue("@take", take);
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
+                        cmd.Parameters.AddWithValue("@contractNr", contractNr);
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            recommendations.Add(new BlockRecommendation
-                            {
-                                BlockId = reader.GetInt32("RecommendedBlockId"),
-                                Score = reader.GetInt32("Score"),
-                                BlockText = reader.GetString("Contract_text"),
-                                Category = reader.IsDBNull(reader.GetOrdinal("Category_name"))
-                                    ? ""
-                                    : reader.GetString("Category_name")
-                            });
+                            while (reader.Read())
+                                currentBlocks.Add(reader.GetInt32(0));
                         }
                     }
-                }
 
-                return recommendations;
+                    if (currentBlocks.Count == 0)
+                        return new List<BlockRecommendation>();
+
+                    // Build the SQL query with parameterized IN clause
+                    string blockList = string.Join(",", currentBlocks);
+
+                    // Find blocks that co-occur with current blocks
+                    string sql = string.Format(@"
+                SELECT 
+                    CASE 
+                        WHEN bc.Block_A_ID IN ({0}) THEN bc.Block_B_ID 
+                        ELSE bc.Block_A_ID 
+                    END AS RecommendedBlockId,
+                    SUM(bc.Times_Used_Together) AS Score,
+                    ocb.Contract_text,
+                    ocb.Category_name
+                FROM block_cooccurrence bc
+                INNER JOIN contract_block cb ON 
+                    (CASE 
+                        WHEN bc.Block_A_ID IN ({0}) THEN bc.Block_B_ID 
+                        ELSE bc.Block_A_ID 
+                    END) = cb.Contract_Block_NR
+                INNER JOIN original_contract_block ocb ON cb.Org_Cont_ID = ocb.Org_Cont_ID
+                WHERE (bc.Block_A_ID IN ({0}) OR bc.Block_B_ID IN ({0}))
+                GROUP BY RecommendedBlockId, ocb.Contract_text, ocb.Category_name
+                HAVING RecommendedBlockId NOT IN ({0})
+                ORDER BY Score DESC
+                LIMIT @take", blockList);
+
+                    var recommendations = new List<BlockRecommendation>();
+                    using (var cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@take", take);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                recommendations.Add(new BlockRecommendation
+                                {
+                                    BlockId = reader.GetInt32("RecommendedBlockId"),
+                                    Score = reader.GetInt32("Score"),
+                                    BlockText = reader.GetString("Contract_text"),
+                                    Category = reader.IsDBNull(reader.GetOrdinal("Category_name"))
+                                        ? ""
+                                        : reader.GetString("Category_name")
+                                });
+                            }
+                        }
+                    }
+
+                    return recommendations;
+                }
+            }
+            catch (Exception)
+            {
+                return new List<BlockRecommendation>();
             }
         }
 
-        // BlockRecommendation class
         public class BlockRecommendation
         {
             public int BlockId { get; set; }
@@ -1018,6 +1120,7 @@ namespace ContractManagement.Model.DAL
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+
 
         public List<ContractBlock> GetChildBlocks(int parentBlockNr)
         {
@@ -1212,18 +1315,60 @@ namespace ContractManagement.Model.DAL
 
         public int CreateContract(Contract contract)
         {
-            object result = DbHelper.ExecuteScalar(
-                SqlBuilder.InsertWithId("contract", "Company_name", "The_Creator", "Created_date", "Approved", "Sent_to_external"),
-                contract
-            );
-            return Convert.ToInt32(result);
+            try
+            {
+                using (MySqlConnection conn = dbConn.GetConnection())
+                {
+                    conn.Open();
+                    string query = @"INSERT INTO contract 
+                (Company_name, The_Creator, Created_date, Approved, Sent_to_external) 
+                VALUES (@name, @creator, @created, @approved, @sent);
+                SELECT LAST_INSERT_ID();";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@name", contract.Company_name);
+                    cmd.Parameters.AddWithValue("@creator", contract.The_Creator);
+                    cmd.Parameters.AddWithValue("@created", contract.Created_date);
+                    cmd.Parameters.AddWithValue("@approved", contract.Approved);
+                    cmd.Parameters.AddWithValue("@sent", contract.Sent_to_external);
+
+                    object result = cmd.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : 0;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
         }
 
-        public bool UpdateContract(Contract contract) =>
-            DbHelper.ExecuteNonQuery(
-                SqlBuilder.Update("contract", "Contract_NR", "Company_name", "Approved", "Sent_to_external"),
-                contract
-            );
+        public bool UpdateContract(Contract contract)
+        {
+            try
+            {
+                using (MySqlConnection conn = dbConn.GetConnection())
+                {
+                    conn.Open();
+                    string query = @"UPDATE contract SET 
+                Company_name = @name,
+                Approved = @approved,
+                Sent_to_external = @sent
+                WHERE Contract_NR = @id";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", contract.Contract_NR);
+                    cmd.Parameters.AddWithValue("@name", contract.Company_name);
+                    cmd.Parameters.AddWithValue("@approved", contract.Approved);
+                    cmd.Parameters.AddWithValue("@sent", contract.Sent_to_external);
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         public bool DeleteContract(int contractId)
         {
