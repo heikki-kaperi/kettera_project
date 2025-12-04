@@ -206,6 +206,9 @@
     <EmbeddedResource Include="CreateExternal.resx">
       <DependentUpon>CreateExternal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CreateInternal.resx">
+      <DependentUpon>CreateInternal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeleteExternalUsers.resx">
       <DependentUpon>DeleteExternalUsers.cs</DependentUpon>
     </EmbeddedResource>

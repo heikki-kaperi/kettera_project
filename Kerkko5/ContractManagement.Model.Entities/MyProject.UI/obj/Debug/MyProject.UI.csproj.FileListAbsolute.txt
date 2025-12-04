@@ -208,3 +208,22 @@ C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_26\Main
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_26\Main5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_26\Main5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_26\Main5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.AssemblyReference.cache
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.SuggestedBindingRedirects.cache
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe.config
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Administrator.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.BlockCategory.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateCategory.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateExternal.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteExternalUsers.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteInternalUsers.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Internal.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.logIn.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Properties.Resources.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewExternalUsers.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewInternalUsers.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.GenerateResource.cache
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.CoreCompileInputs.cache
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko5\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateInternal.resources

@@ -193,3 +193,41 @@ C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_25\Main
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_25\Main4\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\Contract.C7925708.Up2Date
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_25\Main4\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_11_25\Main4\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.pdb
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ContractManagement.Model.Entities.exe.config
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ContractManagement.Model.Entities.exe
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ContractManagement.Model.Entities.pdb
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\BouncyCastle.Cryptography.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Google.Protobuf.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Hash.xxHash.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\MySql.Data.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Buffers.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.IO.Pipelines.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Memory.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Numerics.Vectors.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\ZstdSharp.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\BouncyCastle.Cryptography.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Google.Protobuf.pdb
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Google.Protobuf.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\K4os.Hash.xxHash.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\MySql.Data.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Buffers.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.IO.Pipelines.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Memory.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Numerics.Vectors.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.csproj.AssemblyReference.cache
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.csproj.CoreCompileInputs.cache
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\Contract.C7925708.Up2Date
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe
+D:\GitHub\KetteraOhjelmisto\kettera_project\Main5\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.pdb

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using ContractManagement.Controller;
 using ContractManagement.Model.Entities;
+using ContractManagement.Model.DAL;
+using static ContractManagement.Model.DAL.ContractBlockDAL;
 
 namespace MyProject.UI
 {
