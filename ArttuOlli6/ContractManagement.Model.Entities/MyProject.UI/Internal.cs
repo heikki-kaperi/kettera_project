@@ -1,32 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ContractManagement.Model.Entities;
 
 namespace MyProject.UI
 {
     public partial class Internal : Form
     {
-        public Internal()
+        private InternalUser _currentUser; // ← LISÄTTY
+
+        public Internal(InternalUser user) // ← MUUTETTU: lisätty user parametri
         {
             InitializeComponent();
+            _currentUser = user; // ← LISÄTTY
         }
 
         private void Internal_Load(object sender, EventArgs e)
         {
-
         }
 
         // 1. Block & Category Management
         private void blockCategoryBtn_Click(object sender, EventArgs e)
         {
-            BlockCategory form = new BlockCategory();
+            BlockCategory form = new BlockCategory(_currentUser);
             form.ShowDialog();
         }
 
@@ -38,11 +33,11 @@ namespace MyProject.UI
         }
 
         // 3. My Contracts (as Reviewer)
-        private void myContractsBtn_Click(object sender, EventArgs e)
+       /* private void myContractsBtn_Click(object sender, EventArgs e)
         {
-            MyContracts form = new MyContracts();
+            MyContracts form = new MyContracts(_currentUser); // ← KORJATTU
             form.ShowDialog();
-        }
+        }*/
 
         // 4. View Contract Details
         private void viewContractDetailsBtn_Click(object sender, EventArgs e)
@@ -76,13 +71,35 @@ namespace MyProject.UI
 
             if (result == DialogResult.Yes)
             {
-                this.Hide(); // Piilota Administrator-ikkuna
+                // Etsi ja palauta login-lomake alkutilaan
+                foreach (Form form in Application.OpenForms)
+                {
+                    if (form is logIn loginForm)
+                    {
+                        // Palauta alkutilaan
+                        loginForm.Controls["button1"].Visible = true; // Admin nappi
+                        loginForm.Controls["button2"].Visible = true; // Internal nappi
+                        loginForm.Controls["button3"].Visible = true; // External nappi
+                        loginForm.Controls["txtUsername"].Visible = false;
+                        loginForm.Controls["txtPassword"].Visible = false;
+                        loginForm.Controls["label1"].Visible = false;
+                        loginForm.Controls["label2"].Visible = false;
+                        loginForm.Controls["button4"].Enabled = false;
 
-                // Avaa kirjautumislomake uudelleen (vaihda Login nimeen omaksesi)
-                logIn loginForm = new logIn();
-                loginForm.ShowDialog();
+                        // Tyhjennä kentät
+                        ((TextBox)loginForm.Controls["txtUsername"]).Text = "";
+                        ((TextBox)loginForm.Controls["txtPassword"]).Text = "";
 
-                this.Close(); // Sulje Administrator-lomake lopullisesti
+                        loginForm.Show();
+                        this.Close();
+                        return;
+                    }
+                }
+
+                // Jos login-lomaketta ei löydy, luo uusi
+                logIn newLoginForm = new logIn();
+                newLoginForm.Show();
+                this.Close();
             }
         }
     }

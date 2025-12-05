@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
 using ContractManagement.Controller;
+using ContractManagement.Model.Entities;
 
 namespace MyProject.UI
 {
     public partial class BlockCategory : Form
     {
         private BlockController _blockController;
+        private InternalUser _currentUser; // ← LISÄTTY
 
-        public BlockCategory()
+        public BlockCategory(InternalUser user) // ← MUUTETTU: lisätty user parametri
         {
             InitializeComponent();
             _blockController = new BlockController();
+            _currentUser = user; // ← LISÄTTY
         }
 
         // 1. Create Category
@@ -26,19 +29,15 @@ namespace MyProject.UI
         // 2. View All Categories
         private void viewCategoriesBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            ViewCategories form = new ViewCategories();
+            ViewAllCategories form = new ViewAllCategories();
             form.ShowDialog();
-            this.Show();
         }
 
         // 3. Create Original Block
         private void createOriginalBlockBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            CreateOriginalBlock form = new CreateOriginalBlock();
+            CreateOriginalBlock form = new CreateOriginalBlock(_currentUser.Int_User_ID);
             form.ShowDialog();
-            this.Show();
         }
 
         // 4. View All Original Blocks
@@ -76,7 +75,6 @@ namespace MyProject.UI
 
         private void BlockCategory_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

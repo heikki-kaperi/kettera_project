@@ -82,8 +82,7 @@ namespace MyProject.UI
                 if (user != null)
                 {
                     MessageBox.Show("Internal user login successful!");
-                    // Avaa Internal.cs -lomake
-                    Internal internalForm = new Internal();
+                    Internal internalForm = new Internal(user); // ← Tämä rivi tärkeä!
                     internalForm.Show();
                     this.Hide();
                 }

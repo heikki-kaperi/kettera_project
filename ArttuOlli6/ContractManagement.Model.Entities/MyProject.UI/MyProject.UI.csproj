@@ -150,6 +150,12 @@
     <Compile Include="External.Designer.cs">
       <DependentUpon>External.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewAllCategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewAllCategories.Designer.cs">
+      <DependentUpon>ViewAllCategories.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewBlocksByCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,12 +191,6 @@
     </Compile>
     <Compile Include="ViewCategories.Designer.cs">
       <DependentUpon>ViewCategories.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyContracts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MyContracts.Designer.cs">
-      <DependentUpon>MyContracts.cs</DependentUpon>
     </Compile>
     <Compile Include="Internal.cs">
       <SubType>Form</SubType>
@@ -254,6 +254,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ViewAllCategories.resx">
+      <DependentUpon>ViewAllCategories.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewExternalUsers.resx">
       <DependentUpon>ViewExternalUsers.cs</DependentUpon>
     </EmbeddedResource>

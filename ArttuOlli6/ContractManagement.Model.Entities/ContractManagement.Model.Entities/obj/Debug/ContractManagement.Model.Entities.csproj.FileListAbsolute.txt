@@ -266,8 +266,8 @@ C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.csproj.AssemblyReference.cache
-C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe.config
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.csproj.CoreCompileInputs.cache
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\Contract.C7925708.Up2Date
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.pdb
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe.config
