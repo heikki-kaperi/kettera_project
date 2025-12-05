@@ -68,9 +68,22 @@ namespace MyProject.UI
         // 0. Logout → takaisin LogIn.cs
         private void logoutBtn_Click(object sender, EventArgs e)
         {
-            this.Hide(); // piilota Internal-näkymä
-            logIn loginForm = new logIn();
-            loginForm.Show();
+            var result = MessageBox.Show(
+                "Are you sure you want to logout?",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                this.Hide(); // Piilota Administrator-ikkuna
+
+                // Avaa kirjautumislomake uudelleen (vaihda Login nimeen omaksesi)
+                logIn loginForm = new logIn();
+                loginForm.ShowDialog();
+
+                this.Close(); // Sulje Administrator-lomake lopullisesti
+            }
         }
     }
 }
