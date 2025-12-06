@@ -57,10 +57,8 @@ namespace MyProject.UI
         // 6. Copy Block
         private void copyBlockBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            CopyBlock form = new CopyBlock();
+            CopyBlock form = new CopyBlock(_currentUser.Int_User_ID);
             form.ShowDialog();
-            this.Show();
         }
 
         // 0. Back
