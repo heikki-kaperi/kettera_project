@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ContractManagement.Controller;
 using ContractManagement.Model.Entities;
 
@@ -23,6 +24,7 @@ namespace ContractManagement.View
         private ContractController contractController = new ContractController();
         private CommentController commentController = new CommentController();
         private ApprovalController approvalController = new ApprovalController();
+        private AdministratorController adminController = new AdministratorController();
 
         // Current session data
         private string currentUserType = null; // "admin", "internal", "external"
@@ -139,6 +141,7 @@ namespace ContractManagement.View
                 Console.WriteLine("4. View All External Users");
                 Console.WriteLine("5. Delete Internal User");
                 Console.WriteLine("6. Delete External User");
+                Console.WriteLine("7. Delete Administrator (3 votes)");
                 Console.WriteLine("0. Logout");
                 Console.Write("\nSelect option: ");
 
@@ -163,6 +166,9 @@ namespace ContractManagement.View
                         break;
                     case "6":
                         DeleteExternalUser();
+                        break;
+                    case "7":
+                        DeleteAdministratorVoting();
                         break;
                     case "0":
                         return;
@@ -385,6 +391,53 @@ namespace ContractManagement.View
             Pause();
         }
 
+        private void DeleteAdministratorVoting()
+        {
+            Console.Clear();
+            Console.WriteLine("=== ADMINISTRATOR DELETION VOTING ===\n");
+
+            // List all admins except current
+            var admins = userController.GetAllAdministrators();
+            Console.WriteLine("Administrators:");
+            foreach (var admin in admins)
+            {
+                if (admin.Administrator_ID != currentUserId)
+                    Console.WriteLine($"[{admin.Administrator_ID}] {admin.First_name} {admin.Last_name}");
+            }
+
+            Console.Write("\nEnter Administrator ID to vote for deletion: ");
+            if (!int.TryParse(Console.ReadLine(), out int targetAdminId))
+            {
+                Console.WriteLine("Invalid ID.");
+                Pause();
+                return;
+            }
+
+            if (targetAdminId == currentUserId)
+            {
+                Console.WriteLine("You cannot vote to delete yourself.");
+                Pause();
+                return;
+            }
+
+            bool voted = adminController.VoteToDeleteAdmin(targetAdminId, currentUserId);
+            if (voted)
+            {
+                Console.WriteLine("✓ Vote recorded!");
+
+                // Check if enough votes to delete
+                bool deleted = adminController.TryDeleteAdmin(targetAdminId);
+                if (deleted)
+                    Console.WriteLine("\n*** Administrator REMOVED from system! ***");
+            }
+            else
+            {
+                Console.WriteLine("✗ You have already voted for this deletion.");
+            }
+
+            Pause();
+        }
+
         // ==================== BLOCK MANAGEMENT ====================
         private void BlockManagementMenu()
         {
@@ -398,6 +451,8 @@ namespace ContractManagement.View
                 Console.WriteLine("4. View All Original Blocks");
                 Console.WriteLine("5. View Blocks by Category");
                 Console.WriteLine("6. Copy Block");
+                Console.WriteLine("7. Add Reference to Block");
+                Console.WriteLine("8. Create Composite Block");
                 Console.WriteLine("0. Back");
                 Console.Write("\nSelect option: ");
 
@@ -422,6 +477,12 @@ namespace ContractManagement.View
                         break;
                     case "6":
                         CopyBlock();
+                        break;
+                    case "7":
+                        AddReferenceToBlockUI();
+                        break;
+                    case "8":
+                        CreateCompositeBlockUI();
                         break;
                     case "0":
                         return;
@@ -480,8 +541,51 @@ namespace ContractManagement.View
             Console.Write("Block Text: ");
             string text = Console.ReadLine();
 
-            bool success = blockController.CreateOriginalBlock(category, text, currentUserId);
-            Console.WriteLine(success ? "\n✓ Block created successfully!" : "\n✗ Failed to create block.");
+            // References
+            Console.Write("Add references to other blocks? (y/n): ");
+            List<int> referenceIds = new List<int>();
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                ViewAllOriginalBlocks();
+                Console.Write("\nEnter reference block IDs (comma-separated): ");
+                try
+                {
+                    referenceIds = Console.ReadLine().Split(',')
+                        .Select(id => int.Parse(id.Trim())).ToList();
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input. Skipping references.");
+                }
+            }
+
+            // Composite children
+            Console.Write("Add child blocks (composite)? (y/n): ");
+            List<int> childIds = new List<int>();
+            if (Console.ReadLine().ToLower() == "y")
+            {
+                ViewAllOriginalBlocks();
+                Console.Write("\nEnter child block IDs (comma-separated): ");
+                try
+                {
+                    childIds = Console.ReadLine().Split(',')
+                        .Select(id => int.Parse(id.Trim())).ToList();
+                }
+                catch
+                {
+                    Console.WriteLine("Invalid input. Skipping children.");
+                }
+            }
+
+            int newBlockId = blockController.CreateCompositeBlock(childIds, text, currentUserId);
+
+            // Add references
+            foreach (var refId in referenceIds)
+            {
+                blockController.AddReferenceToBlock(newBlockId, refId);
+            }
+
+            Console.WriteLine(newBlockId > 0 ? "\n✓ Block created successfully!" : "\n✗ Failed to create block.");
             Pause();
         }
 
@@ -542,13 +646,67 @@ namespace ContractManagement.View
             Console.Write("\nEnter Original Block ID to copy: ");
             if (int.TryParse(Console.ReadLine(), out int blockId))
             {
-                bool success = blockController.CopyOriginalBlock(blockId, currentUserId);
-                Console.WriteLine(success ? "\n✓ Block copied successfully!" : "\n✗ Failed to copy block.");
-            }
-            else
-            {
                 Console.WriteLine("Invalid ID.");
+                Pause();
+                return;
             }
+
+            bool success = blockController.CopyOriginalBlock(blockId, currentUserId);
+
+            if (success)
+            {
+                var original = blockController.GetAllOriginalBlocks().FirstOrDefault(b => b.Org_Cont_ID == blockId);
+                var newBlockId = blockController.GetAllOriginalBlocks().Max(b => b.Org_Cont_ID);
+            }
+
+            Console.WriteLine(success ? "\n✓ Block copied successfully!" : "\n✗ Failed to copy block.");
+            Pause();
+        }
+
+        private void AddReferenceToBlockUI()
+        {
+            Console.Clear();
+            Console.WriteLine("=== ADD REFERENCE TO BLOCK ===\n");
+            ViewAllOriginalBlocks();
+
+            Console.Write("\nEnter Block ID to add reference to: ");
+            if (!int.TryParse(Console.ReadLine(), out int blockId)) return;
+
+            Console.Write("Enter Reference Block ID: ");
+            if (!int.TryParse(Console.ReadLine(), out int refId)) return;
+
+            bool success = blockController.AddReferenceToBlock(blockId, refId);
+            Console.WriteLine(success ? "\n✓ Reference added!" : "\n✗ Failed to add reference.");
+            Pause();
+        }
+
+        private void CreateCompositeBlockUI()
+        {
+            Console.Clear();
+            Console.WriteLine("=== CREATE COMPOSITE BLOCK ===\n");
+            ViewAllOriginalBlocks();
+
+            Console.Write("\nEnter IDs of child blocks (comma-separated): ");
+            var idsInput = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(idsInput)) return;
+
+            List<int> childIds;
+            try
+            {
+                childIds = idsInput.Split(',').Select(id => int.Parse(id.Trim())).ToList();
+            }
+            catch
+            {
+                Console.WriteLine("Invalid input.");
+                Pause();
+                return;
+            }
+
+            Console.Write("Enter text for composite block: ");
+            string text = Console.ReadLine();
+
+            int newId = blockController.CreateCompositeBlock(childIds, text, currentUserId);
+            Console.WriteLine(newId > 0 ? $"\n✓ Composite block created! ID: {newId}" : "\n✗ Failed to create composite block.");
             Pause();
         }
 

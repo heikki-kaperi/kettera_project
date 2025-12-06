@@ -70,11 +70,14 @@ namespace ContractManagement.Model.Entities
         public string Contract_text { get; set; }
         public bool New { get; set; }
         public DateTime Modified_date { get; set; }
+        public DateTime Created_date { get; set; }
+        public int Created_by { get; set; }
         public BlockType Type { get; set; }
         public byte[] MediaContent { get; set; }
 
         public int? Parent_Block_NR { get; set; }
         public List<ContractBlock> ChildBlocks { get; set; } = new List<ContractBlock>();
+        public List<int> References { get; set; } = new List<int>();
     }
 
     public class ContractBlockReference
@@ -171,6 +174,35 @@ namespace ContractManagement.Model.DAL
                 }
             }
             return admin;
+        }
+
+        public List<Administrator> GetAllAdministrators()
+        {
+            List<Administrator> admins = new List<Administrator>();
+
+            using (var conn = dbConn.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT * FROM administrator";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        admins.Add(new Administrator
+                        {
+                            Administrator_ID = reader.GetInt32("Administrator_ID"),
+                            First_name = reader.GetString("First_name"),
+                            Last_name = reader.GetString("Last_name"),
+                            Username = reader.GetString("Username"),
+                            Password = reader.GetString("Password")
+                        });
+                    }
+                }
+            }
+
+            return admins;
         }
 
         public bool CreateAdministrator(Administrator admin) =>

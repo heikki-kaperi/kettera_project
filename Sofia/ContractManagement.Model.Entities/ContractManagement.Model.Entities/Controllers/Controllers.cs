@@ -38,6 +38,12 @@ namespace ContractManagement.Controller
             return null;
         }
 
+        //Get all admins
+        public List<Administrator> GetAllAdministrators()
+        {
+            return adminDAL.GetAllAdministrators();
+        }
+
         // Internal users
         public List<InternalUser> GetAllInternalUsers() => internalUserDAL.GetAllInternalUsers();
 
@@ -133,14 +139,16 @@ namespace ContractManagement.Controller
         }
 
         // Contract blocks
-        public int CreateContractBlock(int orgId, string text, bool isNew)
+        public int CreateContractBlock(int orgId, string text, bool isNew, int createdBy)
         {
             ContractBlock block = new ContractBlock
             {
                 Org_Cont_ID = orgId,
                 Contract_text = text,
                 New = isNew,
-                Modified_date = DateTime.Now
+                Modified_date = DateTime.Now,
+                Created_date = DateTime.Now,
+                Created_by = createdBy
             };
             return blockDAL.CreateContractBlock(block);
         }
@@ -153,6 +161,50 @@ namespace ContractManagement.Controller
             block.Contract_text = newText;
             block.Modified_date = DateTime.Now;
             return blockDAL.UpdateContractBlock(block);
+        }
+
+        public bool AddReferenceToBlock(int blockId, int referenceBlockId)
+        {
+            ContractBlock block = blockDAL.GetContractBlockById(blockId);
+            if (block == null) return false;
+
+            if (block.References == null)
+                block.References = new List<int>();
+            block.References.Add(referenceBlockId);
+            return blockDAL.UpdateContractBlock(block);
+        }
+
+        public List<ContractBlock> GetReferencedBlocks(int blockId)
+        {
+            ContractBlock block = blockDAL.GetContractBlockById(blockId);
+            if (block == null || block.References == null) return new List<ContractBlock>();
+
+            List<ContractBlock> referencedBlocks = new List<ContractBlock>();
+            foreach (var refId in block.References)
+            {
+                var refBlock = blockDAL.GetContractBlockById(refId);
+                if (refBlock != null) referencedBlocks.Add(refBlock);
+            }
+            return referencedBlocks;
+        }
+
+        public int CreateCompositeBlock(List<int> childBlockIds, string compositeText, int createdBy)
+        {
+            List<ContractBlock> childBlocks = childBlockIds
+            .Select(id => blockDAL.GetContractBlockById(id))
+            .Where(b => b != null)
+            .ToList();
+
+            ContractBlock compositeBlock = new ContractBlock
+            {
+                Contract_text = compositeText,
+                ChildBlocks = childBlocks,
+                Created_date = DateTime.Now,
+                Created_by = createdBy,
+                New = true,
+                Modified_date = DateTime.Now
+            };
+            return blockDAL.CreateContractBlock(compositeBlock);
         }
     }
 
@@ -328,4 +380,27 @@ namespace ContractManagement.Controller
         public List<ContractStakeholder> GetStakeholders(int contractNr)
             => stakeholderDAL.GetStakeholdersByContract(contractNr);
     }
+
+    //================== ADMINSISTRATOR CONTROLLER ======================
+
+    public class AdministratorController
+    {
+        private AdministratorDAL adminDAL = new AdministratorDAL();
+
+        public List<Administrator> GetAllAdministrators()
+        {
+            return adminDAL.GetAllAdministrators();
+        }
+
+        public bool VoteToDeleteAdmin(int targetAdminId, int voterAdminId)
+        {
+            return adminDAL.VoteToDeleteAdmin(targetAdminId, voterAdminId);
+        }
+
+        public bool TryDeleteAdmin(int targetAdminId)
+        {
+            return adminDAL.DeleteAdminIfApproved(targetAdminId);
+        }
+    }
+
 }
