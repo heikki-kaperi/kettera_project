@@ -50,10 +50,8 @@ namespace MyProject.UI
         // 5. View Blocks by Category
         private void viewBlocksByCategoryBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
             ViewBlocksByCategory form = new ViewBlocksByCategory();
             form.ShowDialog();
-            this.Show();
         }
 
         // 6. Copy Block
