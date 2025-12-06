@@ -120,17 +120,48 @@ namespace ContractManagement.Controller
 
         public bool CopyOriginalBlock(int originalBlockId, int createdBy)
         {
-            OriginalContractBlock original = originalDAL.GetOriginalBlockById(originalBlockId);
-            if (original == null) return false;
+            OriginalContractBlock original = null;
 
-            OriginalContractBlock copy = new OriginalContractBlock
+            try
             {
-                Category_name = original.Category_name,
-                Contract_text = original.Contract_text + " (Copy)",
-                Created_by = createdBy,
-                Created_date = DateTime.Now
-            };
-            return originalDAL.CreateOriginalBlock(copy) > 0;
+                original = originalDAL.GetOriginalBlockById(originalBlockId);
+
+                if (original == null)
+                {
+                    Console.WriteLine($"ERROR: Block ID {originalBlockId} not found");
+                    return false;
+                }
+
+                Console.WriteLine($"Found block: Category={original.Category_name}");
+
+                OriginalContractBlock copy = new OriginalContractBlock
+                {
+                    Category_name = original.Category_name,
+                    Contract_text = original.Contract_text + " (Copy)",
+                    Created_by = createdBy,
+                    Created_date = DateTime.Now
+                };
+
+                Console.WriteLine($"About to create copy with Category={copy.Category_name}, Created_by={copy.Created_by}");
+
+                int newId = originalDAL.CreateOriginalBlock(copy);
+
+                Console.WriteLine($"CreateOriginalBlock returned: {newId}");
+
+                return newId > 0;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"========== ERROR in CopyOriginalBlock ==========");
+                Console.WriteLine($"Original Block ID: {originalBlockId}");
+                Console.WriteLine($"Created By: {createdBy}");
+                Console.WriteLine($"Original found: {original != null}");
+                Console.WriteLine($"Exception Message: {ex.Message}");
+                Console.WriteLine($"Exception Type: {ex.GetType().Name}");
+                Console.WriteLine($"Stack trace: {ex.StackTrace}");
+                Console.WriteLine($"================================================");
+                return false;
+            }
         }
 
         // Contract blocks

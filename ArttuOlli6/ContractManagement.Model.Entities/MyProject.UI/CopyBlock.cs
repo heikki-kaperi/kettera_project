@@ -21,21 +21,28 @@ namespace MyProject.UI
         {
             try
             {
+                // Haetaan ORIGINAL blokit
                 var blocks = _blockController.GetAllOriginalBlocks();
 
-                if (blocks.Count == 0)
+                // DEBUG: Näytä mitä ladattiin
+                if (blocks.Count > 0)
                 {
-                    MessageBox.Show("No blocks found.", "Information",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    string firstBlock = $"First block: ID={blocks[0].Org_Cont_ID}, Category={blocks[0].Category_name}";
+                    MessageBox.Show($"Loaded {blocks.Count} blocks from original_contract_block table.\n\n{firstBlock}",
+                        "Debug");
+                }
+                else
+                {
+                    MessageBox.Show("No blocks found in original_contract_block table!", "Warning");
                 }
 
-                dataGridViewBlocks.DataSource = blocks;
+                dataGridViewBlocks.DataSource = null; // Tyhjennä ensin
+                dataGridViewBlocks.DataSource = blocks; // Lataa uusi data
                 dataGridViewBlocks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loading blocks: " + ex.Message, "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Error");
             }
         }
 
@@ -69,7 +76,7 @@ namespace MyProject.UI
 
             if (!int.TryParse(txtBlockId.Text, out int blockId))
             {
-                MessageBox.Show("Invalid Block ID. Please enter a valid number.", "Validation Error",
+                MessageBox.Show("Invalid Block ID.", "Validation Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -82,19 +89,24 @@ namespace MyProject.UI
                 {
                     MessageBox.Show("Block copied successfully!", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadAllBlocks(); // Päivitä lista näyttämään kopio
+                    LoadAllBlocks();
                     txtBlockId.Clear();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to copy block. Block ID may not exist.", "Error",
+                    // ← LISÄÄ TÄMÄ: Yksityiskohtaisempi virheviesti
+                    MessageBox.Show(
+                        $"Failed to copy block ID {blockId}.\n\n" +
+                        $"Check Output window (View → Output) for MySQL error details.\n\n" +
+                        $"User ID: {_userId}",
+                        "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Exception",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Exception:\n\n{ex.Message}\n\n{ex.StackTrace}",
+                    "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -102,5 +114,6 @@ namespace MyProject.UI
         {
             this.Close();
         }
+
     }
 }

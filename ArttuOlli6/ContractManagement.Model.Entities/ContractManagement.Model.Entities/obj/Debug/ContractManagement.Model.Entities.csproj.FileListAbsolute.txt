@@ -270,4 +270,3 @@ C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\Contract.C7925708.Up2Date
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe
 C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.pdb
-C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\ContractManagement.Model.Entities\obj\Debug\ContractManagement.Model.Entities.exe.config
