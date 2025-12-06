@@ -43,10 +43,8 @@ namespace MyProject.UI
         // 4. View All Original Blocks
         private void viewOriginalBlocksBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
             ViewOriginalBlocks form = new ViewOriginalBlocks();
             form.ShowDialog();
-            this.Show();
         }
 
         // 5. View Blocks by Category
