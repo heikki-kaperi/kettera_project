@@ -150,6 +150,12 @@
     <Compile Include="External.Designer.cs">
       <DependentUpon>External.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyContracts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyContracts.Designer.cs">
+      <DependentUpon>MyContracts.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewAllCategories.cs">
       <SubType>Form</SubType>
     </Compile>

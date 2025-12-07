@@ -33,11 +33,11 @@ namespace MyProject.UI
         }
 
         // 3. My Contracts (as Reviewer)
-       /* private void myContractsBtn_Click(object sender, EventArgs e)
+        private void myContractsBtn_Click(object sender, EventArgs e)
         {
             MyContracts form = new MyContracts(_currentUser); // ← KORJATTU
             form.ShowDialog();
-        }*/
+        }
 
         // 4. View Contract Details
         private void viewContractDetailsBtn_Click(object sender, EventArgs e)

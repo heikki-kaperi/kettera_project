@@ -78,13 +78,13 @@
             // 
             // myContractsBtn
             // 
-            /*this.myContractsBtn.Location = new System.Drawing.Point(312, 191);
+            this.myContractsBtn.Location = new System.Drawing.Point(312, 191);
             this.myContractsBtn.Name = "myContractsBtn";
             this.myContractsBtn.Size = new System.Drawing.Size(223, 23);
             this.myContractsBtn.TabIndex = 4;
             this.myContractsBtn.Text = "My Contracts (as Reviewer)";
             this.myContractsBtn.UseVisualStyleBackColor = true;
-            this.myContractsBtn.Click += new System.EventHandler(this.myContractsBtn_Click);*/
+            this.myContractsBtn.Click += new System.EventHandler(this.myContractsBtn_Click);
             // 
             // viewContractDetailsBtn
             // 
