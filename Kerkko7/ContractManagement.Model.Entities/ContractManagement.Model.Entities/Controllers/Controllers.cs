@@ -4,6 +4,7 @@ using System.Linq;
 using ContractManagement.Model.Entities;
 using ContractManagement.Model.DAL;
 using static ContractManagement.Model.DAL.ContractBlockDAL;
+using MySql.Data.MySqlClient;
 
 namespace ContractManagement.Controller
 {
@@ -105,6 +106,33 @@ namespace ContractManagement.Controller
                 Category_name = name,
                 Description = description
             });
+        }
+
+        public int CreateOriginalBlockWithType(OriginalContractBlock block, BlockType blockType, byte[] mediaContent)
+        {
+            // First create the original block in the original_contract_block table
+            var originalDAL = new OriginalContractBlockDAL();
+
+            // Create a temporary block with the type and media
+            using (var conn = new DatabaseConnection().GetConnection())
+            {
+                conn.Open();
+                string query = @"INSERT INTO original_contract_block 
+                        (Category_name, Contract_text, Created_by, Created_date, Type, MediaContent) 
+                        VALUES (@category, @text, @creator, @created, @type, @media);
+                        SELECT LAST_INSERT_ID();";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@category", block.Category_name);
+                cmd.Parameters.AddWithValue("@text", block.Contract_text);
+                cmd.Parameters.AddWithValue("@creator", block.Created_by);
+                cmd.Parameters.AddWithValue("@created", block.Created_date);
+                cmd.Parameters.AddWithValue("@type", (int)blockType);
+                cmd.Parameters.AddWithValue("@media", mediaContent ?? (object)DBNull.Value);
+
+                object result = cmd.ExecuteScalar();
+                return result != null ? Convert.ToInt32(result) : 0;
+            }
         }
 
         // Original blocks

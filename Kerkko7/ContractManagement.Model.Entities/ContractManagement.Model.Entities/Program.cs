@@ -317,49 +317,145 @@ namespace ContractManagement.View
         {
             ViewAllCategories();
             Console.Write("\nCategory Name: "); string category = Console.ReadLine();
-            Console.Write("Block Text: "); string text = Console.ReadLine();
-            // References
-            Console.Write("Add references to other blocks? (y/n): ");
-            List<int> referenceIds = new List<int>();
-            if (Console.ReadLine().ToLower() == "y")
+
+            // Select block type
+            Console.WriteLine("\n=== SELECT BLOCK TYPE ===");
+            Console.WriteLine("1. Text Block");
+            Console.WriteLine("2. Preformatted Section (e.g., address, signature space)");
+            Console.WriteLine("3. Image Block");
+            Console.Write("Choice: ");
+            string typeChoice = Console.ReadLine();
+
+            BlockType blockType = BlockType.Text;
+            string text = "";
+            byte[] mediaContent = null;
+
+            switch (typeChoice)
             {
-                ViewAllOriginalBlocks();
-                Console.Write("\nEnter reference block IDs (comma-separated): ");
-                try
-                {
-                    referenceIds = Console.ReadLine().Split(',')
-                        .Select(id => int.Parse(id.Trim())).ToList();
-                }
-                catch
-                {
-                    Console.WriteLine("Invalid input. Skipping references.");
-                }
+                case "1":
+                    blockType = BlockType.Text;
+                    Console.Write("\nBlock Text: ");
+                    text = Console.ReadLine();
+                    break;
+
+                case "2":
+                    blockType = BlockType.Text;
+                    Console.WriteLine("\n=== PREFORMATTED SECTION TEMPLATES ===");
+                    Console.WriteLine("1. Address Section");
+                    Console.WriteLine("2. Signature Section");
+                    Console.WriteLine("3. Date Section");
+                    Console.WriteLine("4. Custom Preformatted");
+                    Console.Write("Choice: ");
+                    string templateChoice = Console.ReadLine();
+
+                    switch (templateChoice)
+                    {
+                        case "1":
+                            text = "[ADDRESS SECTION]\n" +
+                                   "Company: _______________________________\n" +
+                                   "Street: ________________________________\n" +
+                                   "City: __________________________________\n" +
+                                   "Postal Code: ___________________________\n" +
+                                   "Country: _______________________________";
+                            break;
+                        case "2":
+                            text = "[SIGNATURE SECTION]\n\n" +
+                                   "Signed: ________________________________\n\n" +
+                                   "Name: __________________________________\n\n" +
+                                   "Title: _________________________________\n\n" +
+                                   "Date: __________________________________";
+                            break;
+                        case "3":
+                            text = "[DATE SECTION]\n" +
+                                   "Date: __________________________________\n" +
+                                   "Place: _________________________________";
+                            break;
+                        case "4":
+                            Console.Write("\nEnter your preformatted text: ");
+                            text = Console.ReadLine();
+                            break;
+                        default:
+                            Console.WriteLine("Invalid choice. Using default signature template.");
+                            text = "[SIGNATURE SECTION]\n\nSigned: ________________________________";
+                            break;
+                    }
+                    Console.WriteLine("\n✓ Preformatted section created!");
+                    break;
+
+                case "3":
+                    blockType = BlockType.Image;
+                    Console.Write("\nEnter image file path: ");
+                    string imagePath = Console.ReadLine();
+
+                    if (System.IO.File.Exists(imagePath))
+                    {
+                        try
+                        {
+                            mediaContent = System.IO.File.ReadAllBytes(imagePath);
+                            text = $"[IMAGE: {System.IO.Path.GetFileName(imagePath)}]";
+                            Console.WriteLine("✓ Image loaded successfully!");
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"✗ Error loading image: {ex.Message}");
+                            Console.WriteLine("Creating text block instead.");
+                            blockType = BlockType.Text;
+                            Console.Write("Block Text: ");
+                            text = Console.ReadLine();
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("✗ File not found. Creating text block instead.");
+                        blockType = BlockType.Text;
+                        Console.Write("Block Text: ");
+                        text = Console.ReadLine();
+                    }
+                    break;
+
+                default:
+                    Console.WriteLine("Invalid choice. Using text block.");
+                    Console.Write("\nBlock Text: ");
+                    text = Console.ReadLine();
+                    break;
             }
 
-            // Composite children
-            Console.Write("Add child blocks (composite)? (y/n): ");
-            List<int> childIds = new List<int>();
-            if (Console.ReadLine().ToLower() == "y")
+            // Create the original block through BlockController
+            var originalBlock = new OriginalContractBlock
             {
-                ViewAllOriginalBlocks();
-                Console.Write("\nEnter child block IDs (comma-separated): ");
-                try
-                {
-                    childIds = Console.ReadLine().Split(',')
-                        .Select(id => int.Parse(id.Trim())).ToList();
-                }
-                catch
-                {
-                    Console.WriteLine("Invalid input. Skipping children.");
-                }
-            }
+                Category_name = category,
+                Contract_text = text,
+                Created_by = UserId,
+                Created_date = DateTime.Now
+            };
 
-            int newBlockId = _blockController.CreateCompositeBlock(childIds, text, UserId);
+            int newBlockId = _blockController.CreateOriginalBlockWithType(originalBlock, blockType, mediaContent);
 
-            // Add references
-            foreach (var refId in referenceIds)
+            if (newBlockId > 0)
             {
-                _blockController.AddReferenceToBlock(newBlockId, refId);
+                // References
+                Console.Write("\nAdd references to other blocks? (y/n): ");
+                List<int> referenceIds = new List<int>();
+                if (Console.ReadLine().ToLower() == "y")
+                {
+                    ViewAllOriginalBlocks();
+                    Console.Write("\nEnter reference block IDs (comma-separated): ");
+                    try
+                    {
+                        referenceIds = Console.ReadLine().Split(',')
+                            .Select(id => int.Parse(id.Trim())).ToList();
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Invalid input. Skipping references.");
+                    }
+
+                    // Add references
+                    foreach (var refId in referenceIds)
+                    {
+                        _blockController.AddReferenceToBlock(newBlockId, refId);
+                    }
+                }
             }
 
             Console.WriteLine(newBlockId > 0 ? "\n✓ Block created successfully!" : "\n✗ Failed to create block.");
@@ -372,8 +468,28 @@ namespace ContractManagement.View
             Console.WriteLine("=== ALL ORIGINAL BLOCKS ===\n");
             var blocks = _blockController.GetAllOriginalBlocks();
             if (blocks.Count == 0) Console.WriteLine("No blocks found.");
-            else foreach (var b in blocks)
-                    Console.WriteLine($"\n[{b.Org_Cont_ID}] Category: {b.Category_name}\nText: {b.Contract_text}\nCreated: {b.Created_date:yyyy-MM-dd}");
+            else
+            {
+                foreach (var b in blocks)
+                {
+                    string typeIndicator = "";
+                    if (b.Contract_text.Contains("[IMAGE:"))
+                        typeIndicator = " [IMAGE]";
+                    else if (b.Contract_text.Contains("[ADDRESS SECTION]") ||
+                             b.Contract_text.Contains("[SIGNATURE SECTION]") ||
+                             b.Contract_text.Contains("[DATE SECTION]"))
+                        typeIndicator = " [PREFORMATTED]";
+
+                    Console.WriteLine($"\n[{b.Org_Cont_ID}] Category: {b.Category_name}{typeIndicator}");
+
+                    // Truncate long text for display
+                    string displayText = b.Contract_text.Length > 100
+                        ? b.Contract_text.Substring(0, 100) + "..."
+                        : b.Contract_text;
+                    Console.WriteLine($"Text: {displayText}");
+                    Console.WriteLine($"Created: {b.Created_date:yyyy-MM-dd}");
+                }
+            }
             Pause();
         }
 
@@ -383,7 +499,21 @@ namespace ContractManagement.View
             Console.Write("\nEnter Category Name: "); string category = Console.ReadLine();
             var blocks = _blockController.GetOriginalBlocksByCategory(category);
             if (blocks.Count == 0) Console.WriteLine("\nNo blocks found in this category.");
-            else foreach (var b in blocks) Console.WriteLine($"\n[{b.Org_Cont_ID}] {b.Contract_text}");
+            else
+            {
+                foreach (var b in blocks)
+                {
+                    string typeIndicator = "";
+                    if (b.Contract_text.Contains("[IMAGE:"))
+                        typeIndicator = " [IMAGE]";
+                    else if (b.Contract_text.Contains("[ADDRESS SECTION]") ||
+                             b.Contract_text.Contains("[SIGNATURE SECTION]") ||
+                             b.Contract_text.Contains("[DATE SECTION]"))
+                        typeIndicator = " [PREFORMATTED]";
+
+                    Console.WriteLine($"\n[{b.Org_Cont_ID}]{typeIndicator} {b.Contract_text}");
+                }
+            }
             Pause();
         }
 
@@ -576,7 +706,15 @@ namespace ContractManagement.View
 
                 foreach (var rec in recommendations)
                 {
-                    Console.WriteLine($"\nBlock ID: {rec.BlockId} | Category: {rec.Category} | Score: {rec.Score}");
+                    string typeIndicator = "";
+                    if (rec.BlockText.Contains("[IMAGE:"))
+                        typeIndicator = " [IMAGE]";
+                    else if (rec.BlockText.Contains("[ADDRESS SECTION]") ||
+                             rec.BlockText.Contains("[SIGNATURE SECTION]") ||
+                             rec.BlockText.Contains("[DATE SECTION]"))
+                        typeIndicator = " [PREFORMATTED]";
+
+                    Console.WriteLine($"\nBlock ID: {rec.BlockId} | Category: {rec.Category} | Score: {rec.Score}{typeIndicator}");
 
                     string preview = rec.BlockText.Length > 80
                         ? rec.BlockText.Substring(0, 80) + "..."
@@ -603,7 +741,15 @@ namespace ContractManagement.View
             var blocks = _contractController.GetContractBlocks(contractId);
             foreach (var block in blocks)
             {
-                Console.WriteLine($"[{block.Contract_Block_NR}] {block.Contract_text.Substring(0, Math.Min(50, block.Contract_text.Length))}...");
+                string typeIndicator = "";
+                if (block.Contract_text.Contains("[IMAGE:"))
+                    typeIndicator = " [IMAGE]";
+                else if (block.Contract_text.Contains("[ADDRESS SECTION]") ||
+                         block.Contract_text.Contains("[SIGNATURE SECTION]") ||
+                         block.Contract_text.Contains("[DATE SECTION]"))
+                    typeIndicator = " [PREFORMATTED]";
+
+                Console.WriteLine($"[{block.Contract_Block_NR}]{typeIndicator} {block.Contract_text.Substring(0, Math.Min(50, block.Contract_text.Length))}...");
             }
 
             Console.Write("\nEnter Block ID to remove: ");
@@ -620,7 +766,18 @@ namespace ContractManagement.View
             int contractId = ReadInt("\nEnter Contract ID: ");
             var blocks = _contractController.GetBlocksByContract(contractId);
             if (blocks.Count == 0) { Console.WriteLine("No blocks in this contract."); Pause(); return; }
-            foreach (var b in blocks) Console.WriteLine($"[{b.Contract_Block_NR}] {b.Contract_text}");
+            foreach (var b in blocks)
+            {
+                string typeIndicator = "";
+                if (b.Contract_text.Contains("[IMAGE:"))
+                    typeIndicator = " [IMAGE]";
+                else if (b.Contract_text.Contains("[ADDRESS SECTION]") ||
+                         b.Contract_text.Contains("[SIGNATURE SECTION]") ||
+                         b.Contract_text.Contains("[DATE SECTION]"))
+                    typeIndicator = " [PREFORMATTED]";
+
+                Console.WriteLine($"[{b.Contract_Block_NR}]{typeIndicator} {b.Contract_text}");
+            }
             int blockId = ReadInt("\nEnter Block ID to edit: ");
             Console.Write("New Block Text: "); string newText = Console.ReadLine();
             bool success = _contractController.EditBlockInContract(contractId, blockId, newText);
@@ -670,7 +827,18 @@ namespace ContractManagement.View
             if (contract == null) { Console.WriteLine("Contract not found."); Pause(); return; }
             Console.WriteLine($"\nContract: {contract.Company_name}\nCreated: {contract.Created_date:yyyy-MM-dd}");
             var blocks = _contractController.GetBlocksByContract(contractId);
-            foreach (var b in blocks) Console.WriteLine($"[{b.Org_Cont_ID}] {b.Contract_text}");
+            foreach (var b in blocks)
+            {
+                string typeIndicator = "";
+                if (b.Contract_text.Contains("[IMAGE:"))
+                    typeIndicator = " [IMAGE]";
+                else if (b.Contract_text.Contains("[ADDRESS SECTION]") ||
+                         b.Contract_text.Contains("[SIGNATURE SECTION]") ||
+                         b.Contract_text.Contains("[DATE SECTION]"))
+                    typeIndicator = " [PREFORMATTED]";
+
+                Console.WriteLine($"[{b.Org_Cont_ID}]{typeIndicator} {b.Contract_text}");
+            }
             Pause();
         }
 
@@ -744,7 +912,18 @@ namespace ContractManagement.View
             if (contract == null) { Console.WriteLine("Contract not found."); Pause(); return; }
             Console.WriteLine($"\nContract: {contract.Company_name}\nCreated: {contract.Created_date:yyyy-MM-dd}");
             var blocks = _contractController.GetBlocksByContract(contractId);
-            foreach (var b in blocks) Console.WriteLine($"[{b.Org_Cont_ID}] {b.Contract_text}");
+            foreach (var b in blocks)
+            {
+                string typeIndicator = "";
+                if (b.Contract_text.Contains("[IMAGE:"))
+                    typeIndicator = " [IMAGE]";
+                else if (b.Contract_text.Contains("[ADDRESS SECTION]") ||
+                         b.Contract_text.Contains("[SIGNATURE SECTION]") ||
+                         b.Contract_text.Contains("[DATE SECTION]"))
+                    typeIndicator = " [PREFORMATTED]";
+
+                Console.WriteLine($"[{b.Org_Cont_ID}]{typeIndicator} {b.Contract_text}");
+            }
             Pause();
         }
 
