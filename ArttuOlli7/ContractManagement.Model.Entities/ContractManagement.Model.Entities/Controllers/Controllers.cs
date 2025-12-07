@@ -428,7 +428,14 @@ namespace ContractManagement.Controller
             }
             return success;
         }
+
+        public List<OriginalContractBlock> GetAllOriginalBlocks()
+        {
+            return originalDAL.GetAllOriginalBlocks();
+        }
     }
+
+
 
     // ==================== COMMENT CONTROLLER ====================
     public class CommentController

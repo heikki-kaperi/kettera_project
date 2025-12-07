@@ -150,6 +150,48 @@
     <Compile Include="External.Designer.cs">
       <DependentUpon>External.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateContractForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateContractForm.Designer.cs">
+      <DependentUpon>CreateContractForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddBlockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddBlockForm.Designer.cs">
+      <DependentUpon>AddBlockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditBlockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditBlockForm.Designer.cs">
+      <DependentUpon>EditBlockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InviteExternalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InviteExternalForm.Designer.cs">
+      <DependentUpon>InviteExternalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InviteInternalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InviteInternalForm.Designer.cs">
+      <DependentUpon>InviteInternalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RemoveBlockForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoveBlockForm.Designer.cs">
+      <DependentUpon>RemoveBlockForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMyContractsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewMyContractsForm.Designer.cs">
+      <DependentUpon>ViewMyContractsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewAllCategories.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +260,9 @@
     <Compile Include="ViewInternalUsers.Designer.cs">
       <DependentUpon>ViewInternalUsers.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddBlockForm.resx">
+      <DependentUpon>AddBlockForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrator.resx">
       <DependentUpon>Administrator.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateCategory.resx">
       <DependentUpon>CreateCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateContractForm.resx">
+      <DependentUpon>CreateContractForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateExternal.resx">
       <DependentUpon>CreateExternal.cs</DependentUpon>
@@ -236,11 +284,20 @@
     <EmbeddedResource Include="DeleteInternalUsers.resx">
       <DependentUpon>DeleteInternalUsers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditBlockForm.resx">
+      <DependentUpon>EditBlockForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="External.resx">
       <DependentUpon>External.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Internal.resx">
       <DependentUpon>Internal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InviteExternalForm.resx">
+      <DependentUpon>InviteExternalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InviteInternalForm.resx">
+      <DependentUpon>InviteInternalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="logIn.resx">
       <DependentUpon>logIn.cs</DependentUpon>
@@ -254,6 +311,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RemoveBlockForm.resx">
+      <DependentUpon>RemoveBlockForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewAllCategories.resx">
       <DependentUpon>ViewAllCategories.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewInternalUsers.resx">
       <DependentUpon>ViewInternalUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewMyContractsForm.resx">
+      <DependentUpon>ViewMyContractsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
