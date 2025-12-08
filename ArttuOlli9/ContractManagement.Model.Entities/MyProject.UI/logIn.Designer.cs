@@ -34,6 +34,7 @@ namespace MyProject.UI
             this.labelExternal = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.chkShowPassword = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
@@ -173,11 +174,21 @@ namespace MyProject.UI
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // chkShowPassword
+            // 
+            this.chkShowPassword.Location = new System.Drawing.Point(305, 217);
+            this.chkShowPassword.Name = "chkShowPassword";
+            this.chkShowPassword.Size = new System.Drawing.Size(138, 24);
+            this.chkShowPassword.TabIndex = 0;
+            this.chkShowPassword.Text = "Show Password";
+            this.chkShowPassword.CheckedChanged += new System.EventHandler(this.chkShowPassword_CheckedChanged);
+            // 
             // logIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 360);
+            this.Controls.Add(this.chkShowPassword);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.labelExternal);
@@ -215,5 +226,6 @@ namespace MyProject.UI
         private Label labelExternal;
         private Button buttonBack;
         private Button buttonExit;
+        private CheckBox chkShowPassword;
     }
 }

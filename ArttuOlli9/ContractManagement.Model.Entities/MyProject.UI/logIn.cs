@@ -28,6 +28,8 @@ namespace MyProject.UI
             labelExternal.Visible = false;
             //Takaisin nappi piiloon
             buttonBack.Visible = false;
+            //Show Password -checkbox piiloon
+            chkShowPassword.Visible = false;
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
@@ -67,6 +69,8 @@ namespace MyProject.UI
             buttonBack.Visible = true;
             //Piilotetaan Exit-nappi
             buttonExit.Visible = false;
+            //Näytetään Show Password -checkbox
+            chkShowPassword.Visible = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -179,6 +183,9 @@ namespace MyProject.UI
             // Piilota takaisin-nappi
             buttonBack.Visible = false;
 
+            // Piilota Show Password -checkbox
+            chkShowPassword.Visible = false;
+
             // Nollaa valittu käyttäjätyyppi
             selectedUserType = null;
         }
@@ -186,6 +193,12 @@ namespace MyProject.UI
         {
             Application.Exit();
         }
+        private void chkShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            // Jos CheckBox on valittuna, näytä salasana
+            txtPassword.UseSystemPasswordChar = !chkShowPassword.Checked;
+        }
+
 
     }
 }
