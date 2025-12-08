@@ -33,7 +33,7 @@ namespace MyProject.UI
 
         private void myContractsBtn_Click(object sender, EventArgs e)
         {
-            MyContractsReviewer form = new MyContractsReviewer();
+            MyContractsReviewer form = new MyContractsReviewer(_currentUser); // Lisätty _currentUser parametri
             form.ShowDialog();
         }
 

@@ -9,16 +9,27 @@ namespace MyProject.UI
     public partial class MyContractsReviewer : Form
     {
         private ContractController controller = new ContractController();
+        private InternalUser _currentUser; // Lisää tämä
 
-        public MyContractsReviewer()
+        // Muokattu konstruktori ottamaan InternalUser parametrina
+        public MyContractsReviewer(InternalUser currentUser)
         {
             InitializeComponent();
+            _currentUser = currentUser;
             LoadContracts();
         }
 
         private void LoadContracts()
         {
-            List<Contract> contracts = controller.GetAllContracts(); // Hakee kaikki sopimukset
+            // Hae vain sopimukset joihin käyttäjä on kutsuttu revieweriksi
+            List<Contract> contracts = controller.GetContractsToReviewByInternalUser(_currentUser.Int_User_ID);
+
+            if (contracts.Count == 0)
+            {
+                MessageBox.Show("No contracts assigned for review.", "Information",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
             cbContracts.DataSource = contracts;
             cbContracts.DisplayMember = "Company_name"; // Näytetään nimi
             cbContracts.ValueMember = "Contract_NR";    // Käytetään ID:tä
