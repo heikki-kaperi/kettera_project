@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContractManagement.Model.En
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyProject.UI", "MyProject.UI\MyProject.UI.csproj", "{6C84730A-0059-489B-B68C-4537DC6763AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{DFCD6925-87F5-416D-AEF7-64208A709081}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,14 @@ Global
 		{6C84730A-0059-489B-B68C-4537DC6763AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C84730A-0059-489B-B68C-4537DC6763AE}.Release|x64.ActiveCfg = Release|Any CPU
 		{6C84730A-0059-489B-B68C-4537DC6763AE}.Release|x64.Build.0 = Release|Any CPU
+		{DFCD6925-87F5-416D-AEF7-64208A709081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFCD6925-87F5-416D-AEF7-64208A709081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFCD6925-87F5-416D-AEF7-64208A709081}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DFCD6925-87F5-416D-AEF7-64208A709081}.Debug|x64.Build.0 = Debug|Any CPU
+		{DFCD6925-87F5-416D-AEF7-64208A709081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFCD6925-87F5-416D-AEF7-64208A709081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFCD6925-87F5-416D-AEF7-64208A709081}.Release|x64.ActiveCfg = Release|Any CPU
+		{DFCD6925-87F5-416D-AEF7-64208A709081}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
