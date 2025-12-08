@@ -33,6 +33,7 @@ namespace MyProject.UI
             this.labelInternal = new System.Windows.Forms.Label();
             this.labelExternal = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -162,11 +163,22 @@ namespace MyProject.UI
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
+            // buttonExit
+            // 
+            this.buttonExit.Location = new System.Drawing.Point(331, 247);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(75, 23);
+            this.buttonExit.TabIndex = 15;
+            this.buttonExit.Text = "EXIT";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
             // logIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 360);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.labelExternal);
             this.Controls.Add(this.labelInternal);
@@ -202,5 +214,6 @@ namespace MyProject.UI
         private Label labelInternal;
         private Label labelExternal;
         private Button buttonBack;
+        private Button buttonExit;
     }
 }

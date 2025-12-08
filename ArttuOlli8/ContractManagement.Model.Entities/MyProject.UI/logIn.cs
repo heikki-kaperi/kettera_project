@@ -65,6 +65,8 @@ namespace MyProject.UI
             button3.Visible = false;
             // Näytetään takaisin-nappi
             buttonBack.Visible = true;
+            //Piilotetaan Exit-nappi
+            buttonExit.Visible = false;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -171,11 +173,18 @@ namespace MyProject.UI
             button2.Visible = true; // Internal
             button3.Visible = true; // External
 
+            // Näytä Exit-nappi
+            buttonExit.Visible = true;
+
             // Piilota takaisin-nappi
             buttonBack.Visible = false;
 
             // Nollaa valittu käyttäjätyyppi
             selectedUserType = null;
+        }
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
     }
