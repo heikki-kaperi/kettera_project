@@ -90,6 +90,12 @@
     <Compile Include="CreateInternal.Designer.cs">
       <DependentUpon>CreateInternal.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeleteAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteAdministrator.Designer.cs">
+      <DependentUpon>DeleteAdministrator.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeleteExternalUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,12 @@
     </Compile>
     <Compile Include="CopyBlock.Designer.cs">
       <DependentUpon>CopyBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditOriginalBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditOriginalBlock.Designer.cs">
+      <DependentUpon>EditOriginalBlock.cs</DependentUpon>
     </Compile>
     <Compile Include="External.cs">
       <SubType>Form</SubType>

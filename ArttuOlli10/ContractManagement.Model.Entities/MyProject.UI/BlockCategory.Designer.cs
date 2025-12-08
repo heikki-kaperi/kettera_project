@@ -36,6 +36,7 @@
             this.viewBlocksByCategoryBtn = new System.Windows.Forms.Button();
             this.copyBlockBtn = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
+            this.btnEditOriginalBlock = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +92,7 @@
             // 
             this.viewBlocksByCategoryBtn.Location = new System.Drawing.Point(275, 231);
             this.viewBlocksByCategoryBtn.Name = "viewBlocksByCategoryBtn";
-            this.viewBlocksByCategoryBtn.Size = new System.Drawing.Size(202, 23);
+            this.viewBlocksByCategoryBtn.Size = new System.Drawing.Size(186, 23);
             this.viewBlocksByCategoryBtn.TabIndex = 5;
             this.viewBlocksByCategoryBtn.Text = "View Blocks by Category";
             this.viewBlocksByCategoryBtn.UseVisualStyleBackColor = true;
@@ -99,7 +100,7 @@
             // 
             // copyBlockBtn
             // 
-            this.copyBlockBtn.Location = new System.Drawing.Point(275, 261);
+            this.copyBlockBtn.Location = new System.Drawing.Point(275, 260);
             this.copyBlockBtn.Name = "copyBlockBtn";
             this.copyBlockBtn.Size = new System.Drawing.Size(129, 23);
             this.copyBlockBtn.TabIndex = 6;
@@ -109,7 +110,7 @@
             // 
             // backBtn
             // 
-            this.backBtn.Location = new System.Drawing.Point(275, 291);
+            this.backBtn.Location = new System.Drawing.Point(275, 318);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(75, 23);
             this.backBtn.TabIndex = 7;
@@ -117,11 +118,22 @@
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // btnEditOriginalBlock
+            // 
+            this.btnEditOriginalBlock.Location = new System.Drawing.Point(275, 289);
+            this.btnEditOriginalBlock.Name = "btnEditOriginalBlock";
+            this.btnEditOriginalBlock.Size = new System.Drawing.Size(174, 23);
+            this.btnEditOriginalBlock.TabIndex = 8;
+            this.btnEditOriginalBlock.Text = "Modify Existing Block";
+            this.btnEditOriginalBlock.UseVisualStyleBackColor = true;
+            this.btnEditOriginalBlock.Click += new System.EventHandler(this.btnEditOriginalBlock_Click);
+            // 
             // BlockCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEditOriginalBlock);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.copyBlockBtn);
             this.Controls.Add(this.viewBlocksByCategoryBtn);
@@ -148,5 +160,6 @@
         private System.Windows.Forms.Button viewBlocksByCategoryBtn;
         private System.Windows.Forms.Button copyBlockBtn;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.Button btnEditOriginalBlock;
     }
 }

@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
 using ContractManagement.Controller;
+using ContractManagement.View;
 
 namespace MyProject.UI
 {
     public partial class Administrator : Form
     {
+        private int userId; // Admin ID tallennetaan tähän
         private UserController _userController;
 
-        public Administrator()
+        // Poista tämä tyhjä constructor kokonaan tai käytä vain yhtä
+        public Administrator(int adminId)
         {
             InitializeComponent();
+            this.userId = adminId; // Tallenna admin ID
             _userController = new UserController();
         }
 
@@ -49,6 +53,7 @@ namespace MyProject.UI
             DeleteExternalUsers deleteForm = new DeleteExternalUsers(_userController);
             deleteForm.ShowDialog();
         }
+
         private void button7_Click_1(object sender, EventArgs e)
         {
             var result = MessageBox.Show(
@@ -59,16 +64,21 @@ namespace MyProject.UI
 
             if (result == DialogResult.Yes)
             {
-                this.Hide(); // Piilota Administrator-ikkuna
-
-                // Avaa kirjautumislomake uudelleen (vaihda Login nimeen omaksesi)
+                this.Hide();
                 logIn loginForm = new logIn();
                 loginForm.ShowDialog();
-
-                this.Close(); // Sulje Administrator-lomake lopullisesti
+                this.Close();
             }
         }
 
+        private void btnDeleteAdmin_Click(object sender, EventArgs e)
+        {
+            DeleteAdministrator deleteForm = new DeleteAdministrator(this.userId); // Käytä userId, ei adminId
+            deleteForm.ShowDialog();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

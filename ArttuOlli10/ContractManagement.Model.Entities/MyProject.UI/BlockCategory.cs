@@ -69,6 +69,12 @@ namespace MyProject.UI
 
         private void BlockCategory_Load(object sender, EventArgs e)
         {
+
+        }
+        private void btnEditOriginalBlock_Click(object sender, EventArgs e)
+        {
+            EditOriginalBlock form = new EditOriginalBlock();
+            form.ShowDialog();
         }
     }
 }

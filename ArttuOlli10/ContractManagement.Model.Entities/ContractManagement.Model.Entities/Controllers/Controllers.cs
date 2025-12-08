@@ -108,6 +108,7 @@ namespace ContractManagement.Controller
                 Description = description
             });
         }
+       
 
         public bool UpdateOriginalBlock(OriginalContractBlock block)
         {
@@ -273,6 +274,7 @@ namespace ContractManagement.Controller
             };
             return blockDAL.CreateContractBlock(compositeBlock);
         }
+       
 
     }
 

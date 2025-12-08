@@ -85,8 +85,8 @@ namespace MyProject.UI
                 {
                     MessageBox.Show("Administrator login successful!");
                     // Avaa Administrator-ikkuna
-                    Administrator adminForm = new Administrator();
-                    adminForm.Show();
+                    Administrator adminForm = new Administrator(adminId); // Lähetä admin ID
+                    adminForm.ShowDialog();
                     // Piilota login-ikkuna
                     this.Hide();
                 }
