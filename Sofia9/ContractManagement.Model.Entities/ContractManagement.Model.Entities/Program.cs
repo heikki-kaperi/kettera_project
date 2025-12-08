@@ -17,32 +17,40 @@ namespace ContractManagement.View
         }
     }
 
-    //LISÄSIN TÄMÄN
+   
     // ============= ABSTRACT USER SESSION ================
     public abstract class UserSession
     {
+        //suojatut kentät, joihin aliluokat pääsee käsiks
         protected string Username;
         protected int UserId;
 
+        //konstruktori, joka asettaa käyttäjän ID:n ja nimen
         public UserSession(int userId, string username)
         {
             UserId = userId;
             Username = username;
         }
 
+        //abstrakti metodi
         public abstract void ShowMenu();
 
+        //metodi, joka pysäyttää ohjelman kunnes käyttäjä painaa näppäintä
         protected void Pause()
         {
             Console.WriteLine("\nPress any key to continue...");
             Console.ReadKey();
         }
 
+        //metodi, joka lukee käyttäjältä kokonaisluvun
+        //palauttaa -1, jos syöte ei oo kelvollinen numero
         protected int ReadInt(string prompt)
         {
             Console.Write(prompt);
+            //yrittää muuttaa käyttäjän syötteen numeroks
             if (int.TryParse(Console.ReadLine(), out int result))
                 return result;
+            //palauttaa -1, jos muunnos epäonnistu
             return -1;
         }
     }
@@ -50,14 +58,17 @@ namespace ContractManagement.View
     // ================== ADMIN SESSION ===================
     public class AdminSession : UserSession
     {
+        //näillä admin voi hallita käyttäjii ja admin-äänestyksii
         private UserController _userController = new UserController();
         private AdministratorController _adminController = new AdministratorController();
 
+        //kutsuu yliluokan (UserSession) konstruktorii
         public AdminSession(int userId, string username) : base(userId, username) { }
 
+        //päävalikko, jonka admin näkee
         public override void ShowMenu()
         {
-            while (true)
+            while (true) //valikko toistuu kunnes käyttäjä valkkaa "0"
             {
                 Console.Clear();
                 Console.WriteLine("===========================================");
@@ -74,6 +85,7 @@ namespace ContractManagement.View
                 Console.WriteLine("0. Logout");
                 Console.Write("\nSelect option: ");
 
+                //valikon syötteiden käsittely
                 switch (Console.ReadLine())
                 {
                     case "1": CreateInternalUser(); break;
@@ -90,25 +102,32 @@ namespace ContractManagement.View
             }
         }
 
+        //uuden sisäsen käyttäjän luominen
         private void CreateInternalUser()
         {
             Console.Clear();
             Console.WriteLine("=== CREATE INTERNAL USER ===\n");
+
+            //kysytää käyttäjätiedot
             Console.Write("First Name: "); string firstName = Console.ReadLine();
             Console.Write("Last Name: "); string lastName = Console.ReadLine();
             Console.Write("Email: "); string email = Console.ReadLine();
             Console.Write("Username: "); string username = Console.ReadLine();
             Console.Write("Password: "); string password = Console.ReadLine();
 
+            //tiedot lähtee kontrollerille
             bool success = _userController.CreateInternalUser(firstName, lastName, email, username, password);
             Console.WriteLine(success ? "\n✓ Internal user created successfully!" : "\n✗ Failed to create user.");
             Pause();
         }
 
+        //uuden ulkosen käyttäjän luominen
         private void CreateExternalUser()
         {
             Console.Clear();
             Console.WriteLine("=== CREATE EXTERNAL USER ===\n");
+
+            //kysytää käyttäjätiedot
             Console.Write("First Name: "); string firstName = Console.ReadLine();
             Console.Write("Last Name: "); string lastName = Console.ReadLine();
             Console.Write("Company Name: "); string company = Console.ReadLine();
@@ -116,11 +135,13 @@ namespace ContractManagement.View
             Console.Write("Username: "); string username = Console.ReadLine();
             Console.Write("Password: "); string password = Console.ReadLine();
 
+            //tiedot lähtee kontrollerille
             bool success = _userController.CreateExternalUser(firstName, lastName, company, email, username, password);
             Console.WriteLine(success ? "\n✓ External user created successfully!" : "\n✗ Failed to create user.");
             Pause();
         }
 
+        //näyttää kaikki sisäset käyttäjät
         private void ViewAllInternalUsers()
         {
             Console.Clear();
@@ -132,6 +153,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //näyttää kaikki ulkoset käyttäjät
         private void ViewAllExternalUsers()
         {
             Console.Clear();
@@ -143,6 +165,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //sisäsen käyttäjän poistaminen ID:n perusteel
         private void DeleteInternalUser()
         {
             ViewAllInternalUsers();
@@ -156,6 +179,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //ulkosen käyttäjän poistaminen ID:n perusteel
         private void DeleteExternalUser()
         {
             ViewAllExternalUsers();
@@ -169,16 +193,18 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //adminin poistaminen äänestyksen avulla
         private void DeleteAdministratorVoting()
         {
             Console.Clear();
             Console.WriteLine("=== ADMINISTRATOR DELETION VOTING ===\n");
 
-            // List all admins except current
+            //haetaan kaikki adminit
             var admins = _userController.GetAllAdministrators();
             Console.WriteLine("Administrators:");
             foreach (var admin in admins)
             {
+                //itse ei näy listalla poistettavien joukossa
                 if (admin.Administrator_ID != UserId)
                     Console.WriteLine($"[{admin.Administrator_ID}] {admin.First_name} {admin.Last_name}");
             }
@@ -198,12 +224,13 @@ namespace ContractManagement.View
                 return;
             }
 
+            //tallennetaan adminin antama ääni
             bool voted = _adminController.VoteToDeleteAdmin(targetAdminId, UserId);
             if (voted)
             {
                 Console.WriteLine("✓ Vote recorded!");
 
-                // Check if enough votes to delete
+                //admin poistetaan mikäli ääniä on tarpeeks
                 bool deleted = _adminController.TryDeleteAdmin(targetAdminId);
                 if (deleted)
                     Console.WriteLine("\n*** Administrator REMOVED from system! ***");
@@ -216,6 +243,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //siirretää olemassaolevat salasanat hash-muotoon
         private void MigratePasswords()
         {
             Console.Clear();
@@ -228,13 +256,16 @@ namespace ContractManagement.View
     // ================ INTERNAL USER SESSION =================
     public class InternalUserSession : UserSession
     {
+        //kontrollerit jotka hallitsee blokkeja, sopimuksia, kommentteja ja hyväksyntöjä
         private BlockController _blockController = new BlockController();
         private ContractController _contractController = new ContractController();
         private CommentController _commentController = new CommentController();
         private ApprovalController _approvalController = new ApprovalController();
 
+        // konstruktori kutsuu yliluokan (UserSession) konstruktorii
         public InternalUserSession(int userId, string username) : base(userId, username) { }
 
+        //päävalikko internal userille
         public override void ShowMenu()
         {
             while (true)
@@ -252,6 +283,7 @@ namespace ContractManagement.View
                 Console.WriteLine("0. Logout");
                 Console.Write("\nSelect option: ");
 
+                //valikon valintojen käsittely
                 switch (Console.ReadLine())
                 {
                     case "1": BlockManagementMenu(); break;
@@ -294,23 +326,27 @@ namespace ContractManagement.View
                     case "6": CopyBlock(); break;
                     case "7": AddReferenceToBlockUI(); break;
                     case "8": CreateCompositeBlockUI(); break;
-                    case "0": return;
+                    case "0": return; //poistuu lohkojen hallinnast
                     default: Console.WriteLine("Invalid option."); Pause(); break;
                 }
             }
         }
 
+        //uuden kategorian luonti
         private void CreateCategory()
         {
             Console.Clear();
             Console.WriteLine("=== CREATE CATEGORY ===\n");
             Console.Write("Category Name: "); string name = Console.ReadLine();
             Console.Write("Description: "); string description = Console.ReadLine();
+
+            //pyytää BlockControlleria luomaan kategorian
             bool success = _blockController.CreateCategory(name, description);
             Console.WriteLine(success ? "\n✓ Category created successfully!" : "\n✗ Failed to create category.");
             Pause();
         }
 
+        //näyttää kaikki kategoriat
         private void ViewAllCategories()
         {
             Console.Clear();
@@ -322,11 +358,14 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //luo uuden alkuperäsen blokin
         private void CreateOriginalBlock()
         {
+            //näyttää kaikki kategoriat
             ViewAllCategories();
             Console.Write("\nCategory Name: "); string category = Console.ReadLine();
-            // Select block type
+            
+            //valitsee blokin tyypin, teksti, esimuoto vai kuva
             Console.WriteLine("\n=== SELECT BLOCK TYPE ===");
             Console.WriteLine("1. Text Block");
             Console.WriteLine("2. Preformatted Section (e.g., address, signature space)");
@@ -338,15 +377,16 @@ namespace ContractManagement.View
             string text = "";
             byte[] mediaContent = null;
 
+            //looginen valinta blokin tyypille
             switch (typeChoice)
             {
-                case "1":
+                case "1": //tekstiblokki
                     blockType = BlockType.Text;
                     Console.Write("\nBlock Text: ");
                     text = Console.ReadLine();
                     break;
 
-                case "2":
+                case "2": //esimuotonen blokki
                     blockType = BlockType.Text;
                     Console.WriteLine("\n=== PREFORMATTED SECTION TEMPLATES ===");
                     Console.WriteLine("1. Address Section");
@@ -355,7 +395,7 @@ namespace ContractManagement.View
                     Console.WriteLine("4. Custom Preformatted");
                     Console.Write("Choice: ");
                     string templateChoice = Console.ReadLine();
-
+                    //valitaa valmis template tai käyttäjän oma teksti
                     switch (templateChoice)
                     {
                         case "1":
@@ -390,7 +430,7 @@ namespace ContractManagement.View
                     Console.WriteLine("\n✓ Preformatted section created!");
                     break;
 
-                case "3":
+                case "3": //kuvablokki
                     blockType = BlockType.Image;
                     Console.Write("\nEnter image file path: ");
                     string imagePath = Console.ReadLine();
@@ -399,7 +439,7 @@ namespace ContractManagement.View
                     {
                         try
                         {
-                            mediaContent = System.IO.File.ReadAllBytes(imagePath);
+                            mediaContent = System.IO.File.ReadAllBytes(imagePath); //lataa kuvan bittitaulukoks
                             text = $"[IMAGE: {System.IO.Path.GetFileName(imagePath)}]";
                             Console.WriteLine("✓ Image loaded successfully!");
                         }
@@ -421,14 +461,14 @@ namespace ContractManagement.View
                     }
                     break;
 
-                default:
+                default: //oletuksena tekstilohko
                     Console.WriteLine("Invalid choice. Using text block.");
                     Console.Write("\nBlock Text: ");
                     text = Console.ReadLine();
                     break;
             }
 
-            // Create the original block through BlockController
+            //luo blokin kontrollerin kautta
             var originalBlock = new OriginalContractBlock
             {
                 Category_name = category,
@@ -439,9 +479,10 @@ namespace ContractManagement.View
 
             int newBlockId = _blockController.CreateOriginalBlockWithType(originalBlock, blockType, mediaContent);
 
+            //mahdolliset viittaukset muihin lohkoihin
             if (newBlockId > 0)
             {
-                // References
+                //referenssit
                 Console.Write("\nAdd references to other blocks? (y/n): ");
                 List<int> referenceIds = new List<int>();
                 if (Console.ReadLine().ToLower() == "y")
@@ -458,7 +499,7 @@ namespace ContractManagement.View
                         Console.WriteLine("Invalid input. Skipping references.");
                     }
 
-                    // Add references
+                    //lisää referenssei
                     foreach (var refId in referenceIds)
                     {
                         _blockController.AddReferenceToBlock(newBlockId, refId);
@@ -470,6 +511,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //näyttää kaikki alkuperäset blokit
         private void ViewAllOriginalBlocks()
         {
             Console.Clear();
@@ -480,7 +522,7 @@ namespace ContractManagement.View
             {
                 foreach (var b in blocks)
                 {
-                    string typeIndicator = "";
+                    string typeIndicator = ""; //merkittee kuvii ja esimuotosii blokkei
                     if (b.Contract_text.Contains("[IMAGE:"))
                         typeIndicator = " [IMAGE]";
                     else if (b.Contract_text.Contains("[ADDRESS SECTION]") ||
@@ -490,7 +532,7 @@ namespace ContractManagement.View
 
                     Console.WriteLine($"\n[{b.Org_Cont_ID}] Category: {b.Category_name}{typeIndicator}");
 
-                    // Truncate long text for display
+                    //näyttää ekat 100 merkkii tekstistä
                     string displayText = b.Contract_text.Length > 100
                         ? b.Contract_text.Substring(0, 100) + "..."
                         : b.Contract_text;
@@ -501,16 +543,20 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //näyttää blokit kategorian perusteel
         private void ViewBlocksByCategory()
         {
-            ViewAllCategories();
+            ViewAllCategories(); //näyttää ensiks kategoriat
             Console.Write("\nEnter Category Name: "); string category = Console.ReadLine();
+
+            //hakee kyseisen kategorian blokit
             var blocks = _blockController.GetOriginalBlocksByCategory(category);
             if (blocks.Count == 0) Console.WriteLine("\nNo blocks found in this category.");
             else
             {
                 foreach (var b in blocks)
                 {
+                    //merkitään kuvat ja esimuotoset blokit
                     string typeIndicator = "";
                     if (b.Contract_text.Contains("[IMAGE:"))
                         typeIndicator = " [IMAGE]";
@@ -525,9 +571,10 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //kopioi olemassa olevan blokin
         private void CopyBlock()
         {
-            ViewAllOriginalBlocks();
+            ViewAllOriginalBlocks(); //näyttää blokit käyttäjälle
             Console.Write("\nEnter Original Block ID to copy: ");
             if (!int.TryParse(Console.ReadLine(), out int id))
             {
@@ -535,7 +582,7 @@ namespace ContractManagement.View
                 Pause();
                 return;
             }
-            bool success = _blockController.CopyOriginalBlock(id, UserId);
+            bool success = _blockController.CopyOriginalBlock(id, UserId); //kutsuu kontrollerii kopiointiin
 
             if (success)
             {
@@ -547,11 +594,12 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //lisää referenssin olemassa olevaan blokkiin
         private void AddReferenceToBlockUI()
         {
             Console.Clear();
             Console.WriteLine("=== ADD REFERENCE TO BLOCK ===\n");
-            ViewAllOriginalBlocks();
+            ViewAllOriginalBlocks(); //näyttää blokit
 
             Console.Write("\nEnter Block ID to add reference to: ");
             if (!int.TryParse(Console.ReadLine(), out int blockId)) return;
@@ -564,6 +612,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //luo blokin, joka koostuu useista blokeista
         private void CreateCompositeBlockUI()
         {
             Console.Clear();
@@ -577,6 +626,7 @@ namespace ContractManagement.View
             List<int> childIds;
             try
             {
+                //muuttaa käyttäjän syöttämän listan int-listaks
                 childIds = idsInput.Split(',').Select(id => int.Parse(id.Trim())).ToList();
             }
             catch
@@ -628,6 +678,7 @@ namespace ContractManagement.View
         }
 
         // ============ CONTRACT METHODS ====================
+        //luo uuden sopimuksen
         private void CreateContract()
         {
             Console.Clear();
@@ -641,6 +692,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //näyttää omat sopimukset
         private void ViewMyContracts()
         {
             Console.Clear();
@@ -665,6 +717,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //lisää blokin sopimukseen
         private void AddBlockToContract()
         {
             Console.Clear();
@@ -677,7 +730,7 @@ namespace ContractManagement.View
 
             while (continueAdding)
             {
-                ViewAllOriginalBlocks();
+                ViewAllOriginalBlocks(); //näyttää blokit
 
                 Console.Write("\nEnter Original Block ID to add (or 0 to finish): ");
                 if (!int.TryParse(Console.ReadLine(), out int blockId) || blockId == 0)
@@ -688,7 +741,7 @@ namespace ContractManagement.View
                 if (success)
                 {
                     Console.WriteLine("\n✓ Block added to contract!");
-                    ShowRecommendations(contractId);
+                    ShowRecommendations(contractId); //näyttää suositellut blokit
 
                     Console.Write("\nAdd another block? (y/n): ");
                     continueAdding = Console.ReadLine()?.ToLower() == "y";
@@ -703,6 +756,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //näyttää suositukset sopimukseen lisättäväks
         private void ShowRecommendations(int contractId)
         {
             var recommendations = _contractController.GetContractRecommendations(contractId, 5);
@@ -738,6 +792,7 @@ namespace ContractManagement.View
             }
         }
 
+        //poistaa blokin sopimuksesta
         private void RemoveBlockFromContract()
         {
             Console.Clear();
@@ -768,6 +823,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //muokkaa blokkia sopimuksessa
         private void EditBlockInContract()
         {
             ViewMyContracts();
@@ -793,6 +849,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //kutsuu sisäisen tarkastajan sopimukseen
         private void InviteInternalReviewers()
         {
             ViewMyContracts();
@@ -805,6 +862,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //kutsuu ulkosen käyttäjän sopimukseen
         private void InviteExternalUsers()
         {
             ViewMyContracts();
@@ -817,6 +875,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //näyttää sopimukset joissa käyttäjä on tarkastajana
         private void ViewMyContractsAsReviewer()
         {
             Console.Clear();
@@ -828,6 +887,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //näyttää yksittäisen sopimuksen tiedot ja blokit
         private void ViewContractDetails()
         {
             int contractId = ReadInt("\nEnter Contract ID to view details: ");
@@ -857,6 +917,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //lisää kommentin sopimukseen
         private void AddCommentToContract()
         {
             int contractId = ReadInt("\nEnter Contract ID to comment: ");
@@ -866,6 +927,7 @@ namespace ContractManagement.View
             Pause();
         }
 
+        //hyväksyy sopimuksen
         private void ApproveContractMenu()
         {
             int contractId = ReadInt("\nEnter Contract ID to approve: ");
@@ -879,11 +941,14 @@ namespace ContractManagement.View
     // ============= EXTERNAL USER SESSION ===================
     public class ExternalUserSession : UserSession
     {
+        //kontrollerit sopimusten ja kommenttien hallintaan
         private ContractController _contractController = new ContractController();
         private CommentController _commentController = new CommentController();
 
+        //konstruktori, joka välittää käyttäjätunnuksen ja käyttäjänimen perusluokalle
         public ExternalUserSession(int userId, string username) : base(userId, username) { }
 
+        //näyttää ulkosen käyttäjän päävalikon
         public override void ShowMenu()
         {
             while (true)
@@ -892,9 +957,9 @@ namespace ContractManagement.View
                 Console.WriteLine("===========================================");
                 Console.WriteLine($"   EXTERNAL USER MENU - {Username}");
                 Console.WriteLine("===========================================");
-                Console.WriteLine("1. View My Contracts");
-                Console.WriteLine("2. View Contract Details");
-                Console.WriteLine("3. Comment on Contract");
+                Console.WriteLine("1. View My Contracts"); //näyttää sopimukset joihin käyttäjä on kutsuttu
+                Console.WriteLine("2. View Contract Details"); //näyttää valitun sopimuksen tiedot ja blokit
+                Console.WriteLine("3. Comment on Contract"); //lisää kommentin sopimukseen
                 Console.WriteLine("0. Logout");
                 Console.Write("\nSelect option: ");
 
@@ -903,34 +968,37 @@ namespace ContractManagement.View
                     case "1": ViewMyContracts(); break;
                     case "2": ViewContractDetails(); break;
                     case "3": AddCommentToContract(); break;
-                    case "0": return;
+                    case "0": return; //paluu päävalikost, kirjautuu ulos
                     default: Console.WriteLine("Invalid option."); Pause(); break;
                 }
             }
         }
 
+        //näyttää kaikki sopimukset joihin käyttäjä on kutsuttu
         private void ViewMyContracts()
         {
             Console.Clear();
             Console.WriteLine("=== MY CONTRACTS (INVITED) ===");
-            var contracts = _contractController.GetContractsByExternalUser(UserId);
+            var contracts = _contractController.GetContractsByExternalUser(UserId); //hakee sopimukset
             if (contracts.Count == 0)
                 Console.WriteLine("No contracts found. You haven't been invited to any contracts yet.");
             else
             {
                 foreach (var c in contracts)
                 {
+                    //näyttää sopimuksen numeron, yrityksen nimen ja luontipäivän
                     Console.WriteLine($"[{c.Contract_NR}] {c.Company_name} (Created: {c.Created_date:yyyy-MM-dd})");
                 }
             }
             Pause();
         }
 
+        //näyttää yksittäisen sopimuksen tiedot ja blokit
         private void ViewContractDetails()
         {
             int contractId = ReadInt("\nEnter Contract ID to view details: ");
 
-            // Check if user is invited to this contract
+            //tarkistaa onko käyttäjä kutsuttu tähän sopimukseen
             if (!_contractController.IsExternalUserInvitedToContract(contractId, UserId))
             {
                 Console.WriteLine("\n✗ Access denied. You are not invited to this contract.");
@@ -946,10 +1014,12 @@ namespace ContractManagement.View
                 return;
             }
 
+            //näyttää sopimuksen tiedot
             Console.WriteLine($"\nContract: {contract.Company_name}\nCreated: {contract.Created_date:yyyy-MM-dd}");
-            var blocks = _contractController.GetBlocksByContract(contractId);
+            var blocks = _contractController.GetBlocksByContract(contractId); //hakee sopimuksen blokit
             foreach (var b in blocks)
             {
+                //merkittee kuvat ja esimuotoset blokit
                 string typeIndicator = "";
                 if (b.Contract_text.Contains("[IMAGE:"))
                     typeIndicator = " [IMAGE]";
@@ -958,25 +1028,29 @@ namespace ContractManagement.View
                          b.Contract_text.Contains("[DATE SECTION]"))
                     typeIndicator = " [PREFORMATTED]";
 
+                //näyttää blokin ID:n, tyypin ja tekstin
                 Console.WriteLine($"[{b.Org_Cont_ID}]{typeIndicator} {b.Contract_text}");
             }
             Pause();
         }
 
+        //lisää kommentin sopimukseen
         private void AddCommentToContract()
         {
             int contractId = ReadInt("\nEnter Contract ID to comment: ");
 
-            // Check if user is invited to this contract
+            //tarkistaa onko käyttäjä kutsuttu tähän sopimukseen
             if (!_contractController.IsExternalUserInvitedToContract(contractId, UserId))
             {
                 Console.WriteLine("\n✗ Access denied. You can only comment on contracts you've been invited to.");
                 Pause();
                 return;
             }
-
+            //kysyy kommentin sisällön
             Console.Write("Comment Text: ");
             string text = Console.ReadLine();
+
+            //lisää kommentin tietokantaan
             bool success = _commentController.AddComment(contractId, null, UserId, "External", text);
             Console.WriteLine(success ? "\n✓ Comment added!" : "\n✗ Failed to add comment.");
             Pause();
@@ -986,45 +1060,57 @@ namespace ContractManagement.View
     // ==================== CONSOLE UI ====================
     public class ConsoleUI
     {
+        //käyttäjätiliin liittyvät toiminnot, kirjautuminen, tietojen haku jne.
         private UserController _userController = new UserController();
 
+        //sovelluksen aloitus
         public void Start()
         {
             Console.WriteLine("===========================================");
             Console.WriteLine("   CONTRACT MANAGEMENT SYSTEM");
             Console.WriteLine("===========================================\n");
 
+            //pääsilmukka joka ei lopu
             while (true)
             {
+                //kirjautuu sisään -> palauttaa UserSession-olion
                 UserSession session = Login();
+
+                //jos kirjautuminen onnistu, avaa käyttäjän oman valikon
                 if (session != null) session.ShowMenu();
             }
         }
 
+        //kirjautuminen ja käyttäjätyypin valinta
         private UserSession Login()
         {
             Console.WriteLine("LOGIN");
-            Console.WriteLine("1. Administrator Login");
-            Console.WriteLine("2. Internal User Login");
-            Console.WriteLine("3. External User Login");
-            Console.WriteLine("0. Exit");
+            Console.WriteLine("1. Administrator Login"); //admin
+            Console.WriteLine("2. Internal User Login"); //sisänen käyttäjä
+            Console.WriteLine("3. External User Login"); //ulkonen käyttäjä
+            Console.WriteLine("0. Exit"); //lopettaa sovelluksen
             Console.Write("\nSelect login type: ");
 
             string choice = Console.ReadLine();
 
+            //sovelluksesta poistuminen
             if (choice == "0")
             {
                 Console.WriteLine("\nExiting application...");
-                Environment.Exit(0);
+                Environment.Exit(0); //lopettaa ohjelman kokonaan
             }
 
+            //pyytää käyttäjätunnuksen ja salasanan
             Console.Write("Username: "); string username = Console.ReadLine();
             Console.Write("Password: "); string password = Console.ReadLine();
 
+            //valittee kirjautumistavan käyttäjätyypin mukaan
             switch (choice)
             {
+                //adminin kirjautuminen
                 case "1":
                     var admin = _userController.LoginAdministrator(username, password);
+                    //jos kirjautuminen onnistu, palauttaa adminin session
                     if (admin != null)
                     {
                         Console.WriteLine($"\nWelcome, Administrator {admin.First_name} {admin.Last_name}!");
@@ -1032,6 +1118,7 @@ namespace ContractManagement.View
                         return new AdminSession(admin.Administrator_ID, admin.Username);
                     }
                     break;
+                //sisäsen käyttäjän kirjautuminen
                 case "2":
                     var intUser = _userController.LoginInternalUser(username, password);
                     if (intUser != null)
@@ -1041,6 +1128,7 @@ namespace ContractManagement.View
                         return new InternalUserSession(intUser.Int_User_ID, intUser.Username);
                     }
                     break;
+                //ulkosen käyttäjän kirjautuminen
                 case "3":
                     var extUser = _userController.LoginExternalUser(username, password);
                     if (extUser != null)
@@ -1051,11 +1139,13 @@ namespace ContractManagement.View
                     }
                     break;
             }
+            //kirjautumisen epäonnistuessa
             Console.WriteLine("\nInvalid username or password.");
             Pause();
-            return null;
+            return null; //palaa Start()-metodin silmukkaan
         }
 
+        //tauko, jotta käyttäjä näkee viestin
         private void Pause()
         {
             Console.WriteLine("\nPress any key to continue...");
