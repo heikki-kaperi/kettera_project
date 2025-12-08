@@ -429,20 +429,23 @@
                                 }
                                 echo '</div>';
                                 
-                                // Block content based on type
-                                if ($block['Type'] == 1 && !empty($block['MediaContent'])) {
-                                    // Image block
+                            // Block content based on type
+                            if ($block['Type'] == 1) {
+                                // Image block
+                                if (!empty($block['MediaContent']) && $block['MediaContent'] !== '0') {
                                     echo '<div class="block-image">';
                                     $imageData = base64_encode($block['MediaContent']);
                                     echo '<img src="data:image/jpeg;base64,' . $imageData . '" alt="Contract Image">';
                                     echo '</div>';
-                                    
-                                    // Show text if any
-                                    if (!empty($block['Contract_text'])) {
-                                        echo '<div class="block-content">';
-                                        echo nl2br(htmlspecialchars($block['Contract_text']));
-                                        echo '</div>';
-                                    }
+                                }
+                                
+                                // Show text if any
+                                if (!empty($block['Contract_text'])) {
+                                    echo '<div class="block-content">';
+                                    echo nl2br(htmlspecialchars($block['Contract_text']));
+                                    echo '</div>';
+                                }
+                            
                                 } else {
                                     // Text block
                                     echo '<div class="block-content">';
