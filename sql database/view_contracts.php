@@ -278,7 +278,6 @@
 </head>
 <body>
     <div class="container">
-        <h1>📄 Contract Viewer</h1>
         
         <?php
         // Database connection
