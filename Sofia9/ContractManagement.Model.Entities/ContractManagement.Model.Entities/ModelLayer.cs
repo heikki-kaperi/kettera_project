@@ -11,6 +11,7 @@ using ZstdSharp.Unsafe;
 namespace ContractManagement.Model.Entities
 {
 
+    //enum, joka kuvaa blokin tyypin (teksti, kuva tai muu)
     public enum BlockType
     {
         Text,
@@ -18,8 +19,10 @@ namespace ContractManagement.Model.Entities
         Other
     }
 
+    //admin-käyttäjää kuvaava tietomalli
     public class Administrator
     {
+        //admin ID
         public int Administrator_ID { get; set; }
         public string First_name { get; set; }
         public string Last_name { get; set; }
@@ -27,6 +30,7 @@ namespace ContractManagement.Model.Entities
         public string Password { get; set; }
     }
 
+    //sisästä käyttäjää kuvaava tietomalli
     public class InternalUser
     {
         public int Int_User_ID { get; set; }
@@ -37,6 +41,7 @@ namespace ContractManagement.Model.Entities
         public string Email { get; set; }
     }
 
+    //ulkosta käyttäjää kuvaava tietomalli
     public class ExternalUser
     {
         public int Ext_User_ID { get; set; }
@@ -48,80 +53,155 @@ namespace ContractManagement.Model.Entities
         public string Password { get; set; }
     }
 
+    //sopimusblokin kategorian tietomalli
     public class ContractBlockCategory
     {
         public string Category_name { get; set; }
         public string Description { get; set; }
     }
 
+    //alkuperänen (mallipohjanen) sopimusblokki
     public class OriginalContractBlock
     {
         public int Org_Cont_ID { get; set; }
         public string Category_name { get; set; }
         public string Contract_text { get; set; }
+
+        //blokin luonut käyttäjä
         public int Created_by { get; set; }
         public DateTime Created_date { get; set; }
     }
 
+    //sopimukseen lisätty yksittäinen blokki
     public class ContractBlock
     {
+        //sopimuksen blokin ID
         public int Contract_Block_NR { get; set; }
+
+        //viittaus alkuperäseen blokkiin (jos käytetty)
         public int Org_Cont_ID { get; set; }
+
+        //blokin sisältö
         public string Contract_text { get; set; }
+
+        //onko blokki uusi verrattuna alkuperäseen
         public bool New { get; set; }
+
+        //muokkauspäivämäärä
         public DateTime Modified_date { get; set; }
+
+        //luontipäivämäärä
         public DateTime Created_date { get; set; }
+
+        //kuka loi blokin
         public int Created_by { get; set; }
+
+        //blokin tyyppi (teksti, kuva,...)
         public BlockType Type { get; set; }
+
+        //media (esim. kuvat) binääridatana
         public byte[] MediaContent { get; set; }
 
+        //mahdollinen parent-blokin ID (hierarkiaa varten)
         public int? Parent_Block_NR { get; set; }
+
+        //blokin aliblokit
         public List<ContractBlock> ChildBlocks { get; set; } = new List<ContractBlock>();
+
+        //lista muista blokeista joihin tämä viittaa
         public List<int> References { get; set; } = new List<int>();
     }
 
+    //blokkien välisiä viittauksii kuvaava malli
     public class ContractBlockReference
     {
         public int Reference_ID { get; set; }
+
+        //blokki josta viitataan
         public int Contract_Block_NR { get; set; }
+
+        //viitattu blokki
         public int Referenced_Block_NR { get; set; }
+
+        //viittauksen järjestysnumero
         public int Reference_Order { get; set; }
     }
 
+    //sopimusta kuvaava tietomalli
     public class Contract
     {
+        //sopimuksen yksilöivä ID
         public int Contract_NR { get; set; }
+
+        //yrityksen nimi
         public string Company_name { get; set; }
+
+        //sopimuksen luonu käyttäjä
         public int The_Creator { get; set; }
+
+        //luontipäivämäärä
         public DateTime Created_date { get; set; }
+
+        //onko sopimus hyväksytty
         public bool Approved { get; set; }
+
+        //onko sopimus lähetetty ulkosille käyttäjille
         public bool Sent_to_external { get; set; }
     }
 
+    //sisäsen käyttäjän roolit ja oikeudet sopimuksessa
     public class ContractStakeholder
     {
+        //sopimuksen ID
         public int Contract_NR { get; set; }
+
+        //sisäsen käyttäjän ID
         public int Int_User_ID { get; set; }
+
+        //onko käyttäjällä hyväksyntäoikeus
         public bool Has_approval_rights { get; set; }
+
+        //onko käyttäjä hyväksyny sopimuksen
         public bool Approved { get; set; }
+
+        //hyväksymisen päivämäärä
         public DateTime? Approved_date { get; set; }
     }
 
+    //ulkosten käyttäjien osallistuminen sopimukseen
     public class ContractExternalUser
     {
+        //sopimuksen ID
         public int Contract_NR { get; set; }
+
+        //ulkosen käyttäjän ID
         public int Ext_User_ID { get; set; }
+
+        //kutsuajan päivämäärä
         public DateTime Invited_date { get; set; }
     }
 
+    //kommentteja kuvaava tietomalli
     public class Comment
     {
         public int Comment_ID { get; set; }
+
+        //sopimus johon kommentti liittyy
         public int Contract_NR { get; set; }
+
+        //mahdollinen sopimusblokki johon kommentti kohdistuu
         public int? Contract_Block_NR { get; set; }
+
+        //kommentoijan käyttäjä-ID
         public int User_ID { get; set; }
+
+        //käyttäjätyyppi (internal/external)
         public string User_type { get; set; } // 'internal' or 'external'
+
+        //kommentin teksti
         public string Comment_text { get; set; }
+
+        //kommentin päivämäärä ja aika
         public DateTime Comment_date { get; set; }
     }
 }
@@ -134,10 +214,14 @@ namespace ContractManagement.Model.DAL
     using System.Reflection;
     using ContractManagement.Model.Entities;
 
+    //vastaa MySQL-tietokantayhteydestä
+    //tarjoaa vaan yhen tehtävän -> palauttaa valmiin MySQL-olion
     public class DatabaseConnection
     {
+        //tietokantayhteyden connection string
         private string connectionString = "server=127.0.0.1;user=root;database=kettera;password=";
 
+        //luo ja palauttaa uuden MySQL-yhteysolion
         public MySqlConnection GetConnection()
         {
             return new MySqlConnection(connectionString);
@@ -145,10 +229,15 @@ namespace ContractManagement.Model.DAL
     }
 
     // ==================== ADMINISTRATOR DAL ====================
+
+    //data access layer admin-käyttäjille
+    //sisältää CRUD-toiminnot ja adminien poistoon liittyvän äänestyslogiikan
     public class AdministratorDAL
     {
+        //tietokantayhteysolio
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //hakee adminin käyttäjänimen perusteella
         public Administrator GetAdministratorByUsername(string username)
         {
             Administrator admin = null;
@@ -177,6 +266,7 @@ namespace ContractManagement.Model.DAL
             return admin;
         }
 
+        //hakee kaikki järjestelmän adminit
         public List<Administrator> GetAllAdministrators()
         {
             List<Administrator> admins = new List<Administrator>();
@@ -207,12 +297,15 @@ namespace ContractManagement.Model.DAL
         }
 
 
+        //luo uuden adminin käyttäen generoitua SQL-querya ja DbHelperiä
         public bool CreateAdministrator(Administrator admin) =>
             DbHelper.ExecuteNonQuery(
             SqlBuilder.Insert("administrator", "First_name", "Last_name", "Username", "Password", "Email"),
             admin
          );
 
+        //lisää äänestyksen adminin poistamiseen
+        //INSERT IGNORE estää tuplasti äänestämisen saman käyttäjän toimesta
         public bool VoteToDeleteAdmin(int targetAdminId, int votingAdminId)
         {
             using (var conn = dbConn.GetConnection())
@@ -229,6 +322,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //tarkistaa kuinka moni admin on äänestänyt poistamisen puolesta
         public bool CanDeleteAdmin(int targetAdminId)
         {
             using (var conn = dbConn.GetConnection())
@@ -244,6 +338,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //poistaa adminin jos ääniä tarpeeks
         public bool DeleteAdminIfApproved(int targetAdminId)
         {
             if (!CanDeleteAdmin(targetAdminId)) return false;
@@ -258,7 +353,7 @@ namespace ContractManagement.Model.DAL
 
                 if (deleted > 0)
                 {
-                    // Tyhjennä äänestykset
+                    //tyhjentää äänestysdatan
                     query = "DELETE FROM admin_deletion_votes WHERE Target_Admin_ID = @id";
                     cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@id", targetAdminId);
@@ -271,10 +366,15 @@ namespace ContractManagement.Model.DAL
     }
 
     // ==================== INTERNAL USER DAL ====================
+
+    //data access layer sisäsille käyttäjille
+    //hoitaa kirjautumisen, uusien käyttäjien luonnin ja käyttäjätietojen lukemisen
     public class InternalUserDAL
     {
+        //yhdistää tietokantaan
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //hakee kaikki sisäset käyttäjät listana
         public List<InternalUser> GetAllInternalUsers()
         {
             List<InternalUser> users = new List<InternalUser>();
@@ -303,6 +403,8 @@ namespace ContractManagement.Model.DAL
             return users;
         }
 
+        //hakee sisäsen käyttäjän ID:n perusteella
+        //palauttaa InternalUser-objektin tai null jos ei löydy
         public InternalUser GetInternalUserById(int userId)
         {
             InternalUser user = null;
@@ -332,6 +434,8 @@ namespace ContractManagement.Model.DAL
             return user;
         }
 
+        //hakee sisäsen käyttäjän käyttäjänimen perusteella
+        //palauttaa InternalUser-objektin tai null jos ei löydy
         public InternalUser GetInternalUserByUsername(string username)
         {
             InternalUser user = null;
@@ -361,18 +465,24 @@ namespace ContractManagement.Model.DAL
             return user;
         }
 
+        //luo uuden sisäsen käyttäjän tietokantaan
+        //palauttaa true jos onnistu, false jos epäonnistu
         public bool CreateInternalUser(InternalUser user) =>
             DbHelper.ExecuteNonQuery(
                 SqlBuilder.Insert("internal_user", "First_name", "Last_name", "Username", "Password", "Email"),
                 user
             );
 
+        //päivittää olemassaolevan sisäsen käyttäjän tiedot
+        //palauttaa true jos onnistu
         public bool UpdateInternalUser(InternalUser user) =>
             DbHelper.ExecuteNonQuery(
                 SqlBuilder.Update("internal_user", "Int_User_ID", "First_name", "Last_name", "Username", "Password", "Email"),
                 user
             );
 
+        //poistaa sisäsen käyttäjän ID:n perusteella
+        //palauttaa true jos rivi poistettiin
         public bool DeleteInternalUser(int userId)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -388,10 +498,15 @@ namespace ContractManagement.Model.DAL
     }
 
     // ==================== EXTERNAL USER DAL ====================
+
+    //data access layer ulkosille käyttäjille
+    //sisältää kirjautumisen, haun, luonnin, päivityksen ja poistamisen
     public class ExternalUserDAL
     {
+        //yhteydenhallinnan apuluokka
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //hakee kaikki ulkoset käyttäjät
         public List<ExternalUser> GetAllExternalUsers()
         {
             List<ExternalUser> users = new List<ExternalUser>();
@@ -421,6 +536,7 @@ namespace ContractManagement.Model.DAL
             return users;
         }
 
+        //hakee ulkosen käyttäjän ID:n perusteella
         public ExternalUser GetExternalUserById(int userId)
         {
             ExternalUser user = null;
@@ -451,6 +567,7 @@ namespace ContractManagement.Model.DAL
             return user;
         }
 
+        //hakee ulkosen käyttäjän käyttäjänimellä
         public ExternalUser GetExternalUserByUsername(string username)
         {
             ExternalUser user = null;
@@ -481,18 +598,21 @@ namespace ContractManagement.Model.DAL
             return user;
         }
 
+        //luo uuden ulkosen käyttäjän
         public bool CreateExternalUser(ExternalUser user) =>
             DbHelper.ExecuteNonQuery(
                 SqlBuilder.Insert("external_user", "First_name", "Last_name", "Company_name", "Email", "Username", "Password"),
                 user
             );
 
+        //päivittää ulkosen käyttäjän tiedot
         public bool UpdateExternalUser(ExternalUser user) =>
             DbHelper.ExecuteNonQuery(
                 SqlBuilder.Update("external_user", "Int_User_ID", "First_name", "Last_name", "Company_name", "Email", "Username", "Password"),
                  user
             );
 
+        //poistaa ulkosen käyttäjän
         public bool DeleteExternalUser(int userId)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -508,10 +628,14 @@ namespace ContractManagement.Model.DAL
     }
 
     // ==================== CATEGORY DAL ====================
+
+    //data access layer sopimusblokkien kategorioille
+    //kategoriat kuvaa blokkien tyyppiä, kuten yleiset ehdot, maksuehdot jne.
     public class CategoryDAL
     {
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //hakee kaikki kategoriat tietokannasta
         public List<ContractBlockCategory> GetAllCategories()
         {
             List<ContractBlockCategory> categories = new List<ContractBlockCategory>();
@@ -536,6 +660,7 @@ namespace ContractManagement.Model.DAL
             return categories;
         }
 
+        //hakee yksittäisen kategorian nimen perusteella
         public ContractBlockCategory GetCategoryByName(string categoryName)
         {
             ContractBlockCategory category = null;
@@ -561,18 +686,21 @@ namespace ContractManagement.Model.DAL
             return category;
         }
 
+        //luo uuden kategorian tietokantaan
         public bool CreateCategory(ContractBlockCategory category)=>
         DbHelper.ExecuteNonQuery(
             SqlBuilder.Insert("contract_block_category", "Category_name", "Description"),
             category
         );
 
+        //päivittää kategorian tiedot
         public bool UpdateCategory(ContractBlockCategory category) =>
         DbHelper.ExecuteNonQuery(
             SqlBuilder.Update("contract_block_category", "Category_name", "Description"),
             category
     );
 
+        //poistaa kategorian
         public bool DeleteCategory(string categoryName)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -588,10 +716,14 @@ namespace ContractManagement.Model.DAL
     }
 
     // ==================== ORIGINAL CONTRACT BLOCK DAL ====================
+
+    //DAL alkuperäisille sopimusblokeille
+    //tämä huolehtii tietokantakyselyistä alkuperäisten blokkien osalta
     public class OriginalContractBlockDAL
     {
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //hakee kaikki alkuperäiset sopimusblokit
         public List<OriginalContractBlock> GetAllOriginalBlocks()
         {
             List<OriginalContractBlock> blocks = new List<OriginalContractBlock>();
@@ -619,6 +751,7 @@ namespace ContractManagement.Model.DAL
             return blocks;
         }
 
+        //hakee kaikki blokit tietystä kategoriasta
         public List<OriginalContractBlock> GetOriginalBlocksByCategory(string categoryName)
         {
             List<OriginalContractBlock> blocks = new List<OriginalContractBlock>();
@@ -647,6 +780,7 @@ namespace ContractManagement.Model.DAL
             return blocks;
         }
 
+        //hakee yksittäisen blokin ID:n perusteella
         public OriginalContractBlock GetOriginalBlockById(int blockId)
         {
             OriginalContractBlock block = null;
@@ -675,6 +809,7 @@ namespace ContractManagement.Model.DAL
             return block;
         }
 
+        //luo uuden alkuperäsen blokin ja palauttaa sen tietokannan ID:n
         public int CreateOriginalBlock(OriginalContractBlock block)
         {
             try
@@ -701,16 +836,18 @@ namespace ContractManagement.Model.DAL
             }
             catch (Exception)
             {
-                return 0;
+                return 0; //palautetaan 0 virheen tapahtuessa
             }
         }
 
+        //päivittää olemassa olevan blokin tiedot
         public bool UpdateOriginalBlock(OriginalContractBlock block) =>
             DbHelper.ExecuteNonQuery(
                 SqlBuilder.Update("original_contract_block", "Category_name", "Contract_text", "Org_Cont_ID"),
                 block
             );
 
+        //poistaa blokin ID:n perusteella
         public bool DeleteOriginalBlock(int blockId)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -726,6 +863,9 @@ namespace ContractManagement.Model.DAL
     }
 
     // ==================== CONTRACT BLOCK DAL ====================
+
+    //DAL sopimusblokeille
+    //tämä huolehtii tietokannan käsittelystä yksittäisten sopimusblokkien osalta
     public class ContractBlockDAL
     {
 
@@ -734,6 +874,7 @@ namespace ContractManagement.Model.DAL
 
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //hakee sopimusblokin ID:n perusteella
         public ContractBlock GetContractBlockById(int blockId)
         {
             ContractBlock block = null;
@@ -763,7 +904,7 @@ namespace ContractManagement.Model.DAL
             }
             return block;
         }
-
+        //hakee kaikki blokit tietystä sopimuksesta
         public List<ContractBlock> GetBlocksByContract(int contractNr)
         {
             List<ContractBlock> blocks = new List<ContractBlock>();
@@ -797,6 +938,7 @@ namespace ContractManagement.Model.DAL
             return blocks;
         }
 
+        //luo uuden sopimusblokin ja palauttaa sen ID:n
         public int CreateContractBlock(ContractBlock block)
         {
             try
@@ -834,7 +976,7 @@ namespace ContractManagement.Model.DAL
         }
 
 
-
+        //päivittää olemassa olevan sopimusblokin
         public bool UpdateContractBlock(ContractBlock block)
         {
             try
@@ -867,6 +1009,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //poistaa sopimusblokin
         public bool DeleteContractBlock(int blockId)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -880,9 +1023,10 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //päivittää blokkien esiintymisen (blokit A ja B esiintyvät yhdessä)
         private void IncrementCoOccurrence(int blockA, int blockB, MySqlConnection conn)
         {
-            if (blockA > blockB) // consistent ordering (A < B) to avoid mirrored duplicates
+            if (blockA > blockB) //järjestää aina A < B
             {
                 int temp = blockA;
                 blockA = blockB;
@@ -943,6 +1087,7 @@ namespace ContractManagement.Model.DAL
         //}
 
 
+        //lisää blokin sopimukseen tietyllä järjestyksellä
         public bool AddBlockToContract(int contractNr, int blockNr, int blockOrder)
         {
             try
@@ -950,11 +1095,11 @@ namespace ContractManagement.Model.DAL
                 using (MySqlConnection conn = dbConn.GetConnection())
                 {
                     conn.Open();
-                    using (var tx = conn.BeginTransaction())
+                    using (var tx = conn.BeginTransaction()) //käyttää transaktiota monivaiheiseen operaatioon
                     {
                         try
                         {
-                            // 1) Check if block already exists in this contract
+                            // 1)tarkistaa onko blokki jo sopimuksessa
                             using (var checkCmd = new MySqlCommand(
                                 "SELECT COUNT(*) FROM contract_blocks WHERE Contract_NR=@contractNr AND Contract_Block_NR=@blockNr",
                                 conn, tx))
@@ -970,7 +1115,7 @@ namespace ContractManagement.Model.DAL
                                 }
                             }
 
-                            // 2) Insert the block into contract_blocks
+                            // 2)lisää blokin contract_blocks-tauluun
                             using (var insertCmd = new MySqlCommand(
                                 "INSERT INTO contract_blocks (Contract_NR, Contract_Block_NR, Block_order) VALUES (@contractNr, @blockNr, @order)",
                                 conn, tx))
@@ -989,7 +1134,7 @@ namespace ContractManagement.Model.DAL
                                 }
                             }
 
-                            // 3) Read other blocks currently in this contract
+                            // 3)hakee muut sopimuksen blokit jotta voidaan päivittää co--occurrence
                             var otherBlocks = new List<int>();
                             using (var selectCmd = new MySqlCommand(
                                 "SELECT Contract_Block_NR FROM contract_blocks WHERE Contract_NR=@contractNr AND Contract_Block_NR <> @blockNr",
@@ -1004,7 +1149,7 @@ namespace ContractManagement.Model.DAL
                                 }
                             }
 
-                            // 4) Update co-occurrence for each pair
+                            // 4)päivittää esiintymäyhteydet (co-occurrence) jokaselle parille
                             if (otherBlocks.Count > 0)
                             {
                                 using (var upsertCmd = new MySqlCommand(
@@ -1029,7 +1174,7 @@ namespace ContractManagement.Model.DAL
                                 }
                             }
 
-                            tx.Commit();
+                            tx.Commit(); //committaa kaikki muutokset
                             Console.WriteLine("DEBUG: Successfully added block {0} to contract {1}", blockNr, contractNr);
                             return true;
                         }
@@ -1049,7 +1194,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
-
+        //hakee suositeltavat blokit sopimukselle co-occurrence-logiikan perusteella
         public List<BlockRecommendation> GetRecommendationsForContract(int contractNr, int take = 5)
         {
             try
@@ -1058,7 +1203,7 @@ namespace ContractManagement.Model.DAL
                 {
                     conn.Open();
 
-                    // Get all blocks currently in the contract
+                    //hakee kaikki nykyset blokit sopimuksesta
                     var currentBlocks = new List<int>();
                     using (var cmd = new MySqlCommand(
                         "SELECT Contract_Block_NR FROM contract_blocks WHERE Contract_NR = @contractNr",
@@ -1075,10 +1220,9 @@ namespace ContractManagement.Model.DAL
                     if (currentBlocks.Count == 0)
                         return new List<BlockRecommendation>();
 
-                    // Build the SQL query with parameterized IN clause
                     string blockList = string.Join(",", currentBlocks);
 
-                    // Find blocks that co-occur with current blocks
+                    //rakentaa SQL, joka laskee co-occurrence pisteet ja suositukset
                     string sql = string.Format(@"
                 SELECT 
                     CASE 
@@ -1131,6 +1275,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //DTO-luokka suosituksii varten
         public class BlockRecommendation
         {
             public int BlockId { get; set; }
@@ -1139,7 +1284,7 @@ namespace ContractManagement.Model.DAL
             public string Category { get; set; }
         }
 
-
+        //poistaa blokin sopimuksesta
         public bool RemoveBlockFromContract(int contractNr, int blockNr)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -1154,7 +1299,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
-
+        //hakee lapsiblokit tietylle parent-blokille
         public List<ContractBlock> GetChildBlocks(int parentBlockNr)
         {
             List<ContractBlock> children = new List<ContractBlock>();
@@ -1176,6 +1321,7 @@ namespace ContractManagement.Model.DAL
             return children;
         }
 
+        //hakee koko blokkipuun (parent, lapset ja lasten lapset)
         public ContractBlock GetBlockTree(int blockNr)
         {
             var block = GetContractBlockById(blockNr);
@@ -1188,6 +1334,7 @@ namespace ContractManagement.Model.DAL
             return block;
         }
 
+        //map reader
         private ContractBlock MapReaderToContractBlock(MySqlDataReader reader)
         {
             return new ContractBlock
@@ -1211,6 +1358,7 @@ namespace ContractManagement.Model.DAL
     {
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //lisää referenssin sopimusblokkiin tiettyyn järjestykseen
         public bool AddReference(int contractBlockNr, int referencedBlockNr, int order)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -1226,6 +1374,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //hakee kaikki referenssit tietylle sopimusblokille, järjestettynä Reference_Order mukaan
         public List<ContractBlockReference> GetReferencesByBlock(int contractBlockNr)
         {
             List<ContractBlockReference> references = new List<ContractBlockReference>();
@@ -1260,6 +1409,7 @@ namespace ContractManagement.Model.DAL
     {
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //hakee kaikki sopimukset
         public List<Contract> GetAllContracts()
         {
             List<Contract> contracts = new List<Contract>();
@@ -1288,6 +1438,7 @@ namespace ContractManagement.Model.DAL
             return contracts;
         }
 
+        //hakee yksittäisen sopimuksen ID:n perusteella
         public Contract GetContractById(int contractId)
         {
             Contract contract = null;
@@ -1317,6 +1468,7 @@ namespace ContractManagement.Model.DAL
             return contract;
         }
 
+        //hakee kaikki sopimukset tietyn luojan mukaan
         public List<Contract> GetContractsByCreator(int creatorId)
         {
             List<Contract> contracts = new List<Contract>();
@@ -1346,6 +1498,7 @@ namespace ContractManagement.Model.DAL
             return contracts;
         }
 
+        //luo uuden sopimuksen ja palauttaa sen ID:n
         public int CreateContract(Contract contract)
         {
             try
@@ -1375,6 +1528,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //päivittää olemassa olevan sopimuksen tietoja
         public bool UpdateContract(Contract contract)
         {
             try
@@ -1403,6 +1557,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //poistaa sopimuksen
         public bool DeleteContract(int contractId)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -1422,6 +1577,7 @@ namespace ContractManagement.Model.DAL
     {
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //hakee kaikki sidosryhmät tietylle sopimukselle
         public List<ContractStakeholder> GetStakeholdersByContract(int contractNr)
         {
             List<ContractStakeholder> stakeholders = new List<ContractStakeholder>();
@@ -1450,6 +1606,7 @@ namespace ContractManagement.Model.DAL
             return stakeholders;
         }
 
+        //hakee kaikki sopimukset joissa tietty käyttäjä on sidosryhmä
         public List<Contract> GetContractsByStakeholder(int userId)
         {
             List<Contract> contracts = new List<Contract>();
@@ -1481,18 +1638,21 @@ namespace ContractManagement.Model.DAL
             return contracts;
         }
 
+        //lisää uuden sidosryhmän
         public bool AddStakeholder(ContractStakeholder stakeholder) =>
             DbHelper.ExecuteNonQuery(
                 SqlBuilder.Insert("contract_stakeholders", "Contract_NR", "Int_User_ID", "Has_approval_rights", "Approved", "Approved_date"),
                 stakeholder
             );
 
+        //päivittää olemassa olevan sidosryhmän
         public bool UpdateStakeholder(ContractStakeholder stakeholder) =>
             DbHelper.ExecuteNonQuery(
                 SqlBuilder.Update("contract_stakeholders", "Contract_NR", "Int_User_ID", "Has_approval_rights", "Approved", "Approved_date"),
             stakeholder
             );
 
+        //poistaa sidosryhmän sopimuksesta
         public bool RemoveStakeholder(int contractNr, int userId)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -1507,6 +1667,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //tarkistaa onko sopimus hyväksytty kaikilla sidosryhmillä joilla on oikeus hyväksyä
         public bool IsContractFullyApproved(int contractNr)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -1527,6 +1688,7 @@ namespace ContractManagement.Model.DAL
     {
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //hakee kaikki ulkoset käyttäjät jotka liittyy tiettyyn sopimukseen
         public List<ExternalUser> GetExternalUsersByContract(int contractNr)
         {
             List<ExternalUser> users = new List<ExternalUser>();
@@ -1559,6 +1721,7 @@ namespace ContractManagement.Model.DAL
             return users;
         }
 
+        //hakee kaikki sopimukset joissa tietty ulkonen käyttäjä mukana
         public List<Contract> GetContractsByExternalUser(int extUserId)
         {
             List<Contract> contracts = new List<Contract>();
@@ -1590,6 +1753,7 @@ namespace ContractManagement.Model.DAL
             return contracts;
         }
 
+        //kutsuu ulkosen käyttäjän sopimukseen
         public bool InviteExternalUser(int contractNr, int extUserId, DateTime invitedDate)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -1605,6 +1769,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //poistaa ulkosen käyttäjän sopimuksesta
         public bool RemoveExternalUser(int contractNr, int extUserId)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -1619,6 +1784,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //tarkistaa onko ulkonen käyttäjä kutsuttu tiettyyn sopimukseen
         public bool IsExternalUserInvitedToContract(int contractNr, int extUserId)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -1641,6 +1807,7 @@ namespace ContractManagement.Model.DAL
     {
         private DatabaseConnection dbConn = new DatabaseConnection();
 
+        //hakee kaikki kommentit tietylle sopimukselle, järjestettynä päivämäärän mukaan
         public List<Comment> GetCommentsByContract(int contractNr)
         {
             List<Comment> comments = new List<Comment>();
@@ -1671,6 +1838,7 @@ namespace ContractManagement.Model.DAL
             return comments;
         }
 
+        //hakee kaikki kommentit tietylle sopimusblokille
         public List<Comment> GetCommentsByBlock(int contractNr, int blockNr)
         {
             List<Comment> comments = new List<Comment>();
@@ -1702,6 +1870,7 @@ namespace ContractManagement.Model.DAL
             return comments;
         }
 
+        //hakee vaan sisäset kommentit sopimuksesta
         public List<Comment> GetInternalComments(int contractNr)
         {
             List<Comment> comments = new List<Comment>();
@@ -1732,6 +1901,7 @@ namespace ContractManagement.Model.DAL
             return comments;
         }
 
+        //hakee ulkosen käyttäjän kommentit sopimuksesta
         public List<Comment> GetExternalCommentsByUser(int contractNr, int extUserId)
         {
             List<Comment> comments = new List<Comment>();
@@ -1763,13 +1933,14 @@ namespace ContractManagement.Model.DAL
             return comments;
         }
 
+        //luo uuden kommentin ja palauttaa sen ID:n
         public int CreateComment(Comment comment)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
             {
                 conn.Open();
 
-                // First, check if the contract exists
+                //tarkistaa ensin että sopimus on olemassa
                 string checkQuery = "SELECT COUNT(*) FROM contract WHERE Contract_NR = @contractNr";
                 MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn);
                 checkCmd.Parameters.AddWithValue("@contractNr", comment.Contract_NR);
@@ -1777,10 +1948,10 @@ namespace ContractManagement.Model.DAL
                 int contractExists = Convert.ToInt32(checkCmd.ExecuteScalar());
                 if (contractExists == 0)
                 {
-                    return 0; // Contract doesn't exist, return 0 to indicate failure
+                    return 0; //sopimusta ei oo
                 }
 
-                // Contract exists, proceed with comment creation
+                //sopimus on olemassa, lisää kommentin
                 string query = "INSERT INTO comments (Contract_NR, Contract_Block_NR, User_ID, User_type, Comment_text, Comment_date) VALUES (@contractNr, @blockNr, @userId, @userType, @text, @date); SELECT LAST_INSERT_ID();";
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@contractNr", comment.Contract_NR);
@@ -1801,6 +1972,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //poistaa kommentin
         public bool DeleteComment(int commentId)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
@@ -1814,6 +1986,7 @@ namespace ContractManagement.Model.DAL
             }
         }
 
+        //tarkistaa onko ulkonen käyttäjä kutsuttu tiettyyn sopimukseen
         public bool IsExternalUserInvitedToContract(int contractNr, int extUserId)
         {
             using (MySqlConnection conn = dbConn.GetConnection())
