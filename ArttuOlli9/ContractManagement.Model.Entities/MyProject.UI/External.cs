@@ -27,12 +27,15 @@ namespace MyProject.UI
 
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
-            // Käytetään yksinkertaista input-dialogia
             string contractNr = ShowInputDialog("Enter Contract Number:", "View Contract Details");
 
             if (!string.IsNullOrEmpty(contractNr) && int.TryParse(contractNr, out int contractId))
             {
-                ViewContractDetails detailsForm = new ViewContractDetails(contractId, _contractController);
+                // Pass the current user to ViewContractDetails
+                ViewContractDetails detailsForm = new ViewContractDetails(
+                    contractId,
+                    _contractController,
+                    _currentUser);  // Add this parameter
                 detailsForm.ShowDialog();
             }
             else if (!string.IsNullOrEmpty(contractNr))
@@ -48,6 +51,16 @@ namespace MyProject.UI
 
             if (!string.IsNullOrEmpty(contractNr) && int.TryParse(contractNr, out int contractId))
             {
+                // Also check invitation before allowing comments
+                if (!_contractController.IsExternalUserInvitedToContract(contractId, _currentUser.Ext_User_ID))
+                {
+                    MessageBox.Show("Access denied. You can only comment on contracts you've been invited to.",
+                        "Access Denied",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
+
                 CommentOnContract commentForm = new CommentOnContract(
                     contractId,
                     _currentUser.Ext_User_ID,
@@ -71,17 +84,13 @@ namespace MyProject.UI
 
             if (result == DialogResult.Yes)
             {
-                this.Hide(); // Piilota Administrator-ikkuna
-
-                // Avaa kirjautumislomake uudelleen (vaihda Login nimeen omaksesi)
+                this.Hide();
                 logIn loginForm = new logIn();
                 loginForm.ShowDialog();
-
-                this.Close(); // Sulje Administrator-lomake lopullisesti
+                this.Close();
             }
         }
 
-        // Oma InputBox-metodi (ei tarvitse Microsoft.VisualBasic referenssiä)
         private string ShowInputDialog(string text, string caption)
         {
             Form prompt = new Form()
