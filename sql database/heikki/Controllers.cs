@@ -16,16 +16,15 @@ namespace ContractManagement.Controller
         private InternalUserDAL internalUserDAL = new InternalUserDAL();
         private ExternalUserDAL externalUserDAL = new ExternalUserDAL();
 
-        //kirjautuminen järjestelmän adminina
+        // Login methods with password hashing
         public Administrator LoginAdministrator(string username, string password)
         {
             Administrator admin = adminDAL.GetAdministratorByUsername(username);
             if (admin != null && PasswordHelper.VerifyPassword(password, admin.Password))
-                return admin; //palauttaa admin-olion jos salasana oikein
-            return null; //palauttaa null jos kirjautuminen epäonnistu
+                return admin;
+            return null;
         }
 
-        //kirjautuminen sisäsenä käyttäjänä
         public InternalUser LoginInternalUser(string username, string password)
         {
             InternalUser user = internalUserDAL.GetInternalUserByUsername(username);
@@ -34,7 +33,6 @@ namespace ContractManagement.Controller
             return null;
         }
 
-        //kirjautuminen ulkosena käyttäjänä
         public ExternalUser LoginExternalUser(string username, string password)
         {
             ExternalUser user = externalUserDAL.GetExternalUserByUsername(username);
@@ -43,17 +41,16 @@ namespace ContractManagement.Controller
             return null;
         }
 
-        //getter, hakee kaikki adminit
+        //Get all admins
         public List<Administrator> GetAllAdministrators()
         {
             return adminDAL.GetAllAdministrators();
         }
 
 
-        //hakee kaikki sisäset käyttäjät
+        // Internal users - passwords are now hashed before storing
         public List<InternalUser> GetAllInternalUsers() => internalUserDAL.GetAllInternalUsers();
 
-        //luo uuden sisäsen käyttäjän (salasana hashataan)
         public bool CreateInternalUser(string fname, string lname, string email, string username, string password)
         {
             InternalUser user = new InternalUser
@@ -62,24 +59,18 @@ namespace ContractManagement.Controller
                 Last_name = lname,
                 Email = email,
                 Username = username,
-                Password = PasswordHelper.HashPassword(password) //hashattu salasana
+                Password = PasswordHelper.HashPassword(password) // Hash the password
             };
             return internalUserDAL.CreateInternalUser(user);
         }
 
-        //päivittää olemassa olevan käyttäjän tiedot
         public bool UpdateInternalUser(InternalUser user) => internalUserDAL.UpdateInternalUser(user);
-
-        //poistaa sisäsen käyttäjän
         public bool DeleteInternalUser(int userId) => internalUserDAL.DeleteInternalUser(userId);
-
-        //hakee sisäsen käyttäjän käyttäjätunnuksen perusteella
         public InternalUser GetInternalUserByUsername(string username) => internalUserDAL.GetInternalUserByUsername(username);
 
-        //hakee kaikki ulkoset käyttäjät
+        // External users - passwords are now hashed before storing
         public List<ExternalUser> GetAllExternalUsers() => externalUserDAL.GetAllExternalUsers();
 
-        //luo uuden ulkosen käyttäjän (salasana hashataan)
         public bool CreateExternalUser(string fname, string lname, string company, string email, string username, string password)
         {
             ExternalUser user = new ExternalUser
@@ -89,18 +80,13 @@ namespace ContractManagement.Controller
                 Company_name = company,
                 Email = email,
                 Username = username,
-                Password = PasswordHelper.HashPassword(password) //hashattu salasana
+                Password = PasswordHelper.HashPassword(password) // Hash the password
             };
             return externalUserDAL.CreateExternalUser(user);
         }
 
-        //päivittää ulkosen käyttäjän tiedot
         public bool UpdateExternalUser(ExternalUser user) => externalUserDAL.UpdateExternalUser(user);
-
-        //poistaa ulkosen käyttäjän
         public bool DeleteExternalUser(int userId) => externalUserDAL.DeleteExternalUser(userId);
-
-        //hakee ulkosen käyttäjän käyttäjätunnuksen perusteella
         public ExternalUser GetExternalUserByUsername(string username) => externalUserDAL.GetExternalUserByUsername(username);
     }
 
@@ -111,10 +97,9 @@ namespace ContractManagement.Controller
         private OriginalContractBlockDAL originalDAL = new OriginalContractBlockDAL();
         private ContractBlockDAL blockDAL = new ContractBlockDAL();
 
-        //hakee kaikki kategoriat
+        // Categories
         public List<ContractBlockCategory> GetAllCategories() => categoryDAL.GetAllCategories();
 
-        //luo uuden kategorian
         public bool CreateCategory(string name, string description)
         {
             return categoryDAL.CreateCategory(new ContractBlockCategory
@@ -123,12 +108,19 @@ namespace ContractManagement.Controller
                 Description = description
             });
         }
+       
 
-        //luo alkuperäsen blokin tietyn tyypin ja median kanssa
+        public bool UpdateOriginalBlock(OriginalContractBlock block)
+        {
+            return originalDAL.UpdateOriginalBlock(block);
+        }
+
         public int CreateOriginalBlockWithType(OriginalContractBlock block, BlockType blockType, byte[] mediaContent)
         {
+            // First create the original block in the original_contract_block table
             var originalDAL = new OriginalContractBlockDAL();
 
+            // Create a temporary block with the type and media
             using (var conn = new DatabaseConnection().GetConnection())
             {
                 conn.Open();
@@ -146,18 +138,16 @@ namespace ContractManagement.Controller
                 cmd.Parameters.AddWithValue("@media", mediaContent ?? (object)DBNull.Value);
 
                 object result = cmd.ExecuteScalar();
-                return result != null ? Convert.ToInt32(result) : 0; //palauttaa luodun blokin ID:n
+                return result != null ? Convert.ToInt32(result) : 0;
             }
         }
 
-        //hakee kaikki alkuperäset blokit
+        // Original blocks
         public List<OriginalContractBlock> GetAllOriginalBlocks() => originalDAL.GetAllOriginalBlocks();
 
-        //hakee alkuperäset blokit kategorian perusteella
         public List<OriginalContractBlock> GetOriginalBlocksByCategory(string category)
             => originalDAL.GetOriginalBlocksByCategory(category);
 
-        //luo uuden alkuperäsen blokin
         public bool CreateOriginalBlock(string category, string text, int createdBy)
         {
             OriginalContractBlock block = new OriginalContractBlock
@@ -170,7 +160,6 @@ namespace ContractManagement.Controller
             return originalDAL.CreateOriginalBlock(block) > 0;
         }
 
-        //kopioi olemassa olevan alkuperäsen lohkon
         public bool CopyOriginalBlock(int originalBlockId, int createdBy)
         {
             OriginalContractBlock original = null;
@@ -217,7 +206,7 @@ namespace ContractManagement.Controller
             }
         }
 
-        //luo uuden sopimusblokin alkuperäisen blokin perusteella
+        // Contract blocks
         public int CreateContractBlock(int orgId, string text, bool isNew, int createdBy)
         {
             ContractBlock block = new ContractBlock
@@ -225,37 +214,34 @@ namespace ContractManagement.Controller
                 Org_Cont_ID = orgId,
                 Contract_text = text,
                 New = isNew,
-                Modified_date = DateTime.Now, //muokkauspäivä nykyhetkessä
-                Created_date = DateTime.Now, //luontipäivämäärä nykyhetkessä
-                Created_by = createdBy //luojan ID
+                Modified_date = DateTime.Now,
+                Created_date = DateTime.Now,
+                Created_by = createdBy
             };
-            return blockDAL.CreateContractBlock(block); //tallentaa blokin tietokantaan
+            return blockDAL.CreateContractBlock(block);
         }
 
-        //päivittää olemassa olevan sopimusblokin tekstin
         public bool UpdateContractBlock(int blockId, string newText)
         {
-            ContractBlock block = blockDAL.GetContractBlockById(blockId); //hakee blokin ID:llä
+            ContractBlock block = blockDAL.GetContractBlockById(blockId);
             if (block == null) return false;
 
-            block.Contract_text = newText; //päivittää tekstin
-            block.Modified_date = DateTime.Now; //päivittää muokkauspäivämäätän
-            return blockDAL.UpdateContractBlock(block); //tallentaa muutokset
+            block.Contract_text = newText;
+            block.Modified_date = DateTime.Now;
+            return blockDAL.UpdateContractBlock(block);
         }
 
-        //lisää referenssin blokkiin
         public bool AddReferenceToBlock(int blockId, int referenceBlockId)
         {
-            ContractBlock block = blockDAL.GetContractBlockById(blockId); //hakee blokin
+            ContractBlock block = blockDAL.GetContractBlockById(blockId);
             if (block == null) return false;
 
-            if (block.References == null) //jos referenssilista on null, luo uuden listan
+            if (block.References == null)
                 block.References = new List<int>();
-            block.References.Add(referenceBlockId); //lisää referenssin
-            return blockDAL.UpdateContractBlock(block); //päivittää blokin tietokantaan
+            block.References.Add(referenceBlockId);
+            return blockDAL.UpdateContractBlock(block);
         }
 
-        //hakee kaikki blokit joihin referoitu
         public List<ContractBlock> GetReferencedBlocks(int blockId)
         {
             ContractBlock block = blockDAL.GetContractBlockById(blockId);
@@ -264,31 +250,31 @@ namespace ContractManagement.Controller
             List<ContractBlock> referencedBlocks = new List<ContractBlock>();
             foreach (var refId in block.References)
             {
-                var refBlock = blockDAL.GetContractBlockById(refId); //hakee viitatun blokin
+                var refBlock = blockDAL.GetContractBlockById(refId);
                 if (refBlock != null) referencedBlocks.Add(refBlock);
             }
             return referencedBlocks;
         }
 
-        //luo koostetun blokin joka sisältää useita aliblokkei
         public int CreateCompositeBlock(List<int> childBlockIds, string compositeText, int createdBy)
         {
             List<ContractBlock> childBlocks = childBlockIds
-            .Select(id => blockDAL.GetContractBlockById(id)) //hakee jokasen aliblokin ID:llä
+            .Select(id => blockDAL.GetContractBlockById(id))
             .Where(b => b != null)
             .ToList();
 
             ContractBlock compositeBlock = new ContractBlock
             {
-                Contract_text = compositeText, //koosteen teksti
-                ChildBlocks = childBlocks, //aliblokit
-                Created_date = DateTime.Now, //luontipäivä
-                Created_by = createdBy, //luojan ID
-                New = true, //merkitään uutena
-                Modified_date = DateTime.Now //muokkauspäivä
+                Contract_text = compositeText,
+                ChildBlocks = childBlocks,
+                Created_date = DateTime.Now,
+                Created_by = createdBy,
+                New = true,
+                Modified_date = DateTime.Now
             };
-            return blockDAL.CreateContractBlock(compositeBlock); //tallentaa tietokantaan
+            return blockDAL.CreateContractBlock(compositeBlock);
         }
+       
 
     }
 
@@ -301,51 +287,42 @@ namespace ContractManagement.Controller
         private ContractStakeholderDAL stakeholderDAL = new ContractStakeholderDAL();
         private ContractExternalUserDAL externalDAL = new ContractExternalUserDAL();
 
-        //luo uuden sopimuksen
         public int CreateContract(string companyName, int creatorId)
         {
             Contract contract = new Contract
             {
                 Company_name = companyName,
                 The_Creator = creatorId,
-                Created_date = DateTime.Now, //luontipäivä
-                Approved = false, //aluksi ei hyväksytty
-                Sent_to_external = false //aluksi ei lähetetty ulkopuolisille
+                Created_date = DateTime.Now,
+                Approved = false,
+                Sent_to_external = false
             };
-            return contractDAL.CreateContract(contract); //tallentaa tietokantaan
+            return contractDAL.CreateContract(contract);
         }
 
-        //hakee sopimuksen ID:llä
         public Contract GetContractById(int contractId) => contractDAL.GetContractById(contractId);
 
-        //hakee kaikki sopimukset
         public List<Contract> GetAllContracts() => contractDAL.GetAllContracts();
 
-        //hakee sopimukset luojan perusteella
         public List<Contract> GetContractsByCreator(int creatorId) => contractDAL.GetContractsByCreator(creatorId);
 
-        //hakee sopimukset sisäsen käyttäjän perusteella
         public List<Contract> GetContractsByInternalUser(int userId)
         {
             return GetContractsByCreator(userId);
         }
 
-        //hakee sopimukset sidosryhmän perusteella
         public List<Contract> GetContractsByStakeholder(int userId) => stakeholderDAL.GetContractsByStakeholder(userId);
 
-        //hakee sopimukset joita sisänen käyttäjä voi tarkastella
         public List<Contract> GetContractsToReviewByInternalUser(int userId)
         {
             return GetContractsByStakeholder(userId);
         }
 
-        //hakee sopimukset ulkosen käyttäjän perusteella
         public List<Contract> GetContractsByExternalUser(int extUserId) => externalDAL.GetContractsByExternalUser(extUserId);
 
-        //poistaa sopimuksen
         public bool DeleteContract(int contractNr) => contractDAL.DeleteContract(contractNr);
 
-        //hakee kaikki blokit sopimuksesta
+        // Block management in contract
         public List<ContractBlock> GetContractBlocks(int contractNr) => blockDAL.GetBlocksByContract(contractNr);
 
         public List<ContractBlock> GetBlocksByContract(int contractId)
@@ -353,12 +330,11 @@ namespace ContractManagement.Controller
             return GetContractBlocks(contractId);
         }
 
-        //lisää alkuperäsen blokin sopimukseen
         public bool AddBlockToContract(int contractNr, int originalBlockId)
         {
             try
             {
-                //vaihe 1: tarkistaa että sopimus on olemassa
+                // Step 1: Verify contract exists
                 Contract contract = contractDAL.GetContractById(contractNr);
                 if (contract == null)
                 {
@@ -366,7 +342,7 @@ namespace ContractManagement.Controller
                     return false;
                 }
 
-                //vaihe 2: hakee alkuperäsen blokin
+                // Step 2: Get original block
                 OriginalContractBlock original = originalDAL.GetOriginalBlockById(originalBlockId);
                 if (original == null)
                 {
@@ -374,7 +350,7 @@ namespace ContractManagement.Controller
                     return false;
                 }
 
-                //vaihe 3: luo sopimusblokin alkuperäsestä
+                // Step 3: Create contract block from original
                 ContractBlock contractBlock = new ContractBlock
                 {
                     Org_Cont_ID = originalBlockId,
@@ -394,11 +370,11 @@ namespace ContractManagement.Controller
 
                 Console.WriteLine("DEBUG: Created contract block with ID: {0}", newBlockId);
 
-                //vaihe 4: hakee nykysen suurimman järjestysnumeron
+                // Step 4: Get current max order
                 var existingBlocks = blockDAL.GetBlocksByContract(contractNr);
                 int maxOrder = existingBlocks.Count > 0 ? existingBlocks.Count : 0;
 
-                //vaihe 5: lisää block junction-tauluun
+                // Step 5: Add to contract_blocks junction table
                 bool addResult = blockDAL.AddBlockToContract(contractNr, newBlockId, maxOrder + 1);
 
                 Console.WriteLine("DEBUG: AddBlockToContract result: {0}", addResult);
@@ -413,7 +389,6 @@ namespace ContractManagement.Controller
             }
         }
 
-        //hakee suositellut blokit sopimukseen
         public List<BlockRecommendation> GetContractRecommendations(int contractNr, int take = 5)
         {
             try
@@ -426,7 +401,6 @@ namespace ContractManagement.Controller
             }
         }
 
-        //poistaa blokin sopimuksesta
         public bool RemoveBlockFromContract(int contractNr, int blockId)
         {
             try
@@ -439,7 +413,6 @@ namespace ContractManagement.Controller
             }
         }
 
-        //muokkaa blokkia sopimuksessa
         public bool EditBlockInContract(int blockId, string newText)
         {
             try
@@ -457,34 +430,31 @@ namespace ContractManagement.Controller
             }
         }
 
-        //sama kuin EditBlockInContract mutta sisältää myös sopimusID:n
         public bool EditBlockInContract(int contractId, int blockId, string newText)
         {
             return EditBlockInContract(blockId, newText);
         }
 
         // Stakeholder management
-        //kutsuu sisäsen käyttäjän tarkastajaksi
         public bool InviteInternalReviewer(int contractNr, int userId, bool hasApprovalRights)
         {
             ContractStakeholder stakeholder = new ContractStakeholder
             {
                 Contract_NR = contractNr,
                 Int_User_ID = userId,
-                Has_approval_rights = hasApprovalRights, //hyväksymisoikeudet
-                Approved = false, //aluksi ei hyväksytty
-                Approved_date = null //hyväksymispäivä tyhjä
+                Has_approval_rights = hasApprovalRights,
+                Approved = false,
+                Approved_date = null
             };
-            return stakeholderDAL.AddStakeholder(stakeholder); //lisää tietokantaan
+            return stakeholderDAL.AddStakeholder(stakeholder);
         }
 
-        //kutsuu ulkosen käyttäjän sopimukseen
         public bool InviteExternalUser(int contractNr, int extUserId)
         {
             bool success = externalDAL.InviteExternalUser(contractNr, extUserId, DateTime.Now);
             if (success)
             {
-                //merkitsee sopimuksen lähetetyksi ulkopuoliselle
+                // Mark contract as sent to external
                 Contract contract = contractDAL.GetContractById(contractNr);
                 if (contract != null)
                 {
@@ -495,13 +465,11 @@ namespace ContractManagement.Controller
             return success;
         }
 
-        //tarkistaa onko ulkonen käyttäjä kutsuttu sopimukseen
         public bool IsExternalUserInvitedToContract(int contractNr, int extUserId)
         {
             return externalDAL.IsExternalUserInvitedToContract(contractNr, extUserId);
         }
 
-        //hakee kaikki alkuperäset blokit
         public List<OriginalContractBlock> GetAllOriginalBlocks()
         {
             return originalDAL.GetAllOriginalBlocks();
@@ -515,34 +483,29 @@ namespace ContractManagement.Controller
     {
         private CommentDAL commentDAL = new CommentDAL();
 
-        //lisää uuden kommentin
         public bool AddComment(int contractNr, int? blockNr, int userId, string userType, string text)
         {
             Comment comment = new Comment
             {
                 Contract_NR = contractNr,
-                Contract_Block_NR = blockNr, //null jos ei blokkiin liittyvä
+                Contract_Block_NR = blockNr,
                 User_ID = userId,
-                User_type = userType, //internal tai external
+                User_type = userType,
                 Comment_text = text,
-                Comment_date = DateTime.Now //asetetaan ajankohtaan
+                Comment_date = DateTime.Now
             };
             return commentDAL.CreateComment(comment) > 0;
         }
 
-        //hakee kaikki kommentit sopimuksesta
         public List<Comment> GetCommentsForContract(int contractNr)
             => commentDAL.GetCommentsByContract(contractNr);
 
-        //hakee kommentit tietyltä blokilta
         public List<Comment> GetCommentsByBlock(int contractNr, int blockNr)
             => commentDAL.GetCommentsByBlock(contractNr, blockNr);
 
-        //hakee sisäiset kommentit
         public List<Comment> GetInternalComments(int contractNr)
             => commentDAL.GetInternalComments(contractNr);
 
-        //hakee ulkosen käyttäjän kommentit
         public List<Comment> GetExternalCommentsByUser(int contractNr, int extUserId)
             => commentDAL.GetExternalCommentsByUser(contractNr, extUserId);
     }
@@ -553,7 +516,6 @@ namespace ContractManagement.Controller
         private ContractStakeholderDAL stakeholderDAL = new ContractStakeholderDAL();
         private ContractDAL contractDAL = new ContractDAL();
 
-        //hyväksyy sopimuksen tietyn käyttäjän puolesta
         public bool ApproveContract(int contractNr, int userId)
         {
             List<ContractStakeholder> stakeholders = stakeholderDAL.GetStakeholdersByContract(contractNr);
@@ -562,30 +524,28 @@ namespace ContractManagement.Controller
             if (stakeholder == null || !stakeholder.Has_approval_rights)
                 return false;
 
-            //merkitsee hyväksyjän hyväksyneeksi
+            // Mark stakeholder as approved
             stakeholder.Approved = true;
             stakeholder.Approved_date = DateTime.Now;
             stakeholderDAL.UpdateStakeholder(stakeholder);
 
-            //tarkistaa onko kaikki hyväksytty
+            // Check if all approvals done
             if (stakeholderDAL.IsContractFullyApproved(contractNr))
             {
                 Contract contract = contractDAL.GetContractById(contractNr);
                 if (contract != null)
                 {
                     contract.Approved = true;
-                    return contractDAL.UpdateContract(contract); //päivittää sopimuksen
+                    return contractDAL.UpdateContract(contract);
                 }
             }
 
             return true;
         }
 
-        //tarkistaa onko sopimus täysin hyväksytty
         public bool IsContractFullyApproved(int contractNr)
             => stakeholderDAL.IsContractFullyApproved(contractNr);
 
-        //hakee kaikki sidosryhmät sopimukseen
         public List<ContractStakeholder> GetStakeholders(int contractNr)
             => stakeholderDAL.GetStakeholdersByContract(contractNr);
     }
@@ -596,19 +556,16 @@ namespace ContractManagement.Controller
     {
         private AdministratorDAL adminDAL = new AdministratorDAL();
 
-        //hakee kaikki adminit
         public List<Administrator> GetAllAdministrators()
         {
             return adminDAL.GetAllAdministrators();
         }
 
-        //äänestää adminin poistosta
         public bool VoteToDeleteAdmin(int targetAdminId, int voterAdminId)
         {
             return adminDAL.VoteToDeleteAdmin(targetAdminId, voterAdminId);
         }
 
-        //yrittää poistaa adminin jos tarvittavat äänet saavutettu
         public bool TryDeleteAdmin(int targetAdminId)
         {
             return adminDAL.DeleteAdminIfApproved(targetAdminId);
