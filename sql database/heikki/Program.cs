@@ -17,7 +17,7 @@ namespace ContractManagement.View
         }
     }
 
-    //LISÄSIN TÄMÄN
+
     // ============= ABSTRACT USER SESSION ================
     public abstract class UserSession
     {
@@ -363,29 +363,9 @@ namespace ContractManagement.View
         //luo uuden alkuperäsen blokin
         private void CreateOriginalBlock()
         {
-            Console.Clear();
-            Console.WriteLine("=== ALL CATEGORIES ===\n");
-            var categories = _blockController.GetAllCategories();
-            if (categories.Count == 0)
-            {
-                Console.WriteLine("No categories found. Please create a category first.");
-                Pause();
-                return;
-            }
-
-            foreach (var c in categories)
-                Console.WriteLine($"[{c.Category_name}] - {c.Description}");
-
-            Console.Write("\nCategory Name: ");
-            string category = Console.ReadLine();
-
-            // Validate category exists
-            if (!categories.Any(c => c.Category_name.Equals(category, StringComparison.OrdinalIgnoreCase)))
-            {
-                Console.WriteLine("\n✗ Invalid category name. Please try again.");
-                Pause();
-                return;
-            }
+            //näyttää kaikki kategoriat
+            ViewAllCategories();
+            Console.Write("\nCategory Name: "); string category = Console.ReadLine();
 
             //valitsee blokin tyypin, teksti, esimuoto vai kuva
             Console.WriteLine("\n=== SELECT BLOCK TYPE ===");
@@ -417,7 +397,6 @@ namespace ContractManagement.View
                     Console.WriteLine("4. Custom Preformatted");
                     Console.Write("Choice: ");
                     string templateChoice = Console.ReadLine();
-
                     //valitaa valmis template tai käyttäjän oma teksti
                     switch (templateChoice)
                     {
@@ -446,9 +425,9 @@ namespace ContractManagement.View
                             text = Console.ReadLine();
                             break;
                         default:
-                            Console.WriteLine("\n✗ Invalid choice. Block creation cancelled.");
-                            Pause();
-                            return;
+                            Console.WriteLine("Invalid choice. Using default signature template.");
+                            text = "[SIGNATURE SECTION]\n\nSigned: ________________________________";
+                            break;
                     }
                     Console.WriteLine("\n✓ Preformatted section created!");
                     break;
@@ -469,23 +448,26 @@ namespace ContractManagement.View
                         catch (Exception ex)
                         {
                             Console.WriteLine($"✗ Error loading image: {ex.Message}");
-                            Console.WriteLine("Block creation cancelled.");
-                            Pause();
-                            return;
+                            Console.WriteLine("Creating text block instead.");
+                            blockType = BlockType.Text;
+                            Console.Write("Block Text: ");
+                            text = Console.ReadLine();
                         }
                     }
                     else
                     {
-                        Console.WriteLine("✗ File not found. Block creation cancelled.");
-                        Pause();
-                        return;
+                        Console.WriteLine("✗ File not found. Creating text block instead.");
+                        blockType = BlockType.Text;
+                        Console.Write("Block Text: ");
+                        text = Console.ReadLine();
                     }
                     break;
 
-                default:
-                    Console.WriteLine("\n✗ Invalid choice. Block creation cancelled.");
-                    Pause();
-                    return;
+                default: //oletuksena tekstilohko
+                    Console.WriteLine("Invalid choice. Using text block.");
+                    Console.Write("\nBlock Text: ");
+                    text = Console.ReadLine();
+                    break;
             }
 
             //luo blokin kontrollerin kautta
@@ -566,13 +548,7 @@ namespace ContractManagement.View
         //näyttää blokit kategorian perusteel
         private void ViewBlocksByCategory()
         {
-            Console.Clear();
-            Console.WriteLine("=== ALL CATEGORIES ===\n");
-            var categories = _blockController.GetAllCategories();
-            if (categories.Count == 0) Console.WriteLine("No categories found.");
-            else foreach (var c in categories)
-                    Console.WriteLine($"[{c.Category_name}] - {c.Description}");
-
+            ViewAllCategories(); //näyttää ensiks kategoriat
             Console.Write("\nEnter Category Name: "); string category = Console.ReadLine();
 
             //hakee kyseisen kategorian blokit
@@ -1108,7 +1084,6 @@ namespace ContractManagement.View
                 Pause();
                 return;
             }
-
             //kysyy kommentin sisällön
             Console.Write("Comment Text: ");
             string text = Console.ReadLine();
