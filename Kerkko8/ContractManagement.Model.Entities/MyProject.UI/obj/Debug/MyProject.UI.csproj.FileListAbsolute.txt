@@ -237,8 +237,6 @@ C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
 D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.AssemblyReference.cache
-D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.SuggestedBindingRedirects.cache
-D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe.config
 D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.AddBlockForm.resources
 D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Administrator.resources
 D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ApproveContract.resources
@@ -269,3 +267,36 @@ D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Ent
 D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.CoreCompileInputs.cache
 D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
 D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.exe.config
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.exe
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.pdb
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.exe
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MySql.Data.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ZstdSharp.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\BouncyCastle.Cryptography.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Memory.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Buffers.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.IO.Pipelines.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Hash.xxHash.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Numerics.Vectors.dll
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.pdb
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.exe.config
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MySql.Data.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.pdb
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\BouncyCastle.Cryptography.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Memory.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Buffers.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.IO.Pipelines.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Hash.xxHash.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Numerics.Vectors.xml
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProjec.E14AB52C.Up2Date
