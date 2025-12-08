@@ -20,22 +20,32 @@ namespace MyProject.UI
             label1.Visible = false;
             label2.Visible = false;
             // Login-nappi pois käytöstä
+            button4.Visible= false;
             button4.Enabled = false;
+            //Login otsikot piiloon
+            labelAdmin.Visible = false;
+            labelInternal.Visible = false; 
+            labelExternal.Visible = false;
+            //Takaisin nappi piiloon
+            buttonBack.Visible = false;
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
             ShowLoginFields("Administrator");
+            labelAdmin.Visible = true;
         }
 
         private void btnInternal_Click(object sender, EventArgs e)
         {
             ShowLoginFields("Internal");
+            labelInternal.Visible = true;
         }
 
         private void btnExternal_Click(object sender, EventArgs e)
         {
             ShowLoginFields("External");
+            labelExternal.Visible = true;
         }
 
         private void ShowLoginFields(string userType)
@@ -47,11 +57,14 @@ namespace MyProject.UI
             label1.Visible = true;
             label2.Visible = true;
             // Login-nappi aktiiviseksi
+            button4.Visible = true;
             button4.Enabled = true;
             // Piilotetaan roolinapit
             button1.Visible = false;
             button2.Visible = false;
             button3.Visible = false;
+            // Näytetään takaisin-nappi
+            buttonBack.Visible = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -122,5 +135,48 @@ namespace MyProject.UI
         private void label3_Click(object sender, EventArgs e)
         {
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelExternal_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            // Piilota login-kentät
+            txtUsername.Visible = false;
+            txtPassword.Visible = false;
+            label1.Visible = false;
+            label2.Visible = false;
+
+            // Tyhjennetään kentät
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+
+            // Piilotetaan login-nappi
+            button4.Visible = false;
+            button4.Enabled = false;
+
+            // Piilota käyttäjätyyppiotsikot
+            labelAdmin.Visible = false;
+            labelInternal.Visible = false;
+            labelExternal.Visible = false;
+
+            // Näytä alkuperäiset roolinapit
+            button1.Visible = true; // Admin
+            button2.Visible = true; // Internal
+            button3.Visible = true; // External
+
+            // Piilota takaisin-nappi
+            buttonBack.Visible = false;
+
+            // Nollaa valittu käyttäjätyyppi
+            selectedUserType = null;
+        }
+
     }
 }
