@@ -103,3 +103,17 @@ INSERT INTO `block_cooccurrence` (`Block_A_ID`, `Block_B_ID`, `Times_Used_Togeth
 -- Lisää uusi kategoria
 INSERT INTO `contract_block_category` (`Category_name`, `Description`) VALUES
 ('Tietosuoja', 'Määrittelee henkilötietojen käsittelyn periaatteet ja GDPR-vaatimukset.');
+
+-- Create admin_deletion_votes table
+CREATE TABLE `admin_deletion_votes` (
+  `Vote_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Target_Admin_ID` int(6) UNSIGNED NOT NULL,
+  `Voting_Admin_ID` int(6) UNSIGNED NOT NULL,
+  `Vote_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Vote_ID`),
+  UNIQUE KEY `unique_vote` (`Target_Admin_ID`, `Voting_Admin_ID`),
+  KEY `Target_Admin_ID` (`Target_Admin_ID`),
+  KEY `Voting_Admin_ID` (`Voting_Admin_ID`),
+  CONSTRAINT `admin_deletion_votes_ibfk_1` FOREIGN KEY (`Target_Admin_ID`) REFERENCES `administrator` (`Administrator_ID`) ON DELETE CASCADE,
+  CONSTRAINT `admin_deletion_votes_ibfk_2` FOREIGN KEY (`Voting_Admin_ID`) REFERENCES `administrator` (`Administrator_ID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
