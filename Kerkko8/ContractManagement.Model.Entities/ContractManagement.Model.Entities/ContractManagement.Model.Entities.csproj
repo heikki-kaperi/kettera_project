@@ -116,6 +116,7 @@
     <Compile Include="DbHelper.cs" />
     <Compile Include="ModelLayer.cs" />
     <Compile Include="Model\Dal\SqlBuilder.cs" />
+    <Compile Include="Utilities\Passwordhelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

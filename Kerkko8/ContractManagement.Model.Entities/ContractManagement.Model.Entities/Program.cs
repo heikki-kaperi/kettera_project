@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ContractManagement.Controller;
 using ContractManagement.Model.Entities;
+using ContractManagement.Utils;
 
 namespace ContractManagement.View
 {
@@ -69,6 +70,7 @@ namespace ContractManagement.View
                 Console.WriteLine("5. Delete Internal User");
                 Console.WriteLine("6. Delete External User");
                 Console.WriteLine("7. Delete Administrator (3 votes)");
+                Console.WriteLine("8. Migrate Passwords to Hashed Format");
                 Console.WriteLine("0. Logout");
                 Console.Write("\nSelect option: ");
 
@@ -81,6 +83,7 @@ namespace ContractManagement.View
                     case "5": DeleteInternalUser(); break;
                     case "6": DeleteExternalUser(); break;
                     case "7": DeleteAdministratorVoting(); break;
+                    case "8": MigratePasswords(); break;
                     case "0": return;
                     default: Console.WriteLine("Invalid option."); Pause(); break;
                 }
@@ -212,7 +215,12 @@ namespace ContractManagement.View
 
             Pause();
         }
-
+        private void MigratePasswords()
+        {
+            Console.Clear();
+            PasswordHelper.MigrateAllPasswords();
+            Pause();
+        }
 
     }
 

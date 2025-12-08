@@ -236,3 +236,36 @@ C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProjec.E14AB52C.Up2Date
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
 C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.AssemblyReference.cache
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.SuggestedBindingRedirects.cache
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe.config
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.AddBlockForm.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Administrator.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ApproveContract.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.BlockCategory.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CommentContractInternal.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ContractDetails.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ContractDetailsInternal.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateCategory.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateContractForm.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateExternal.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteExternalUsers.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteInternalUsers.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.EditBlockForm.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.External.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Internal.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.InviteExternalForm.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.InviteInternalForm.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.logIn.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.MyContractsReviewer.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Properties.Resources.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.RemoveBlockForm.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewAllCategories.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewExternalUsers.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewInternalUsers.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewMyContracts.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewMyContractsForm.resources
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.GenerateResource.cache
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.CoreCompileInputs.cache
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
+D:\GitHub\KetteraOhjelmisto\kettera_project\Kerkko8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb

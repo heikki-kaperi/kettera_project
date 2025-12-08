@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ContractManagement.Model.Entities;
 using ContractManagement.Model.DAL;
+using ContractManagement.Utils; // Add this for PasswordHelper
 using static ContractManagement.Model.DAL.ContractBlockDAL;
 using MySql.Data.MySqlClient;
 
@@ -15,11 +16,11 @@ namespace ContractManagement.Controller
         private InternalUserDAL internalUserDAL = new InternalUserDAL();
         private ExternalUserDAL externalUserDAL = new ExternalUserDAL();
 
-        // Login methods
+        // Login methods with password hashing
         public Administrator LoginAdministrator(string username, string password)
         {
             Administrator admin = adminDAL.GetAdministratorByUsername(username);
-            if (admin != null && admin.Password == password)
+            if (admin != null && PasswordHelper.VerifyPassword(password, admin.Password))
                 return admin;
             return null;
         }
@@ -27,7 +28,7 @@ namespace ContractManagement.Controller
         public InternalUser LoginInternalUser(string username, string password)
         {
             InternalUser user = internalUserDAL.GetInternalUserByUsername(username);
-            if (user != null && user.Password == password)
+            if (user != null && PasswordHelper.VerifyPassword(password, user.Password))
                 return user;
             return null;
         }
@@ -35,7 +36,7 @@ namespace ContractManagement.Controller
         public ExternalUser LoginExternalUser(string username, string password)
         {
             ExternalUser user = externalUserDAL.GetExternalUserByUsername(username);
-            if (user != null && user.Password == password)
+            if (user != null && PasswordHelper.VerifyPassword(password, user.Password))
                 return user;
             return null;
         }
@@ -47,7 +48,7 @@ namespace ContractManagement.Controller
         }
 
 
-        // Internal users
+        // Internal users - passwords are now hashed before storing
         public List<InternalUser> GetAllInternalUsers() => internalUserDAL.GetAllInternalUsers();
 
         public bool CreateInternalUser(string fname, string lname, string email, string username, string password)
@@ -58,7 +59,7 @@ namespace ContractManagement.Controller
                 Last_name = lname,
                 Email = email,
                 Username = username,
-                Password = password
+                Password = PasswordHelper.HashPassword(password) // Hash the password
             };
             return internalUserDAL.CreateInternalUser(user);
         }
@@ -67,7 +68,7 @@ namespace ContractManagement.Controller
         public bool DeleteInternalUser(int userId) => internalUserDAL.DeleteInternalUser(userId);
         public InternalUser GetInternalUserByUsername(string username) => internalUserDAL.GetInternalUserByUsername(username);
 
-        // External users
+        // External users - passwords are now hashed before storing
         public List<ExternalUser> GetAllExternalUsers() => externalUserDAL.GetAllExternalUsers();
 
         public bool CreateExternalUser(string fname, string lname, string company, string email, string username, string password)
@@ -79,7 +80,7 @@ namespace ContractManagement.Controller
                 Company_name = company,
                 Email = email,
                 Username = username,
-                Password = password
+                Password = PasswordHelper.HashPassword(password) // Hash the password
             };
             return externalUserDAL.CreateExternalUser(user);
         }
@@ -462,8 +463,6 @@ namespace ContractManagement.Controller
             return originalDAL.GetAllOriginalBlocks();
         }
     }
-
-
 
     // ==================== COMMENT CONTROLLER ====================
     public class CommentController
