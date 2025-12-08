@@ -1,0 +1,238 @@
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.AssemblyReference.cache
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.SuggestedBindingRedirects.cache
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe.config
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Administrator.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.BlockCategory.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateCategory.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateExternal.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteExternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteInternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.External.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Internal.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.logIn.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Properties.Resources.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewAllCategories.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewExternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewInternalUsers.resources
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.GenerateResource.cache
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.CoreCompileInputs.cache
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.exe.config
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.exe
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.pdb
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.exe
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MySql.Data.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ZstdSharp.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Memory.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Buffers.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.IO.Pipelines.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.pdb
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.exe.config
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MySql.Data.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.pdb
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Memory.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Buffers.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.IO.Pipelines.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProjec.E14AB52C.Up2Date
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
+C:\Users\Omistaja\Documents\GitHub\kettera_project\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.exe.config
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.exe
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.pdb
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.exe
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MySql.Data.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ZstdSharp.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Memory.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Buffers.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.IO.Pipelines.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.pdb
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.exe.config
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MySql.Data.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.pdb
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Memory.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Buffers.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.IO.Pipelines.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.AssemblyReference.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe.config
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Administrator.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.BlockCategory.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateCategory.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateExternal.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteExternalUsers.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteInternalUsers.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.External.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Internal.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.logIn.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Properties.Resources.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewAllCategories.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewExternalUsers.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewInternalUsers.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.GenerateResource.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProjec.E14AB52C.Up2Date
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_07\ArttuOlli6\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.exe.config
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.exe
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.pdb
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.exe
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MySql.Data.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ZstdSharp.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Memory.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Buffers.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.IO.Pipelines.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.pdb
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.exe.config
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MySql.Data.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.pdb
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Memory.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Buffers.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.IO.Pipelines.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.AssemblyReference.cache
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.SuggestedBindingRedirects.cache
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe.config
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Administrator.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.BlockCategory.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateCategory.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateExternal.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteExternalUsers.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteInternalUsers.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.External.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Internal.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.logIn.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Properties.Resources.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewAllCategories.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewExternalUsers.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewInternalUsers.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.GenerateResource.cache
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.CoreCompileInputs.cache
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProjec.E14AB52C.Up2Date
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateContractForm.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewMyContractsForm.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.AddBlockForm.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.RemoveBlockForm.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.EditBlockForm.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.InviteInternalForm.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.InviteExternalForm.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ApproveContract.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewMyContracts.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.MyContractsReviewer.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ContractDetails.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ContractDetailsInternal.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CommentContractInternal.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.exe.config
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.exe
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MyProject.UI.pdb
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.exe
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MySql.Data.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ZstdSharp.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Memory.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Buffers.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.IO.Pipelines.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.pdb
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\ContractManagement.Model.Entities.exe.config
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\MySql.Data.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.pdb
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\Google.Protobuf.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Memory.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Buffers.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.IO.Pipelines.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.AssemblyReference.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.SuggestedBindingRedirects.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe.config
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.AddBlockForm.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Administrator.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ApproveContract.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.BlockCategory.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CommentContractInternal.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ContractDetails.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ContractDetailsInternal.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateCategory.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateContractForm.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CreateExternal.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteExternalUsers.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.DeleteInternalUsers.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.EditBlockForm.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.External.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Internal.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.InviteExternalForm.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.InviteInternalForm.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.logIn.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.MyContractsReviewer.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.Properties.Resources.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.RemoveBlockForm.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewAllCategories.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewExternalUsers.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewInternalUsers.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewMyContracts.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewMyContractsForm.resources
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.GenerateResource.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.csproj.CoreCompileInputs.cache
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProjec.E14AB52C.Up2Date
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.exe
+C:\Users\User\Documents\koulu\2025 osa 3\Ketterä ohjelmakehitys\2025_12_08\Main8\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.pdb
