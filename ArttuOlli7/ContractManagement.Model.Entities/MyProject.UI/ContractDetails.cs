@@ -16,5 +16,10 @@ namespace MyProject.UI
         {
             InitializeComponent();
         }
+
+        private void ContractDetails_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -168,6 +168,24 @@
     <Compile Include="EditBlockForm.Designer.cs">
       <DependentUpon>EditBlockForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ContractDetailsInternal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContractDetailsInternal.Designer.cs">
+      <DependentUpon>ContractDetailsInternal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommentContractInternal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CommentContractInternal.Designer.cs">
+      <DependentUpon>CommentContractInternal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyContractsReviewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MyContractsReviewer.Designer.cs">
+      <DependentUpon>MyContractsReviewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="InviteExternalForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -266,8 +284,20 @@
     <EmbeddedResource Include="Administrator.resx">
       <DependentUpon>Administrator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ApproveContract.resx">
+      <DependentUpon>ApproveContract.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BlockCategory.resx">
       <DependentUpon>BlockCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommentContractInternal.resx">
+      <DependentUpon>CommentContractInternal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractDetails.resx">
+      <DependentUpon>ContractDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContractDetailsInternal.resx">
+      <DependentUpon>ContractDetailsInternal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateCategory.resx">
       <DependentUpon>CreateCategory.cs</DependentUpon>
@@ -302,6 +332,9 @@
     <EmbeddedResource Include="logIn.resx">
       <DependentUpon>logIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MyContractsReviewer.resx">
+      <DependentUpon>MyContractsReviewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -322,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewInternalUsers.resx">
       <DependentUpon>ViewInternalUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewMyContracts.resx">
+      <DependentUpon>ViewMyContracts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewMyContractsForm.resx">
       <DependentUpon>ViewMyContractsForm.cs</DependentUpon>

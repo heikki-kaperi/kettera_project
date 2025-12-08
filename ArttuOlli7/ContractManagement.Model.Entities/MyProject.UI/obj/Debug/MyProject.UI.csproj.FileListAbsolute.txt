@@ -164,3 +164,9 @@ C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Mo
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.EditBlockForm.resources
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.InviteInternalForm.resources
 C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.InviteExternalForm.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ApproveContract.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ViewMyContracts.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.MyContractsReviewer.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ContractDetails.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.ContractDetailsInternal.resources
+C:\Users\leoko\Documents\GitHub\kettera_project\ArttuOlli7\ContractManagement.Model.Entities\MyProject.UI\obj\Debug\MyProject.UI.CommentContractInternal.resources

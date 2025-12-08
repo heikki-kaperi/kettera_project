@@ -32,6 +32,7 @@
             this.dataGridViewContracts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewContracts.Size = new System.Drawing.Size(776, 350);
             this.dataGridViewContracts.TabIndex = 0;
+            this.dataGridViewContracts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewContracts_CellContentClick);
             // 
             // btnClose
             // 
@@ -49,7 +50,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(320, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 25);
+            this.label1.Size = new System.Drawing.Size(186, 25);
             this.label1.TabIndex = 2;
             this.label1.Text = "MY CONTRACTS";
             // 
@@ -66,6 +67,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewContracts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.DataGridView dataGridViewContracts;

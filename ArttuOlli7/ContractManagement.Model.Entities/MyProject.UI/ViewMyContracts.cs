@@ -44,5 +44,10 @@ namespace MyProject.UI
         {
             this.Close();
         }
+
+        private void dataGridViewContracts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
