@@ -24,18 +24,6 @@ namespace MyProject.UI
                 // Haetaan ORIGINAL blokit
                 var blocks = _blockController.GetAllOriginalBlocks();
 
-                // DEBUG: Näytä mitä ladattiin
-                if (blocks.Count > 0)
-                {
-                    string firstBlock = $"First block: ID={blocks[0].Org_Cont_ID}, Category={blocks[0].Category_name}";
-                    MessageBox.Show($"Loaded {blocks.Count} blocks from original_contract_block table.\n\n{firstBlock}",
-                        "Debug");
-                }
-                else
-                {
-                    MessageBox.Show("No blocks found in original_contract_block table!", "Warning");
-                }
-
                 dataGridViewBlocks.DataSource = null; // Tyhjennä ensin
                 dataGridViewBlocks.DataSource = blocks; // Lataa uusi data
                 dataGridViewBlocks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -94,7 +82,6 @@ namespace MyProject.UI
                 }
                 else
                 {
-                    // ← LISÄÄ TÄMÄ: Yksityiskohtaisempi virheviesti
                     MessageBox.Show(
                         $"Failed to copy block ID {blockId}.\n\n" +
                         $"Check Output window (View → Output) for MySQL error details.\n\n" +
