@@ -398,13 +398,10 @@
                         <h3 style="color: #333; border-bottom: 2px solid #4CAF50; padding-bottom: 10px;">Contract Terms</h3>
                         
                         <?php
-                        // Get contract blocks
-                        $blocks_sql = "SELECT cb.*, 
-                                              cbs.Block_order,
-                                              ocb.Category_name
-                                       FROM contract_block cb
-                                       INNER JOIN contract_blocks cbs ON cb.Contract_Block_NR = cbs.Contract_Block_NR
-                                       LEFT JOIN original_contract_block ocb ON cb.Org_Cont_ID = ocb.Org_Cont_ID
+                        // Get contract blocks - Query the contract_block table directly first
+                        $blocks_sql = "SELECT cbs.Contract_Block_NR,
+                                              cbs.Block_order
+                                       FROM contract_blocks cbs
                                        WHERE cbs.Contract_NR = ?
                                        ORDER BY cbs.Block_order";
                         
@@ -415,54 +412,70 @@
 
                         if ($blocks_result->num_rows > 0) {
                             $block_count = 1;
-                            while($block = $blocks_result->fetch_assoc()) {
-                                echo '<div class="contract-block">';
+                            while($block_ref = $blocks_result->fetch_assoc()) {
+                                // Now get the actual block data
+                                $block_data_sql = "SELECT cb.*,
+                                                          ocb.Category_name
+                                                   FROM contract_block cb
+                                                   LEFT JOIN original_contract_block ocb ON cb.Org_Cont_ID = ocb.Org_Cont_ID
+                                                   WHERE cb.Contract_Block_NR = ?";
                                 
-                                // Block number with category
-                                echo '<div class="block-number">';
-                                echo 'Section ' . $block_count;
-                                if (!empty($block['Category_name'])) {
-                                    echo ' - ' . htmlspecialchars($block['Category_name']);
-                                }
-                                if ($block['New']) {
-                                    echo ' <span class="block-modified">[Modified]</span>';
-                                }
-                                echo '</div>';
+                                $block_data_stmt = $conn->prepare($block_data_sql);
+                                $block_data_stmt->bind_param("i", $block_ref['Contract_Block_NR']);
+                                $block_data_stmt->execute();
+                                $block_data_result = $block_data_stmt->get_result();
                                 
-                            // Block content based on type
-                            if ($block['Type'] == 1) {
-                                // Image block
-                                if (!empty($block['MediaContent']) && $block['MediaContent'] !== '0') {
-                                    echo '<div class="block-image">';
-                                    $imageData = base64_encode($block['MediaContent']);
-                                    echo '<img src="data:image/jpeg;base64,' . $imageData . '" alt="Contract Image">';
-                                    echo '</div>';
-                                }
-                                
-                                // Show text if any
-                                if (!empty($block['Contract_text'])) {
-                                    echo '<div class="block-content">';
-                                    echo nl2br(htmlspecialchars($block['Contract_text']));
-                                    echo '</div>';
-                                }
-                            
-                                } else {
-                                    // Text block
-                                    echo '<div class="block-content">';
-                                    if (!empty($block['Contract_text'])) {
-                                        echo nl2br(htmlspecialchars($block['Contract_text']));
-                                    } else {
-                                        echo '<em>(No content)</em>';
+                                if ($block_data_result->num_rows > 0) {
+                                    $block = $block_data_result->fetch_assoc();
+                                    
+                                    echo '<div class="contract-block">';
+                                    
+                                    // Block number with category
+                                    echo '<div class="block-number">';
+                                    echo 'Section ' . $block_count;
+                                    if (!empty($block['Category_name'])) {
+                                        echo ' - ' . htmlspecialchars($block['Category_name']);
+                                    }
+                                    if ($block['New']) {
+                                        echo ' <span class="block-modified">[Modified]</span>';
                                     }
                                     echo '</div>';
+                                    
+                                    // Block content based on type
+                                    if ($block['Type'] == 1 && !empty($block['MediaContent'])) {
+                                        // Display image
+                                        echo '<div class="block-image">';
+                                        // Convert BLOB to base64 and display
+                                        $imageData = base64_encode($block['MediaContent']);
+                                        echo '<img src="data:image/jpeg;base64,' . $imageData . '" alt="Contract Image">';
+                                        echo '</div>';
+                                        
+                                        // Also show text if any
+                                        if (!empty($block['Contract_text'])) {
+                                            echo '<div class="block-content">';
+                                            echo nl2br(htmlspecialchars($block['Contract_text']));
+                                            echo '</div>';
+                                        }
+                                    } else {
+                                        // Text block
+                                        echo '<div class="block-content">';
+                                        if (!empty($block['Contract_text'])) {
+                                            echo nl2br(htmlspecialchars($block['Contract_text']));
+                                        } else {
+                                            echo '<em>(No content)</em>';
+                                        }
+                                        echo '</div>';
+                                    }
+                                    
+                                    echo '</div>';
+                                    $block_count++;
                                 }
-                                
-                                echo '</div>';
-                                $block_count++;
+                                $block_data_stmt->close();
                             }
                         } else {
                             echo '<p class="no-contract">No contract blocks found for this contract.</p>';
                         }
+                        $blocks_stmt->close();
                         ?>
                     </div>
 
@@ -508,7 +521,10 @@
                             ?>
                         </div>
                     </div>
-                    <?php endif; ?>
+                    <?php 
+                    endif; 
+                    $stake_stmt->close();
+                    ?>
 
                     <?php
                     // Get comments
@@ -555,7 +571,10 @@
                         }
                         ?>
                     </div>
-                    <?php endif; ?>
+                    <?php 
+                    endif;
+                    $comments_stmt->close();
+                    ?>
 
                     <!-- Signature Section -->
                     <div class="signature-section">
@@ -585,6 +604,7 @@
                 </div>
 
                 <?php
+                $stmt->close();
             } else {
                 echo '<div class="a4-paper"><p class="no-contract">Contract not found.</p></div>';
             }
