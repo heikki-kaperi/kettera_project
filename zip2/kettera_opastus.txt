@@ -1,0 +1,1 @@
+xampp > myphpadmin > luo taulukko "kettera" > vie taulukkoon "kettera.sql" tiedosto.
